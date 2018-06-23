@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MoneySplitter</string>
+
+    <string name="splitter_settings">Settings</string>
+
+    <string name="fab_menu_person">Person</string>
+    <string name="fab_menu_item">Item</string>
+</resources>
