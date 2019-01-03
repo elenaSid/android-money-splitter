@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplitterAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="colorPrimaryDark">@color/black_20_tint</item>
+        <item name="android:navigationBarColor">@color/black50_tint</item>
+        <item name="android:popupMenuStyle">@style/SplitterAppTheme.PopupMenu</item>
+        <item name="android:popupWindowStyle">@style/SplitterAppTheme.PopupMenu</item>
+    </style>
+
+    <style name="SplitterAppTheme.Root" parent="SplitterAppTheme">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SplitterAppTheme.PopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:dropDownHorizontalOffset">16dp</item>
+        <item name="android:dropDownVerticalOffset">-16dp</item>
+    </style>
 </resources>

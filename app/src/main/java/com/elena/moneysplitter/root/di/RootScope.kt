@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.splitter.di
+package com.elena.moneysplitter.root.di
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
@@ -11,4 +11,4 @@ import javax.inject.Scope
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-internal annotation class SplitterScope
+internal annotation class RootScope

@@ -1,9 +1,8 @@
-package com.elena.moneysplitter.splitter.presenter
+package com.elena.moneysplitter.root.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.elena.moneysplitter.domain.person.interactor.SavePersonUseCase
-import com.elena.moneysplitter.splitter.view.SplitterView
+import com.elena.moneysplitter.root.view.RootView
 
 /**
  * @author elena
@@ -11,7 +10,7 @@ import com.elena.moneysplitter.splitter.view.SplitterView
  *         Time: 18:05
  */
 @InjectViewState
-class SplitterPresenter : MvpPresenter<SplitterView>() {
+class RootPresenter : MvpPresenter<RootView>() {
     //private val savePersonUseCase: SavePersonUseCase
 
     /*public constructor(savePersonUseCase: SavePersonUseCase) {
@@ -20,8 +19,6 @@ class SplitterPresenter : MvpPresenter<SplitterView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        //val params: SavePersonUseCase.Params = SavePersonUseCase.Params("Bobby", null)
-        //savePersonUseCase.execute(params, null)
         viewState.showEmptyView()
     }
 }
