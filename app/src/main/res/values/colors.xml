@@ -12,5 +12,7 @@
     <color name="colorPrimaryDark">#76392d</color>
     <color name="colorAccent">#2facc3</color>
 
+    <color name="red_orange_text">#ff3b30</color>
+
     <color name="silver_tint_navigation">#a1a1a1</color>
 </resources>
