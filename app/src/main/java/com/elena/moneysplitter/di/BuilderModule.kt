@@ -3,9 +3,9 @@ package com.elena.moneysplitter.di
 import com.elena.moneysplitter.root.di.RootModule
 import com.elena.moneysplitter.root.di.RootScope
 import com.elena.moneysplitter.root.ui.RootActivity
-import com.elena.moneysplitter.users.di.UserScope
-import com.elena.moneysplitter.users.di.UsersModule
-import com.elena.moneysplitter.users.ui.UserFragment
+import com.elena.moneysplitter.users.list.di.UserScope
+import com.elena.moneysplitter.users.list.di.UsersModule
+import com.elena.moneysplitter.users.list.ui.UserFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

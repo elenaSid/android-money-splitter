@@ -12,7 +12,7 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.RootActivityBinding
 import com.elena.moneysplitter.root.mvp.RootPresenter
 import com.elena.moneysplitter.root.mvp.RootView
-import com.elena.moneysplitter.users.ui.UserFragment
+import com.elena.moneysplitter.users.list.ui.UserFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector

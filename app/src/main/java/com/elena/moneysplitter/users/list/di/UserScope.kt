@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.di
+package com.elena.moneysplitter.users.list.di
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy

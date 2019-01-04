@@ -22,5 +22,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".users.edit.EditUserActivity"
+            android:configChanges="orientation"
+            android:label="${applicationLabel}"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplitterAppTheme.Root"/>
     </application>
 </manifest>

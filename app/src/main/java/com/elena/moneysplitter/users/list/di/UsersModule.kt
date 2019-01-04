@@ -1,6 +1,6 @@
-package com.elena.moneysplitter.users.di
+package com.elena.moneysplitter.users.list.di
 
-import com.elena.moneysplitter.users.mvp.UsersPresenter
+import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import dagger.Module
 import dagger.Provides
 

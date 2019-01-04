@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.ui
+package com.elena.moneysplitter.users.list.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -13,14 +13,9 @@ import com.elena.moneysplitter.R
  *         Date: 04/01/2019
  *         Time: 13:59
  */
-class UserAdapter(userListener: UserListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class UserAdapter(private val listener: UserListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var users = ArrayList<Pair<String, String>>()
-    private var listener: UserListener = userListener
-
-    fun setUsers(users: List<Pair<String, String>>) {
-        this.users = users as ArrayList<Pair<String, String>>
-    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.user_item, null)
