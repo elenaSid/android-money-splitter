@@ -10,10 +10,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.RootActivityBinding
-import com.elena.moneysplitter.root.presenter.RootPresenter
-import com.elena.moneysplitter.root.view.RootView
-import com.elena.moneysplitter.users.UsersFragment
+import com.elena.moneysplitter.root.mvp.RootPresenter
+import com.elena.moneysplitter.root.mvp.RootView
+import com.elena.moneysplitter.users.ui.UserFragment
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 /**
@@ -21,13 +24,17 @@ import javax.inject.Inject
  *         Date: 12.06.2018
  *         Time: 17:17
  */
-open class RootActivity : MvpAppCompatActivity(), RootView, BottomNavigationView.OnNavigationItemSelectedListener {
+open class RootActivity : MvpAppCompatActivity(), RootView,
+        BottomNavigationView.OnNavigationItemSelectedListener, HasSupportFragmentInjector {
 
     companion object {
-        private const val TAG = "fragment"
+        private const val TAG = "current_fragment_tag"
     }
 
     private lateinit var binding: RootActivityBinding
+
+    @Inject
+    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     @Inject
     @InjectPresenter
@@ -36,6 +43,10 @@ open class RootActivity : MvpAppCompatActivity(), RootView, BottomNavigationView
     @ProvidePresenter
     fun provideSplitterPresenter(): RootPresenter {
         return presenter
+    }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+        return fragmentDispatchingAndroidInjector
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,8 +65,8 @@ open class RootActivity : MvpAppCompatActivity(), RootView, BottomNavigationView
                     R.id.menu_item_shopping,
                     R.id.menu_item_summary,
                     R.id.menu_item_settings) ->
-                fragment = UsersFragment()
-            else -> fragment = UsersFragment()
+                fragment = UserFragment()
+            else -> fragment = UserFragment()
         }
         supportFragmentManager
                 .beginTransaction()

@@ -1,6 +1,6 @@
 package com.elena.moneysplitter.root.di
 
-import com.elena.moneysplitter.root.presenter.RootPresenter
+import com.elena.moneysplitter.root.mvp.RootPresenter
 import dagger.Module
 import dagger.Provides
 

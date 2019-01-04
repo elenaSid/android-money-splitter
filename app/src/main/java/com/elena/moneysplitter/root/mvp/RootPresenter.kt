@@ -1,8 +1,7 @@
-package com.elena.moneysplitter.root.presenter
+package com.elena.moneysplitter.root.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.elena.moneysplitter.root.view.RootView
 
 /**
  * @author elena

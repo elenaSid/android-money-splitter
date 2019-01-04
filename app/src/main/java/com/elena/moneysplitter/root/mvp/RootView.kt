@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.root.view
+package com.elena.moneysplitter.root.mvp
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
