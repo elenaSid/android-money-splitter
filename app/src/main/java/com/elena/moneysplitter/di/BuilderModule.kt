@@ -1,8 +1,11 @@
 package com.elena.moneysplitter.di
 
-import com.elena.moneysplitter.splitter.di.SplitterModule
-import com.elena.moneysplitter.splitter.di.SplitterScope
-import com.elena.moneysplitter.splitter.ui.SplitterActivity
+import com.elena.moneysplitter.root.di.RootModule
+import com.elena.moneysplitter.root.di.RootScope
+import com.elena.moneysplitter.root.ui.RootActivity
+import com.elena.moneysplitter.users.di.UserScope
+import com.elena.moneysplitter.users.di.UsersModule
+import com.elena.moneysplitter.users.ui.UserFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,7 +16,11 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class BuilderModule {
-    @SplitterScope
-    @ContributesAndroidInjector(modules = [(SplitterModule::class)])
-    abstract fun bindSplitterActivity(): SplitterActivity
+    @RootScope
+    @ContributesAndroidInjector(modules = [(RootModule::class)])
+    abstract fun bindSplitterActivity(): RootActivity
+
+    @UserScope
+    @ContributesAndroidInjector(modules = [(UsersModule::class)])
+    abstract fun bindUsersFragment(): UserFragment
 }

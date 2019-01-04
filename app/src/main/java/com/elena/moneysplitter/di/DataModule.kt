@@ -3,10 +3,7 @@ package com.elena.moneysplitter.di
 import android.content.Context
 import com.elena.moneysplitter.data.PreferencesStorage
 import com.elena.moneysplitter.data.common.RealmManager
-import com.elena.moneysplitter.data.person.PersonMapper
-import com.elena.moneysplitter.data.person.PersonRealmRepository
 import com.elena.moneysplitter.domain.common.KeyValueStorage
-import com.elena.moneysplitter.domain.person.PersonRepository
 import dagger.Module
 import dagger.Provides
 import io.realm.Realm
@@ -18,12 +15,6 @@ import io.realm.Realm
  */
 @Module
 class DataModule {
-
-    @Provides
-    @PerApplication
-    fun providePersonRepository(realm: Realm): PersonRepository {
-        return PersonRealmRepository(realm, PersonMapper())
-    }
 
     @Provides
     @PerApplication

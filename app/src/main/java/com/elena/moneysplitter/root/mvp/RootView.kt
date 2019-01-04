@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.splitter.view
+package com.elena.moneysplitter.root.mvp
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
@@ -10,6 +10,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
  *         Time: 18:06
  */
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface SplitterView : MvpView {
+interface RootView : MvpView {
     fun showEmptyView()
 }

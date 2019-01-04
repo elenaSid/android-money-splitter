@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="alabaster_background">#f9f9f9</color>
+
+    <color name="black_20_tint">#33000000</color>
+    <color name="black50_tint">#80000000</color>
+    <color name="black54_text">#8b000000</color>
+    <color name="black_97_text">#61000000</color>
+    <color name="black_text">#de000000</color>
+
     <color name="colorPrimary">#814233</color>
     <color name="colorPrimaryDark">#76392d</color>
     <color name="colorAccent">#2facc3</color>
 
+    <color name="red_orange_text">#ff3b30</color>
+
+    <color name="silver_tint_navigation">#a1a1a1</color>
 </resources>

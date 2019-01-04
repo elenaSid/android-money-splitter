@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_person"
+          android:id="@+id/menu_item_users"
+          android:title="@string/navigation_menu_users"
+          app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_shopping"
+          android:id="@+id/menu_item_shopping"
+          android:title="@string/navigation_menu_items"
+          app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_summary"
+          android:id="@+id/menu_item_summary"
+          android:title="@string/navigation_menu_summary"
+          app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_settings"
+          android:id="@+id/menu_item_settings"
+          android:title="@string/navigation_menu_settings"
+          app:showAsAction="always"/>
+</menu>

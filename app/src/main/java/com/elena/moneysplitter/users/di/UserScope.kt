@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.splitter.di
+package com.elena.moneysplitter.users.di
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
@@ -6,9 +6,9 @@ import javax.inject.Scope
 
 /**
  * @author elena
- *         Date: 12.06.2018
- *         Time: 18:01
+ *         Date: 04/01/2019
+ *         Time: 09:35
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-internal annotation class SplitterScope
+internal annotation class UserScope
