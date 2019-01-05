@@ -25,9 +25,9 @@
         <activity
             android:name=".users.edit.EditUserActivity"
             android:configChanges="orientation"
-            android:label="${applicationLabel}"
-            android:launchMode="singleTask"
+            android:label="@string/user_edit_create"
             android:screenOrientation="portrait"
-            android:theme="@style/SplitterAppTheme.Root"/>
+            android:theme="@style/SplitterAppTheme.Root"
+            android:parentActivityName=".root.ui.RootActivity" />
     </application>
 </manifest>

@@ -16,6 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
+import com.elena.moneysplitter.root.ui.RootActivity
 import com.elena.moneysplitter.users.edit.EditUserActivity
 import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import com.elena.moneysplitter.users.list.mvp.UsersView
@@ -73,15 +74,15 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         binding.rvUsers.adapter = adapter
     }
 
-    fun launchEditUserActivity(user: Pair<String, String>?) {
+    private fun launchEditUserActivity(user: Pair<String, String>?) {
         if (user == null) {
-            startActivityForResult(Intent(context, EditUserActivity::class.java), REQUEST_CREATE)
-            return
+            startActivity(Intent(activity, EditUserActivity::class.java))
 
+        } else {
+            val bundle = Bundle()
+            bundle.putSerializable(PARAM_USER, user)
+            startActivityForResult(Intent(activity, EditUserActivity::class.java), REQUEST_EDIT, bundle)
         }
-        val bundle = Bundle()
-        bundle.putSerializable(PARAM_USER, user)
-        startActivityForResult(Intent(context, EditUserActivity::class.java), REQUEST_EDIT, bundle)
     }
 
     override fun onMoreClicked(anchor: View, user: Pair<String, String>) {
