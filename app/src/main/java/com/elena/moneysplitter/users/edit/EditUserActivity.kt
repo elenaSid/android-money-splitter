@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -14,6 +16,8 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import com.elena.moneysplitter.users.edit.mvp.UserEditView
+import com.elena.moneysplitter.users.edit.ui.FamilyAdapter
+import com.elena.moneysplitter.users.edit.ui.UserDropdownMenu
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -61,14 +65,18 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
             if (bundle != null) {
                 presenter.onGetUser(bundle.getString(PARAM_USER_NAME), bundle.getString(PARAM_USER_FAMILY))
             }
-
         }
+        initListeners()
     }
 
     private fun setActionBar() {
         setSupportActionBar(binding.toolbar)
         val title = getString(if (intent.extras != null) R.string.user_edit_edit else R.string.user_edit_create)
         this.supportActionBar?.title = title
+    }
+
+    private fun initListeners() {
+        binding.edtFamily.setOnClickListener { presenter.onFamilyListClicked() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -100,5 +108,23 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     override fun setFamily(family: String) {
         binding.edtFamily.setText(family)
+    }
+
+    override fun showFamilies(families: List<String>) {
+
+        val menu = UserDropdownMenu(this, families, object : FamilyAdapter.FamilyListener {
+            override fun onItemClicked(family: String) {
+                Toast.makeText(this@EditUserActivity, family, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAddClicked() {
+            }
+        })
+        menu.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        menu.width = binding.edtFamily.width;
+        menu.isOutsideTouchable = true;
+        menu.isFocusable = true;
+        menu.showAsDropDown(binding.edtFamily);
+
     }
 }

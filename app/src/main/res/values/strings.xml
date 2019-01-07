@@ -23,5 +23,7 @@
     <string name="user_edit_menu_item_save">Save</string>
     <string name="user_edit_create">Create</string>
     <string name="user_edit_edit">@string/context_menu_edit</string>
+
+    <string name="user_edit_add_family">Add family</string>
     <!-- User Edit Screen end-->
 </resources>

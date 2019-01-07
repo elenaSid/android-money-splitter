@@ -47,7 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_edit_family"
-                android:drawableEnd="@drawable/ic_dropdown"/>
+                android:drawableEnd="@drawable/ic_dropdown"
+                android:focusable="false"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </layout>

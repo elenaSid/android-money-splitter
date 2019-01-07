@@ -38,4 +38,18 @@
     <style name="SplitterAppTheme.BlueAccent">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="SplitterAppTheme.DropDownMenuItem" parent="android:Widget">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:maxLines">1</item>
+
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:drawablePadding">12dp</item>
+    </style>
 </resources>

@@ -21,4 +21,11 @@ class UserEditPresenter : MvpPresenter<UserEditView>() {
             viewState.setFamily(family)
         }
     }
+
+    fun onFamilyListClicked() {
+        //TODO: получать настоящий список семей
+        val list = ArrayList<String>()
+        list.add("West\'s")
+        viewState.showFamilies(list)
+    }
 }
