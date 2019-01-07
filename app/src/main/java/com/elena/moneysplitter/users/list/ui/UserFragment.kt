@@ -1,7 +1,6 @@
 package com.elena.moneysplitter.users.list.ui
 
 import android.content.Context
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
-import com.elena.moneysplitter.root.ui.RootActivity
 import com.elena.moneysplitter.users.edit.EditUserActivity
 import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import com.elena.moneysplitter.users.list.mvp.UsersView
@@ -32,9 +30,9 @@ import javax.inject.Inject
 class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener {
 
     companion object {
-        private const val REQUEST_EDIT = 0;
-        private const val REQUEST_CREATE = 1;
-        private const val PARAM_USER = "user_param"
+        private const val REQUEST_EDIT = 0
+        private const val REQUEST_CREATE = 1
+
     }
     private lateinit var binding: UsersFragmentBinding
 
@@ -75,13 +73,10 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
     }
 
     private fun launchEditUserActivity(user: Pair<String, String>?) {
-        if (user == null) {
-            startActivity(Intent(activity, EditUserActivity::class.java))
-
-        } else {
-            val bundle = Bundle()
-            bundle.putSerializable(PARAM_USER, user)
-            startActivityForResult(Intent(activity, EditUserActivity::class.java), REQUEST_EDIT, bundle)
+        val context = context
+        if (context != null) {
+            startActivityForResult(EditUserActivity.get(context, user),
+                    if (user == null) REQUEST_CREATE else REQUEST_EDIT)
         }
     }
 
@@ -90,6 +85,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         val popupContent = View.inflate(context, R.layout.menu_view, null)
         (popupContent.findViewById(R.id.btnEdit) as TextView).setOnClickListener {
             //TODO: вызвать экран редактирования
+            launchEditUserActivity(user)
             popupWindow.dismiss()
         }
         (popupContent.findViewById(R.id.btnDelete) as TextView).setOnClickListener {

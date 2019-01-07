@@ -22,5 +22,6 @@
     <string name="user_edit_none">None</string>
     <string name="user_edit_menu_item_save">Save</string>
     <string name="user_edit_create">Create</string>
+    <string name="user_edit_edit">@string/context_menu_edit</string>
     <!-- User Edit Screen end-->
 </resources>
