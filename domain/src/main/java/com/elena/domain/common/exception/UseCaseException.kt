@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.domain.common.exception
+package com.elena.domain.common.exception
 
 /**
  * @author elena

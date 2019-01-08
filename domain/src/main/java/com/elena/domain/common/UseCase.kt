@@ -1,8 +1,7 @@
-package com.elena.moneysplitter.domain.common
+package com.elena.domain.common
 
-import android.support.annotation.CallSuper
-import com.elena.moneysplitter.domain.common.exception.DomainException
-import com.elena.moneysplitter.domain.common.exception.UseCaseException
+import com.elena.domain.common.exception.DomainException
+import com.elena.domain.common.exception.UseCaseException
 
 /**
  * @author elena
@@ -18,11 +17,10 @@ abstract class UseCase<P, R> {
      * @return result of execution
      * @throws UseCaseException errors of domain layer during execution
      */
-    @CallSuper
     @Throws(UseCaseException::class)
     fun execute(param: P?): R? {
         try {
-            return buildUseCase(param)
+            return runUseCase(param)
         } catch (e: Exception) {
             throw UseCaseException.build(e)
         }
@@ -51,5 +49,5 @@ abstract class UseCase<P, R> {
      * @see .execute
      */
     @Throws(DomainException::class)
-    protected abstract fun buildUseCase(param: P?): R?
+    protected abstract fun runUseCase(param: P?): R?
 }

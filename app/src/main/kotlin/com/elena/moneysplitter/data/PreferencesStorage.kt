@@ -2,7 +2,7 @@ package com.elena.moneysplitter.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.elena.moneysplitter.domain.common.KeyValueStorage
+import com.elena.domain.common.KeyValueStorage
 
 /**
  * @author elena
