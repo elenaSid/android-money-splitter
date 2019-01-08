@@ -3,7 +3,7 @@ package com.elena.moneysplitter.di
 import com.elena.moneysplitter.root.di.RootModule
 import com.elena.moneysplitter.root.di.RootScope
 import com.elena.moneysplitter.root.ui.RootActivity
-import com.elena.moneysplitter.users.edit.EditUserActivity
+import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.edit.di.UserEditModule
 import com.elena.moneysplitter.users.edit.di.UserEditScope
 import com.elena.moneysplitter.users.list.di.UserScope

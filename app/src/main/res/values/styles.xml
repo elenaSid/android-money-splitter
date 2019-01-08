@@ -52,4 +52,17 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:drawablePadding">12dp</item>
     </style>
+
+    <style name="SplitterAppTheme.TextView.Normal_32" parent="android:Widget">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/black_text</item>
+    </style>
+
+    <style name="SplitterAppTheme.AddFamily" parent="SplitterAppTheme">
+        <item name="colorPrimary">@color/alabaster_background</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/alabaster_background</item>
+    </style>
 </resources>

@@ -15,7 +15,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
-import com.elena.moneysplitter.users.edit.EditUserActivity
+import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import com.elena.moneysplitter.users.list.mvp.UsersView
 import com.elena.moneysplitter.utils.DisplayUtils
