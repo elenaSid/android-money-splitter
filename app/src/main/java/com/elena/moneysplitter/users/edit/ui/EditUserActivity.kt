@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.edit
+package com.elena.moneysplitter.users.edit.ui
 
 import android.app.Activity
 import android.content.Context
@@ -17,7 +17,6 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import com.elena.moneysplitter.users.edit.mvp.UserEditView
-import com.elena.moneysplitter.users.edit.ui.UserDropdownMenu
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -29,7 +28,7 @@ import javax.inject.Inject
 open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     companion object {
-        private const val MENU_DONE_ITEM_ID = 1
+        private const val REQUEST_ADD_FAMILY = 1
         const val PARAM_USER_NAME = "user_param_name"
         const val PARAM_USER_FAMILY = "user_param_family"
 
@@ -66,7 +65,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
                 presenter.onGetUser(bundle.getString(PARAM_USER_NAME), bundle.getString(PARAM_USER_FAMILY))
             }
         }
-        initListeners()
+        initWidgets()
     }
 
     private fun setActionBar() {
@@ -75,17 +74,27 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         this.supportActionBar?.title = title
     }
 
-    private fun initListeners() {
+    private fun initWidgets() {
         binding.edtFamily.setOnClickListener { presenter.onFamilyListClicked() }
-        binding.edtFamily.setOnFocusChangeListener { v, hasFocus ->  presenter.onFamilyListClicked()}
+        binding.edtFamily.setOnFocusChangeListener { _, _ ->  presenter.onFamilyListClicked()}
         binding.edtFamily.showSoftInputOnFocus = false
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_ADD_FAMILY &&
+                data != null) {
+            val bundle = data.extras ?: return
+            val family = bundle.getString(AddFamilyActivity.PARAM_FAMILY) ?: return
+            Toast.makeText(this, family, Toast.LENGTH_SHORT).show()
+            presenter.onFamilyAdded(family)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         if (menu == null) {
             return super.onCreateOptionsMenu(menu)
         }
-        val item = menu.add(Menu.NONE, MENU_DONE_ITEM_ID, Menu.NONE, R.string.user_edit_menu_item_save)
+        val item = menu.add(Menu.NONE, R.id.menu_item_done, Menu.NONE, R.string.user_edit_menu_item_save)
         item.setIcon(R.drawable.ic_done_gray)
         item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
         return true
@@ -95,9 +104,9 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         if (item == null) {
             return super.onOptionsItemSelected(item)
         }
-        if (item.itemId == MENU_DONE_ITEM_ID) {
+        if (item.itemId == R.id.menu_item_done) {
             val intent = Intent()
-            //TODO:передать сохраненного пользователя
+            //TODO:передать сохраненного пользователя?
             setResult(Activity.RESULT_OK, intent)
         }
         finish()
@@ -115,8 +124,8 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
     override fun showFamilies(families: List<String>) {
         manageListArrow(true)
         val menu = UserDropdownMenu(this, families,
-                { family: String -> Toast.makeText(this@EditUserActivity, family, Toast.LENGTH_LONG).show() },
-                {})
+                { family: String -> binding.edtFamily.setText(family) },
+                { launchAddFamilyActivity() })
         menu.height = WindowManager.LayoutParams.WRAP_CONTENT
         menu.width = binding.edtFamily.width
         menu.isOutsideTouchable = true
@@ -129,5 +138,9 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
                 if (isOpen) ContextCompat.getDrawable(this, R.drawable.ic_dropup)
                 else ContextCompat.getDrawable(this, R.drawable.ic_dropdown), null)
+    }
+
+    private fun launchAddFamilyActivity() {
+        startActivityForResult(Intent(this, AddFamilyActivity::class.java), REQUEST_ADD_FAMILY)
     }
 }

@@ -23,11 +23,19 @@
         </activity>
 
         <activity
-            android:name=".users.edit.EditUserActivity"
+            android:name=".users.edit.ui.EditUserActivity"
             android:configChanges="orientation"
             android:label="@string/user_edit_create"
             android:screenOrientation="portrait"
             android:theme="@style/SplitterAppTheme.Root"
             android:parentActivityName=".root.ui.RootActivity" />
+
+        <activity android:name=".users.edit.ui.AddFamilyActivity"
+                  android:configChanges="orientation"
+                  android:label="@string/family_add_title"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/SplitterAppTheme.AddFamily"
+                  android:parentActivityName=".users.edit.ui.EditUserActivity"/>
+
     </application>
 </manifest>

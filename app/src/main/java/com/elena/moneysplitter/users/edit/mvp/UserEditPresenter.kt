@@ -28,4 +28,8 @@ class UserEditPresenter : MvpPresenter<UserEditView>() {
         list.add("West\'s")
         viewState.showFamilies(list)
     }
+
+    fun onFamilyAdded(family: String) {
+        //TODO: вызывать сценарий сохранения новой семьи
+    }
 }
