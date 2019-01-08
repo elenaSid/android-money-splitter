@@ -99,4 +99,19 @@
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>
     </style>
+
+    <style name="SplitterAppTheme.PopupDialog" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/SplitterAppTheme.Animation.PopupDialog</item>
+    </style>
+
+    <style name="SplitterAppTheme.Animation.PopupDialog" parent="Animation.AppCompat.Dialog">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_open</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_close</item>
+    </style>
 </resources>
