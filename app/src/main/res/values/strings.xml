@@ -15,4 +15,15 @@
 
     <string name="context_menu_edit">Edit</string>
     <string name="context_menu_delete">Delete</string>
+
+    <!-- User Edit Screen start-->
+    <string name="user_edit_name">Name</string>
+    <string name="user_edit_family">Family</string>
+    <string name="user_edit_none">None</string>
+    <string name="user_edit_menu_item_save">Save</string>
+    <string name="user_edit_create">Create</string>
+    <string name="user_edit_edit">@string/context_menu_edit</string>
+
+    <string name="user_edit_add_family">Add family</string>
+    <!-- User Edit Screen end-->
 </resources>

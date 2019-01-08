@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.mvp
+package com.elena.moneysplitter.users.list.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter

@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.ui
+package com.elena.moneysplitter.users.list.ui
 
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -15,8 +15,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
-import com.elena.moneysplitter.users.mvp.UsersPresenter
-import com.elena.moneysplitter.users.mvp.UsersView
+import com.elena.moneysplitter.users.edit.EditUserActivity
+import com.elena.moneysplitter.users.list.mvp.UsersPresenter
+import com.elena.moneysplitter.users.list.mvp.UsersView
 import com.elena.moneysplitter.utils.DisplayUtils
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -28,6 +29,11 @@ import javax.inject.Inject
  */
 class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener {
 
+    companion object {
+        private const val REQUEST_EDIT = 0
+        private const val REQUEST_CREATE = 1
+
+    }
     private lateinit var binding: UsersFragmentBinding
 
     @Inject
@@ -38,7 +44,6 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
     fun provideUsersPresenter(): UsersPresenter {
         return presenter
     }
-
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
@@ -52,7 +57,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.fabAddUser.setOnClickListener { presenter.onUserAddClicked() }
+        binding.fabAddUser.setOnClickListener { launchEditUserActivity(null) }
         initUsersList()
     }
 
@@ -61,10 +66,18 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         val users = ArrayList<Pair<String, String>>()
         users.add(Pair("West", "West's"))
         users.add(Pair("Elena", "West's"))
-        adapter.setUsers(users)
+        adapter.users = users
 
         binding.rvUsers.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvUsers.adapter = adapter
+    }
+
+    private fun launchEditUserActivity(user: Pair<String, String>?) {
+        val context = context
+        if (context != null) {
+            startActivityForResult(EditUserActivity.get(context, user),
+                    if (user == null) REQUEST_CREATE else REQUEST_EDIT)
+        }
     }
 
     override fun onMoreClicked(anchor: View, user: Pair<String, String>) {
@@ -72,6 +85,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         val popupContent = View.inflate(context, R.layout.menu_view, null)
         (popupContent.findViewById(R.id.btnEdit) as TextView).setOnClickListener {
             //TODO: вызвать экран редактирования
+            launchEditUserActivity(user)
             popupWindow.dismiss()
         }
         (popupContent.findViewById(R.id.btnDelete) as TextView).setOnClickListener {
