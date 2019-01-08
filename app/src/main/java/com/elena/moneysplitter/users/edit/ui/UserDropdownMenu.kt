@@ -1,15 +1,14 @@
 package com.elena.moneysplitter.users.edit.ui
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.PopupWindow
 import com.elena.moneysplitter.R
-import com.elena.moneysplitter.utils.DisplayUtils
 
 
 /**
@@ -19,8 +18,8 @@ import com.elena.moneysplitter.utils.DisplayUtils
  */
 class UserDropdownMenu(private val context: Context?,
                        private val families: List<String>,
-                       private val listener: FamilyAdapter.FamilyListener) : PopupWindow() {
-
+                       private val onItemSelected: (String) -> Unit,
+                       private val onAddFamily: () -> Unit) : PopupWindow(), FamilyAdapter.FamilyListener {
     init {
         init()
     }
@@ -35,7 +34,18 @@ class UserDropdownMenu(private val context: Context?,
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        recyclerView.adapter = FamilyAdapter(listener, families)
+        recyclerView.adapter = FamilyAdapter(this, families)
         contentView = view
     }
+
+    override fun onItemClicked(family: String) {
+        onItemSelected(family)
+        this.dismiss()
+    }
+
+    override fun onAddClicked() {
+        onAddFamily()
+        this.dismiss()
+    }
+
 }

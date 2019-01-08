@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
@@ -16,7 +17,6 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import com.elena.moneysplitter.users.edit.mvp.UserEditView
-import com.elena.moneysplitter.users.edit.ui.FamilyAdapter
 import com.elena.moneysplitter.users.edit.ui.UserDropdownMenu
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -77,6 +77,8 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     private fun initListeners() {
         binding.edtFamily.setOnClickListener { presenter.onFamilyListClicked() }
+        binding.edtFamily.setOnFocusChangeListener { v, hasFocus ->  presenter.onFamilyListClicked()}
+        binding.edtFamily.showSoftInputOnFocus = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -111,20 +113,21 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
     }
 
     override fun showFamilies(families: List<String>) {
+        manageListArrow(true)
+        val menu = UserDropdownMenu(this, families,
+                { family: String -> Toast.makeText(this@EditUserActivity, family, Toast.LENGTH_LONG).show() },
+                {})
+        menu.height = WindowManager.LayoutParams.WRAP_CONTENT
+        menu.width = binding.edtFamily.width
+        menu.isOutsideTouchable = true
+        menu.isFocusable = true
+        menu.showAsDropDown(binding.edtFamily)
+        menu.setOnDismissListener { manageListArrow(false) }
+    }
 
-        val menu = UserDropdownMenu(this, families, object : FamilyAdapter.FamilyListener {
-            override fun onItemClicked(family: String) {
-                Toast.makeText(this@EditUserActivity, family, Toast.LENGTH_LONG).show()
-            }
-
-            override fun onAddClicked() {
-            }
-        })
-        menu.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        menu.width = binding.edtFamily.width;
-        menu.isOutsideTouchable = true;
-        menu.isFocusable = true;
-        menu.showAsDropDown(binding.edtFamily);
-
+    private fun manageListArrow(isOpen: Boolean) {
+        binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                if (isOpen) ContextCompat.getDrawable(this, R.drawable.ic_dropup)
+                else ContextCompat.getDrawable(this, R.drawable.ic_dropdown), null)
     }
 }
