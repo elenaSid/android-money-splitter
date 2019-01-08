@@ -45,7 +45,7 @@ class ItemAdapter(private val listener: ItemListener) : RecyclerView.Adapter<Rec
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+        holder.itemView.setOnClickListener { listener.onItemClicked() }
     }
 
 

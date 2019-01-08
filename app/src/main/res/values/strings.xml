@@ -39,4 +39,11 @@
     <string name="items_price">Price</string>
     <string name="items_buyer">Buyer</string>
     <!-- Item List Screen end-->
+
+    <!-- Item Show Screen start-->
+    <string name="item_show_price">Price:</string>
+    <string name="item_show_buyer">Creditor:</string>
+    <string name="item_show_debtors">Debtors:</string>
+    <!-- Item Show Screen end-->
+
 </resources>

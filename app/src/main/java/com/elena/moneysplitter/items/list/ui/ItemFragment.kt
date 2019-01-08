@@ -39,5 +39,8 @@ class ItemFragment : MvpAppCompatFragment(), ItemAdapter.ItemListener {
     }
 
     override fun onItemClicked() {
+        val dialog = ItemDialogFragment()
+        val activity = activity ?: return
+        dialog.showAllowingStateLoss(activity.supportFragmentManager, "show_item_dialog")
     }
 }
