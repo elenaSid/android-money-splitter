@@ -1,11 +1,9 @@
 package com.elena.domain.user
 
-/**
- * @author elena
- *         Date: 08/01/2019
- *         Time: 12:41
- */
-data class UserEntity (
+data class UserEntity(
+        val id: String,
+        val name: String,
 
-    val name: String
+        val familyId: String?, //null means a single person in the family. FamilyEntity.id
+        val familyName: String? //null means a single person in the family. FamilyEntity.name
 )

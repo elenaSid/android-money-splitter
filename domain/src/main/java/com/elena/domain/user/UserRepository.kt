@@ -6,6 +6,5 @@ package com.elena.domain.user
  *         Time: 12:42
  */
 interface UserRepository {
-
     fun getAll() : List<UserEntity>
 }

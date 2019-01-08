@@ -11,7 +11,7 @@ import com.elena.domain.user.UserRepository
  */
 class GetAllUsersUseCase(private val userRepository: UserRepository) : UseCase<Unit, List<UserEntity>>() {
 
-    override fun runUseCase(param: Unit?): List<UserEntity>? {
+    override fun runUseCase(param: Unit): List<UserEntity> {
         return userRepository.getAll()
     }
 }

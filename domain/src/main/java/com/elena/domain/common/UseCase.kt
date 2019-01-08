@@ -18,7 +18,7 @@ abstract class UseCase<P, R> {
      * @throws UseCaseException errors of domain layer during execution
      */
     @Throws(UseCaseException::class)
-    fun execute(param: P?): R? {
+    fun execute(param: P): R {
         try {
             return runUseCase(param)
         } catch (e: Exception) {
@@ -34,11 +34,11 @@ abstract class UseCase<P, R> {
      * @param defaultResult default result in case of errors
      * @return result of execution
      */
-    fun execute(param: P?, defaultResult: R?): R? {
-        try {
-            return execute(param)
+    fun execute(param: P, defaultResult: R): R {
+        return try {
+            execute(param)
         } catch (e: UseCaseException) {
-            return defaultResult
+            defaultResult
         }
 
     }
@@ -49,5 +49,5 @@ abstract class UseCase<P, R> {
      * @see .execute
      */
     @Throws(DomainException::class)
-    protected abstract fun runUseCase(param: P?): R?
+    protected abstract fun runUseCase(param: P): R
 }
