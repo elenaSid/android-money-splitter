@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.users.edit
+package com.elena.moneysplitter.users.edit.ui
 
 import android.app.Activity
 import android.content.Context
@@ -17,7 +17,6 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import com.elena.moneysplitter.users.edit.mvp.UserEditView
-import com.elena.moneysplitter.users.edit.ui.UserDropdownMenu
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -30,6 +29,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     companion object {
         private const val MENU_DONE_ITEM_ID = 1
+        private const val REQUEST_ADD_FAMILY = 2;
         const val PARAM_USER_NAME = "user_param_name"
         const val PARAM_USER_FAMILY = "user_param_family"
 
@@ -116,7 +116,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         manageListArrow(true)
         val menu = UserDropdownMenu(this, families,
                 { family: String -> Toast.makeText(this@EditUserActivity, family, Toast.LENGTH_LONG).show() },
-                {})
+                { launchAddFamilyActivity() })
         menu.height = WindowManager.LayoutParams.WRAP_CONTENT
         menu.width = binding.edtFamily.width
         menu.isOutsideTouchable = true
@@ -129,5 +129,9 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
                 if (isOpen) ContextCompat.getDrawable(this, R.drawable.ic_dropup)
                 else ContextCompat.getDrawable(this, R.drawable.ic_dropdown), null)
+    }
+
+    private fun launchAddFamilyActivity() {
+        startActivityForResult(Intent(this, AddFamilyActivity::class.java), REQUEST_ADD_FAMILY)
     }
 }
