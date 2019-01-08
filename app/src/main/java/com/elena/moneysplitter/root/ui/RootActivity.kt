@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.RootActivityBinding
+import com.elena.moneysplitter.items.list.ui.ItemFragment
 import com.elena.moneysplitter.root.mvp.RootPresenter
 import com.elena.moneysplitter.root.mvp.RootView
 import com.elena.moneysplitter.users.list.ui.UserFragment
@@ -62,10 +63,10 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
         when (menuItem.itemId) {
             in listOf(
                     R.id.menu_item_users,
-                    R.id.menu_item_shopping,
                     R.id.menu_item_summary,
                     R.id.menu_item_settings) ->
                 fragment = UserFragment()
+            R.id.menu_item_shopping -> fragment = ItemFragment()
             else -> fragment = UserFragment()
         }
         supportFragmentManager

@@ -18,7 +18,7 @@ class UserAdapter(private val listener: UserListener) : RecyclerView.Adapter<Rec
     var users = ArrayList<Pair<String, String>>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.user_item, null)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, null)
         return object : RecyclerView.ViewHolder(view) {}
     }
 
