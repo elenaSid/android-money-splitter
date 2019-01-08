@@ -30,5 +30,6 @@
     <!-- Family Add Screen start-->
     <string name="family_add_hint">@string/user_edit_family</string>
     <string name="family_add_title">Add new family</string>
+    <string name="family_not_set_error">Family name is required</string>
     <!-- Family Add Screen end-->
 </resources>

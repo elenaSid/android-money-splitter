@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.AddFamilyActivityBinding
 
@@ -18,6 +19,10 @@ import com.elena.moneysplitter.databinding.AddFamilyActivityBinding
 class AddFamilyActivity : AppCompatActivity() {
 
     private lateinit var binding: AddFamilyActivityBinding
+
+    companion object {
+        const val PARAM_FAMILY = "family"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +46,20 @@ class AddFamilyActivity : AppCompatActivity() {
         }
         if (item.itemId == R.id.menu_item_done) {
             val intent = Intent()
-            //TODO:передать сохраненного пользователя
+            val family = binding.edtBabyName.text.toString().trim()
+
+            if (family.isEmpty()) {
+                showError()
+                return false
+            }
+            intent.putExtra(PARAM_FAMILY, family)
             setResult(Activity.RESULT_OK, intent)
         }
         finish()
         return true
     }
 
+    private fun showError() {
+        Toast.makeText(this, R.string.family_not_set_error, Toast.LENGTH_SHORT).show()
+    }
 }
