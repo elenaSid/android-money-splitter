@@ -36,9 +36,9 @@
             android:text="@string/items_price" />
         <TextView
             style="@style/SplitterAppTheme.ItemList.ColumnTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:gravity="end"
             android:minWidth="32dp"
             android:text="@string/items_buyer" />
