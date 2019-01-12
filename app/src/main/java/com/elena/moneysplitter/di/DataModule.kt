@@ -1,9 +1,9 @@
 package com.elena.moneysplitter.di
 
 import android.content.Context
+import com.elena.domain.common.KeyValueStorage
 import com.elena.moneysplitter.data.PreferencesStorage
 import com.elena.moneysplitter.data.common.RealmManager
-import com.elena.moneysplitter.domain.common.KeyValueStorage
 import dagger.Module
 import dagger.Provides
 import io.realm.Realm
