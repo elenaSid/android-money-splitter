@@ -1,6 +1,4 @@
-package com.elena.moneysplitter.domain.common.exception
-
-import java.lang.Exception
+package com.elena.domain.common.exception
 
 /**
  * @author elena
