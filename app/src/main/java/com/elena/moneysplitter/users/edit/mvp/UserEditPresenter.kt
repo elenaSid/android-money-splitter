@@ -2,6 +2,11 @@ package com.elena.moneysplitter.users.edit.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.elena.domain.family.interaction.AddFamilyUseCase
+import com.elena.domain.family.interaction.GetFamiliesUseCase
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 /**
  * @author elena
@@ -9,7 +14,10 @@ import com.arellomobile.mvp.MvpPresenter
  *         Time: 10:05
  */
 @InjectViewState
-class UserEditPresenter : MvpPresenter<UserEditView>() {
+class UserEditPresenter(private val addFamilyUseCase: AddFamilyUseCase,
+                        private val getFamiliesUseCase: GetFamiliesUseCase) : MvpPresenter<UserEditView>() {
+
+    private val compositeDisposable = CompositeDisposable()
 
     //TODO: получать идентификатор пользователя
     fun onGetUser(name: String?, family: String?) {
@@ -23,13 +31,17 @@ class UserEditPresenter : MvpPresenter<UserEditView>() {
     }
 
     fun onFamilyListClicked() {
-        //TODO: получать настоящий список семей
-        val list = ArrayList<String>()
-        list.add("West\'s")
-        viewState.showFamilies(list)
+        val disposable = getFamiliesUseCase.execute(Unit, ArrayList())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ viewState.showFamilies(it) }, { it.printStackTrace() })
+        compositeDisposable.add(disposable)
     }
 
     fun onFamilyAdded(family: String) {
-        //TODO: вызывать сценарий сохранения новой семьи
+        val disposable = addFamilyUseCase.execute(family, Unit).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+        compositeDisposable.add(disposable)
     }
 }

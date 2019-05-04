@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.elena.domain.family.FamilyEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
@@ -121,10 +122,10 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtFamily.setText(family)
     }
 
-    override fun showFamilies(families: List<String>) {
+    override fun showFamilies(families: List<FamilyEntity>) {
         manageListArrow(true)
         val menu = UserDropdownMenu(this, families,
-                { family: String -> binding.edtFamily.setText(family) },
+                { family: FamilyEntity -> binding.edtFamily.setText(family.name) },
                 { launchAddFamilyActivity() })
         menu.height = WindowManager.LayoutParams.WRAP_CONTENT
         menu.width = binding.edtFamily.width

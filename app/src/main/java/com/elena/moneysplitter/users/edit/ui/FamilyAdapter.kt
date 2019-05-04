@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import com.elena.domain.family.FamilyEntity
 import com.elena.moneysplitter.R
 
 /**
@@ -15,7 +16,7 @@ import com.elena.moneysplitter.R
  *         Date: 07/01/2019
  *         Time: 10:22
  */
-class FamilyAdapter(val listener: FamilyListener, val families: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FamilyAdapter(val listener: FamilyListener, val families: List<FamilyEntity>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         @IntDef(TYPE_ITEM, TYPE_CREATION)
@@ -67,12 +68,12 @@ class FamilyAdapter(val listener: FamilyListener, val families: List<String>) : 
             return
         }
         val family = families.get(position)
-        (holder.itemView as TextView).text = family
+        (holder.itemView as TextView).text = family.name
         (holder.itemView as TextView).setOnClickListener { listener.onItemClicked(family) }
     }
 
     interface FamilyListener {
-        fun onItemClicked(family: String)
+        fun onItemClicked(family: FamilyEntity)
         fun onAddClicked()
     }
 }

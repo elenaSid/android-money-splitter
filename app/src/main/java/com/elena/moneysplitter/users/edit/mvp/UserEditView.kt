@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.users.edit.mvp
 
 import com.arellomobile.mvp.MvpView
+import com.elena.domain.family.FamilyEntity
 
 /**
  * @author elena
@@ -13,5 +14,5 @@ interface UserEditView : MvpView {
 
     fun setFamily(family: String)
 
-    fun showFamilies(families: List<String>)
+    fun showFamilies(families: List<FamilyEntity>)
 }

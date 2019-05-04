@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.widget.PopupWindow
+import com.elena.domain.family.FamilyEntity
 import com.elena.moneysplitter.R
 
 
@@ -17,8 +18,8 @@ import com.elena.moneysplitter.R
  *         Time: 10:05
  */
 class UserDropdownMenu(private val context: Context?,
-                       private val families: List<String>,
-                       private val onItemSelected: (String) -> Unit,
+                       private val families: List<FamilyEntity>,
+                       private val onItemSelected: (FamilyEntity) -> Unit,
                        private val onAddFamily: () -> Unit) : PopupWindow(), FamilyAdapter.FamilyListener {
     init {
         init()
@@ -38,7 +39,7 @@ class UserDropdownMenu(private val context: Context?,
         contentView = view
     }
 
-    override fun onItemClicked(family: String) {
+    override fun onItemClicked(family: FamilyEntity) {
         onItemSelected(family)
         this.dismiss()
     }

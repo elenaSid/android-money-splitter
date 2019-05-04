@@ -1,5 +1,8 @@
 package com.elena.moneysplitter.users.edit.di
 
+import com.elena.domain.family.FamilyRepository
+import com.elena.domain.family.interaction.AddFamilyUseCase
+import com.elena.domain.family.interaction.GetFamiliesUseCase
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import dagger.Module
 import dagger.Provides
@@ -14,7 +17,20 @@ class UserEditModule {
 
     @Provides
     @UserEditScope
-    fun provideUserEditPresenter(): UserEditPresenter {
-        return UserEditPresenter()
+    fun provideAddFamilyUseCase(familyRepository: FamilyRepository): AddFamilyUseCase {
+        return AddFamilyUseCase(familyRepository)
+    }
+
+    @Provides
+    @UserEditScope
+    fun provideGetFamiliesUseCase(familyRepository: FamilyRepository): GetFamiliesUseCase {
+        return GetFamiliesUseCase(familyRepository)
+    }
+
+    @Provides
+    @UserEditScope
+    fun provideUserEditPresenter(addFamilyUseCase: AddFamilyUseCase,
+                                 getFamiliesUseCase: GetFamiliesUseCase): UserEditPresenter {
+        return UserEditPresenter(addFamilyUseCase, getFamiliesUseCase)
     }
 }
