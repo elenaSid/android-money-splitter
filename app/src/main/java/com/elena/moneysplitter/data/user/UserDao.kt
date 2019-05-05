@@ -1,9 +1,6 @@
 package com.elena.moneysplitter.data.user
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 
 /**
  * @author elena
@@ -14,8 +11,14 @@ import android.arch.persistence.room.Query
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertOrReplace(user: UserDbEntity)
+    fun insertOrReplace(user: UserDbEntity)
 
     @Query("SELECT * FROM user")
     fun getAll(): List<UserDbEntity>
+
+    @Query("SELECT * FROM user WHERE id = :userId")
+    fun get(userId: Int): UserDbEntity
+
+    @Delete
+    fun delete(user: UserDbEntity)
 }

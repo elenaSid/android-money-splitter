@@ -2,7 +2,6 @@ package com.elena.moneysplitter.data.family
 
 import com.elena.domain.family.FamilyEntity
 import com.elena.domain.family.FamilyRepository
-import com.elena.moneysplitter.data.common.DbMapperList
 import com.elena.moneysplitter.data.common.TwoWayDataMapper
 
 /**
@@ -19,6 +18,5 @@ class FamilyRepositoryImpl(private val familyDao: FamilyDao,
 
     override fun save(family: FamilyEntity) {
         familyDao.insertOrReplace(mapper.map2(family))
-        val list = familyDao.getAll()
     }
 }

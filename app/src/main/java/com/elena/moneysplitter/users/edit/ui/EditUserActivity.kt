@@ -14,6 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.domain.family.FamilyEntity
+import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
@@ -30,14 +31,12 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     companion object {
         private const val REQUEST_ADD_FAMILY = 1
-        const val PARAM_USER_NAME = "user_param_name"
-        const val PARAM_USER_FAMILY = "user_param_family"
+        const val PARAM_USER_ID = "user_param_id"
 
-        fun get(context: Context, user: Pair<String, String>?): Intent {
+        fun get(context: Context, user: UserEntity?): Intent {
             val intent = Intent(context, EditUserActivity::class.java)
             if (user != null) {
-                intent.putExtra(PARAM_USER_NAME, user.first)
-                intent.putExtra(PARAM_USER_FAMILY, user.second)
+                intent.putExtra(PARAM_USER_ID, user.id)
             }
             return intent
         }
@@ -63,7 +62,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         if (intent != null) {
             val bundle = intent.extras
             if (bundle != null) {
-                presenter.onGetUser(bundle.getString(PARAM_USER_NAME), bundle.getString(PARAM_USER_FAMILY))
+                presenter.onGetUser(bundle.getInt(PARAM_USER_ID))
             }
         }
         initWidgets()
@@ -106,9 +105,8 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
             return super.onOptionsItemSelected(item)
         }
         if (item.itemId == R.id.menu_item_done) {
-            val intent = Intent()
-            //TODO:передать сохраненного пользователя?
-            setResult(Activity.RESULT_OK, intent)
+            presenter.onUserSave(binding.edtName.text.toString().trim())
+            return true
         }
         finish()
         return true
@@ -118,7 +116,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtName.setText(name)
     }
 
-    override fun setFamily(family: String) {
+    override fun setFamily(family: String?) {
         binding.edtFamily.setText(family)
     }
 
@@ -133,6 +131,11 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         menu.isFocusable = true
         menu.showAsDropDown(binding.edtFamily)
         menu.setOnDismissListener { manageListArrow(false) }
+    }
+
+    override fun finishWithOkResult() {
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 
     private fun manageListArrow(isOpen: Boolean) {

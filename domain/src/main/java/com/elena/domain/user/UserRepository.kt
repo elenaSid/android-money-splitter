@@ -7,4 +7,10 @@ package com.elena.domain.user
  */
 interface UserRepository {
     fun getAll() : List<UserEntity>
+
+    fun save(user: UserEntity)
+
+    fun get(id: Int): UserEntity
+
+    fun delete(user: UserEntity)
 }

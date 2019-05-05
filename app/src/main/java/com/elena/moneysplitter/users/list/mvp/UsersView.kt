@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.users.list.mvp
 
 import com.arellomobile.mvp.MvpView
+import com.elena.domain.user.UserEntity
 
 /**
  * @author elena
@@ -8,4 +9,5 @@ import com.arellomobile.mvp.MvpView
  *         Time: 09:38
  */
 interface UsersView : MvpView {
+    fun updateUsers(users: List<UserEntity>)
 }

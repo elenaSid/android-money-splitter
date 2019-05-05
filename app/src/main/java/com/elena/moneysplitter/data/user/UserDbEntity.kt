@@ -21,5 +21,5 @@ import com.elena.moneysplitter.data.family.FamilyDbEntity
 data class UserDbEntity(
         @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int,
         @ColumnInfo(name = "user_name") var name: String,
-        @ColumnInfo(name = "family_id") var familyId: Int
+        @ColumnInfo(name = "family_id") var familyId: Int?
 )

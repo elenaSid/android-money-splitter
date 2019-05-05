@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 
 /**
@@ -15,7 +16,7 @@ import com.elena.moneysplitter.R
  */
 class UserAdapter(private val listener: UserListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var users = ArrayList<Pair<String, String>>()
+    var users = emptyList<UserEntity>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_user, null)
@@ -28,13 +29,18 @@ class UserAdapter(private val listener: UserListener) : RecyclerView.Adapter<Rec
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val user = users[position]
-        (holder.itemView.findViewById(R.id.tvUserName) as TextView).text = user.first
-        (holder.itemView.findViewById(R.id.tvFamily) as TextView).text = user.second
+        (holder.itemView.findViewById(R.id.tvUserName) as TextView).text = user.name
+        (holder.itemView.findViewById(R.id.tvFamily) as TextView).text = user.familyName
         (holder.itemView.findViewById(R.id.ibMore) as ImageButton).setOnClickListener{ listener.onMoreClicked(holder.itemView, user) }
+    }
+
+    fun update(users: List<UserEntity>) {
+        this.users = users
+        notifyDataSetChanged()
     }
 
     interface UserListener {
 
-        fun onMoreClicked(anchor: View, user: Pair<String, String>)
+        fun onMoreClicked(anchor: View, user: UserEntity)
     }
 }
