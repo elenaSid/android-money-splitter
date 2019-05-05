@@ -19,4 +19,12 @@ class FamilyRepositoryImpl(private val familyDao: FamilyDao,
     override fun save(family: FamilyEntity) {
         familyDao.insertOrReplace(mapper.map2(family))
     }
+
+    override fun getLast(): FamilyEntity {
+        return mapper.map(familyDao.getLast())
+    }
+
+    override fun get(id: Int): FamilyEntity {
+        return mapper.map(familyDao.get(id))
+    }
 }

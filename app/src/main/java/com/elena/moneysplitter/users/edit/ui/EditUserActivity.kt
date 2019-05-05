@@ -105,7 +105,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
             return super.onOptionsItemSelected(item)
         }
         if (item.itemId == R.id.menu_item_done) {
-            presenter.onUserSave(binding.edtName.text.toString().trim())
+            presenter.onUserSave(binding.edtName.text.toString().trim(), getFamily())
             return true
         }
         finish()
@@ -116,14 +116,13 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtName.setText(name)
     }
 
-    override fun setFamily(family: String?) {
-        binding.edtFamily.setText(family)
-    }
+
+    private fun getFamily(): FamilyEntity = binding.edtFamily.tag as FamilyEntity
 
     override fun showFamilies(families: List<FamilyEntity>) {
         manageListArrow(true)
         val menu = UserDropdownMenu(this, families,
-                { family: FamilyEntity -> binding.edtFamily.setText(family.name) },
+                { family: FamilyEntity -> setFamily(family) },
                 { launchAddFamilyActivity() })
         menu.height = WindowManager.LayoutParams.WRAP_CONTENT
         menu.width = binding.edtFamily.width
@@ -136,6 +135,11 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
     override fun finishWithOkResult() {
         setResult(Activity.RESULT_OK)
         finish()
+    }
+
+    override fun setFamily(family: FamilyEntity) {
+        binding.edtFamily.setText(family.name)
+        binding.edtFamily.tag = family
     }
 
     private fun manageListArrow(isOpen: Boolean) {

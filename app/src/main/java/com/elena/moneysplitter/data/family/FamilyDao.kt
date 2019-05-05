@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
+import com.elena.domain.family.FamilyEntity
 import io.reactivex.Flowable
 
 /**
@@ -22,4 +23,7 @@ interface FamilyDao {
 
     @Query("SELECT * FROM family WHERE id = :id")
     fun get(id: Int): FamilyDbEntity
+
+    @Query("SELECT * FROM family ORDER BY id DESC LIMIT 1")
+    fun getLast(): FamilyDbEntity
 }

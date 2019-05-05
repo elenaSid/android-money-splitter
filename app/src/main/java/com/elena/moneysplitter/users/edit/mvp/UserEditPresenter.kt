@@ -2,8 +2,10 @@ package com.elena.moneysplitter.users.edit.mvp
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import com.elena.domain.family.FamilyEntity
 import com.elena.domain.family.interaction.AddFamilyUseCase
 import com.elena.domain.family.interaction.GetFamiliesUseCase
+import com.elena.domain.family.interaction.GetFamilyUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetUserUseCase
 import com.elena.domain.user.interaction.SaveUserUseCase
@@ -19,6 +21,7 @@ import io.reactivex.schedulers.Schedulers
 @InjectViewState
 class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
                         private val saveUserUseCase: SaveUserUseCase,
+                        private val getFamilyUseCase: GetFamilyUseCase,
                         private val addFamilyUseCase: AddFamilyUseCase,
                         private val getFamiliesUseCase: GetFamiliesUseCase) : MvpPresenter<UserEditView>() {
 
@@ -28,8 +31,12 @@ class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
     fun onGetUser(id: Int) {
         val user = getUserUseCase.execute(id)
         this.user = user
+        val familyId = user.familyId
+        if (familyId != null) {
+            val family = getFamilyUseCase.execute(familyId)
+            viewState.setFamily(family)
+        }
         viewState.setName(user.name)
-        viewState.setFamily(user.familyName)
     }
 
     fun onFamilyListClicked() {
@@ -40,16 +47,13 @@ class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
         compositeDisposable.add(disposable)
     }
 
-    fun onFamilyAdded(family: String) {
-        val disposable = addFamilyUseCase.execute(family, Unit).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-        compositeDisposable.add(disposable)
+    fun onFamilyAdded(familyName: String) {
+        val family = addFamilyUseCase.execute(familyName)
+        viewState.setFamily(family)
     }
 
-    fun onUserSave(userName: String) {
-        //TODO: сохранять семью
-        val params = SaveUserUseCase.UserParams(this.user, userName, null)
+    fun onUserSave(userName: String, family: FamilyEntity) {
+        val params = SaveUserUseCase.UserParams(this.user, userName, family)
         saveUserUseCase.execute(params)
         viewState.finishWithOkResult()
     }

@@ -15,9 +15,9 @@ interface UserEditView : MvpView {
 
     fun setName(name: String)
 
-    fun setFamily(family: String?)
-
     fun showFamilies(families: List<FamilyEntity>)
+
+    fun setFamily(family: FamilyEntity)
 
     fun finishWithOkResult()
 }
