@@ -1,6 +1,6 @@
 package com.elena.moneysplitter.di
 
-import android.content.Context
+import android.app.Application
 import androidx.room.Room
 import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
@@ -22,14 +22,14 @@ class DataModule {
 
     @Provides
     @PerApplication
-    fun provideKeyValueStorage(context: Context): KeyValueStorage {
-        return PreferencesStorage(context)
+    fun provideKeyValueStorage(applicationContext: Application): KeyValueStorage {
+        return PreferencesStorage(applicationContext)
     }
 
     @Provides
     @PerApplication
-    fun provideAppDatabase(context: Context): RoomDb {
-        return Room.databaseBuilder(context, RoomDb::class.java, "money-splitter-db.db")
+    fun provideAppDatabase(applicationContext: Application): RoomDb {
+        return Room.databaseBuilder(applicationContext, RoomDb::class.java, "money-splitter-db.db")
                 .allowMainThreadQueries()
                 //.addMigrations()
                 .build()

@@ -1,7 +1,5 @@
 package com.elena.moneysplitter.users.edit.mvp
 
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.elena.domain.family.FamilyEntity
 import com.elena.domain.family.interaction.AddFamilyUseCase
 import com.elena.domain.family.interaction.GetFamiliesUseCase
@@ -12,13 +10,13 @@ import com.elena.domain.user.interaction.SaveUserUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import moxy.MvpPresenter
 
 /**
  * @author elena
  *         Date: 06/01/2019
  *         Time: 10:05
  */
-@InjectViewState
 class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
                         private val saveUserUseCase: SaveUserUseCase,
                         private val getFamilyUseCase: GetFamilyUseCase,

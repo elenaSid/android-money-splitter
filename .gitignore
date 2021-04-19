@@ -1,19 +1,11 @@
-# Built application files
-*.apk
-*.ap_
-
+*.iml
+.idea
 .gradle
 /local.properties
 .DS_Store
 /build
 /captures
-
-# Files for the Dalvik VM
-*.dex
-
-# Java class files
-*.class
-
-# IDE files
-.idea
-*.iml
+.externalNativeBuild
+libraries/libraries.iml
+.apk
+github.properties

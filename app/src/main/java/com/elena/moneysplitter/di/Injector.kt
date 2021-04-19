@@ -1,57 +1,28 @@
 package com.elena.moneysplitter.di
 
-import android.content.Context
+import android.app.Application
 
 /**
+ * Класс-помощник для внедрения зависимостей
+ *
  * @author elena
- *         Date: 11.06.2018
- *         Time: 19:54
  */
-class Injector(appContext: Context) {
-    private var appComponent: AppComponent
+object Injector {
 
-    companion object {
-        @JvmStatic private lateinit var instance: Injector
+    private var appComponent: AppComponent? = null
 
-        /**
-         * Инициализирует экземпляр класса-помощника для внедрения зависимостей и основной компонент приложения
-         *
-         * @param appContext [Context]
-         */
-        @JvmStatic fun init(appContext: Context) {
-            instance = Injector(appContext)
-        }
-
-        /**
-         * Возвращает экземпляр класса-помощника для внедрения зависимостей
-         *
-         * @return [Injector]
-         */
-        fun get(): Injector {
-            return instance
-        }
-    }
-
-    /**
-     * Инициализирует компонент приложения
-     *
-     * @param appContext [Context]
-     * @return [AppComponent]
-     */
-    private fun buildAppComponent(appContext: Context): AppComponent {
-        return DaggerAppComponent.builder().context(appContext).build()
+    fun init(application: Application) {
+        appComponent = buildAppComponent(application)
     }
 
     /**
      * Возвращает компонент приложения
-     *
-     * @return [AppComponent]
      */
-    fun getAppComponent(): AppComponent {
-        return appComponent
-    }
+    fun getAppComponent() = requireNotNull(appComponent, { "AppComponent not initialized" })
 
-    init {
-        appComponent = buildAppComponent(appContext)
-    }
+    /**
+     * Инициализирует компонент приложения
+     */
+    private fun buildAppComponent(application: Application) =
+            DaggerAppComponent.builder().app(application).build()
 }

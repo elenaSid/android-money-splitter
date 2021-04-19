@@ -1,7 +1,8 @@
 package com.elena.moneysplitter.users.list.mvp
 
-import com.arellomobile.mvp.MvpView
 import com.elena.domain.user.UserEntity
+import moxy.MvpView
+import moxy.viewstate.strategy.alias.AddToEndSingle
 
 /**
  * @author elena
@@ -9,5 +10,6 @@ import com.elena.domain.user.UserEntity
  *         Time: 09:38
  */
 interface UsersView : MvpView {
+    @AddToEndSingle
     fun updateUsers(users: List<UserEntity>)
 }
