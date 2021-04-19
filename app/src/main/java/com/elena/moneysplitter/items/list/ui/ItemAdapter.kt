@@ -1,7 +1,7 @@
 package com.elena.moneysplitter.items.list.ui
 
-import android.support.annotation.IntDef
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.IntDef
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.elena.moneysplitter.R
  *         Date: 08/01/2019
  *         Time: 15:48
  */
-class ItemAdapter(private val listener: ItemListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ItemAdapter(private val listener: ItemListener) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     companion object {
         @IntDef(TYPE_HEADER, TYPE_ITEM)
@@ -32,19 +32,19 @@ class ItemAdapter(private val listener: ItemListener) : RecyclerView.Adapter<Rec
         return ItemAdapter.TYPE_ITEM
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
                 if (viewType == TYPE_HEADER) R.layout.item_header_items else R.layout.item_shopping_item, null)
         view.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT)
-        return object : RecyclerView.ViewHolder(view) {}
+        return object : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {}
     }
 
     override fun getItemCount(): Int {
         return 5
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         holder.itemView.setOnClickListener { listener.onItemClicked() }
     }
 

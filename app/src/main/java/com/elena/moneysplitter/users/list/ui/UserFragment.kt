@@ -1,9 +1,9 @@
 package com.elena.moneysplitter.users.list.ui
 
 import android.content.Context
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
 import com.elena.moneysplitter.users.edit.ui.EditUserActivity
@@ -35,6 +36,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
 
     }
     private lateinit var binding: UsersFragmentBinding
+    private lateinit var adapter: UserAdapter
 
     @Inject
     @InjectPresenter
@@ -62,17 +64,12 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
     }
 
     private fun initUsersList() {
-        val adapter = UserAdapter(this)
-        val users = ArrayList<Pair<String, String>>()
-        users.add(Pair("West", "West's"))
-        users.add(Pair("Elena", "West's"))
-        adapter.users = users
-
-        binding.rvUsers.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        adapter = UserAdapter(this)
+        binding.rvUsers.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         binding.rvUsers.adapter = adapter
     }
 
-    private fun launchEditUserActivity(user: Pair<String, String>?) {
+    private fun launchEditUserActivity(user: UserEntity?) {
         val context = context
         if (context != null) {
             startActivityForResult(EditUserActivity.get(context, user),
@@ -80,16 +77,15 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         }
     }
 
-    override fun onMoreClicked(anchor: View, user: Pair<String, String>) {
+    override fun onMoreClicked(anchor: View, user: UserEntity) {
         val popupWindow = PopupWindow(context)
         val popupContent = View.inflate(context, R.layout.menu_view, null)
         (popupContent.findViewById(R.id.btnEdit) as TextView).setOnClickListener {
-            //TODO: вызвать экран редактирования
             launchEditUserActivity(user)
             popupWindow.dismiss()
         }
         (popupContent.findViewById(R.id.btnDelete) as TextView).setOnClickListener {
-            //TODO:Удалять пользователей
+            presenter.onUserDeleted(user)
             popupWindow.dismiss()
         }
         popupWindow.contentView = popupContent
@@ -103,5 +99,9 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         val yOffset = anchorScreenPosition[1] - DisplayUtils.dpToPx(resources, 48F)
         popupWindow.showAtLocation(anchor, Gravity.END or Gravity.TOP,
                 DisplayUtils.dpToPx(resources, 19F), yOffset)
+    }
+
+    override fun updateUsers(users: List<UserEntity>) {
+        adapter.update(users = users)
     }
 }

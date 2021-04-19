@@ -1,10 +1,10 @@
 package com.elena.domain.summary
 
 data class OptimizedTransactionForUser(
-        val debtorUserId: String,
+        val debtorUserId: Int,
         val debtorUserName: String,
 
-        val creditorUserId: String,
+        val creditorUserId: Int,
         val creditorUserName: String,
 
         val debt: Double

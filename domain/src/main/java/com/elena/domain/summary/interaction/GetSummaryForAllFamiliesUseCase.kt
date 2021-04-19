@@ -35,13 +35,14 @@ class GetSummaryForAllFamiliesUseCase(
             )
         }
 
-        if (summaryForUsersWithFamily.isEmpty()) return result
+        if (summaryForUsersWithFamily.isEmpty())
+            return result
 
         val allFamilies = familyRepository.getAll()
         if (allFamilies.isEmpty()) throw Exception("We have no families, but users have links to families")
 
-        val paidByFamilyId = HashMap<String, Double>().withDefault { 0.0 }
-        val spentByFamilyId = HashMap<String, Double>().withDefault { 0.0 }
+        val paidByFamilyId = HashMap<Int, Double>().withDefault { 0.0 }
+        val spentByFamilyId = HashMap<Int, Double>().withDefault { 0.0 }
 
         summaryForUsersWithFamily.forEach { summaryForUser ->
             val familyId = usersWithFamilyById.getValue(summaryForUser.userId).familyId!!

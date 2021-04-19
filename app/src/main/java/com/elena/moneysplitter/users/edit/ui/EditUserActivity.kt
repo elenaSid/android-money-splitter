@@ -3,9 +3,9 @@ package com.elena.moneysplitter.users.edit.ui
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
@@ -13,6 +13,8 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.elena.domain.family.FamilyEntity
+import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
@@ -29,14 +31,12 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     companion object {
         private const val REQUEST_ADD_FAMILY = 1
-        const val PARAM_USER_NAME = "user_param_name"
-        const val PARAM_USER_FAMILY = "user_param_family"
+        const val PARAM_USER_ID = "user_param_id"
 
-        fun get(context: Context, user: Pair<String, String>?): Intent {
+        fun get(context: Context, user: UserEntity?): Intent {
             val intent = Intent(context, EditUserActivity::class.java)
             if (user != null) {
-                intent.putExtra(PARAM_USER_NAME, user.first)
-                intent.putExtra(PARAM_USER_FAMILY, user.second)
+                intent.putExtra(PARAM_USER_ID, user.id)
             }
             return intent
         }
@@ -62,7 +62,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         if (intent != null) {
             val bundle = intent.extras
             if (bundle != null) {
-                presenter.onGetUser(bundle.getString(PARAM_USER_NAME), bundle.getString(PARAM_USER_FAMILY))
+                presenter.onGetUser(bundle.getInt(PARAM_USER_ID))
             }
         }
         initWidgets()
@@ -76,7 +76,10 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     private fun initWidgets() {
         binding.edtFamily.setOnClickListener { presenter.onFamilyListClicked() }
-        binding.edtFamily.setOnFocusChangeListener { _, _ ->  presenter.onFamilyListClicked()}
+        binding.edtFamily.setOnFocusChangeListener { v, hasFocus ->
+            if (v.id == R.id.edtFamily && hasFocus)
+                presenter.onFamilyListClicked()
+        }
         binding.edtFamily.showSoftInputOnFocus = false
     }
 
@@ -105,9 +108,8 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
             return super.onOptionsItemSelected(item)
         }
         if (item.itemId == R.id.menu_item_done) {
-            val intent = Intent()
-            //TODO:передать сохраненного пользователя?
-            setResult(Activity.RESULT_OK, intent)
+            presenter.onUserSave(binding.edtName.text.toString().trim(), getFamily())
+            return true
         }
         finish()
         return true
@@ -117,14 +119,12 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtName.setText(name)
     }
 
-    override fun setFamily(family: String) {
-        binding.edtFamily.setText(family)
-    }
+    private fun getFamily(): FamilyEntity = binding.edtFamily.tag as FamilyEntity
 
-    override fun showFamilies(families: List<String>) {
+    override fun showFamilies(families: List<FamilyEntity>) {
         manageListArrow(true)
         val menu = UserDropdownMenu(this, families,
-                { family: String -> binding.edtFamily.setText(family) },
+                { family: FamilyEntity -> setFamily(family) },
                 { launchAddFamilyActivity() })
         menu.height = WindowManager.LayoutParams.WRAP_CONTENT
         menu.width = binding.edtFamily.width
@@ -134,11 +134,19 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         menu.setOnDismissListener { manageListArrow(false) }
     }
 
-    private fun manageListArrow(isOpen: Boolean) {
-        binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
-                if (isOpen) ContextCompat.getDrawable(this, R.drawable.ic_dropup)
-                else ContextCompat.getDrawable(this, R.drawable.ic_dropdown), null)
+    override fun finishWithOkResult() {
+        setResult(Activity.RESULT_OK)
+        finish()
     }
+
+    override fun setFamily(family: FamilyEntity) {
+        binding.edtFamily.setText(family.name)
+        binding.edtFamily.tag = family
+    }
+
+    private fun manageListArrow(isOpen: Boolean) = binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null,
+            ContextCompat.getDrawable(this, if (isOpen) R.drawable.ic_dropup else R.drawable.ic_dropdown), null)
 
     private fun launchAddFamilyActivity() {
         startActivityForResult(Intent(this, AddFamilyActivity::class.java), REQUEST_ADD_FAMILY)

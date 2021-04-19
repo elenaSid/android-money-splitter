@@ -52,17 +52,17 @@ object TransactionOptimizationService {
     }
 
     data class Difference(
-            val id: String?, //user or family id
+            val id: Int?, //user or family id
             val name: String, //user or family name
 
             var difference: Double
     )
 
     data class OptimizedTransaction(
-            val debtorId: String?, //user or family id
+            val debtorId: Int?, //user or family id
             val debtorName: String, //user or family name
 
-            val creditorId: String?, //user or family id
+            val creditorId: Int?, //user or family id
             val creditorName: String, //user or family name
 
             val debt: Double

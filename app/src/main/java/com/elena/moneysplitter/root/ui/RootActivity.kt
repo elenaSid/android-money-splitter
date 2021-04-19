@@ -1,9 +1,9 @@
 package com.elena.moneysplitter.root.ui
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.Fragment
 import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -35,7 +35,7 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
     private lateinit var binding: RootActivityBinding
 
     @Inject
-    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     @Inject
     @InjectPresenter
@@ -46,7 +46,7 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
         return presenter
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return fragmentDispatchingAndroidInjector
     }
 
@@ -59,7 +59,7 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-        val fragment: Fragment
+        val fragment: androidx.fragment.app.Fragment
         when (menuItem.itemId) {
             in listOf(
                     R.id.menu_item_users,

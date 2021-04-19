@@ -17,8 +17,8 @@ class GetSummaryForAllUsersUseCase(
         val allUsers = userRepository.getAll()
         if (allUsers.isEmpty()) throw Exception("We have items, but have no users")
 
-        val paidByUserId = HashMap<String, Double>().withDefault { 0.0 }
-        val spentByUserId = HashMap<String, Double>().withDefault { 0.0 }
+        val paidByUserId = HashMap<Int, Double>().withDefault { 0.0 }
+        val spentByUserId = HashMap<Int, Double>().withDefault { 0.0 }
 
         allItems.forEach { item ->
             val payerUsersCount = item.payedByUserIds.size
