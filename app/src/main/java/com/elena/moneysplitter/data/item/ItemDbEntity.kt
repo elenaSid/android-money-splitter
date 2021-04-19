@@ -1,13 +1,12 @@
 package com.elena.moneysplitter.data.item
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 /**
  * @author elena
- *         Date: 12/01/2019
- *         Time: 18:10
  */
 @Entity(tableName = "item")
 class ItemDbEntity(

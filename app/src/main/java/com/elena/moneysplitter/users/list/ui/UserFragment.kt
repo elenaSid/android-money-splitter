@@ -1,9 +1,9 @@
 package com.elena.moneysplitter.users.list.ui
 
 import android.content.Context
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +65,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
 
     private fun initUsersList() {
         adapter = UserAdapter(this)
-        binding.rvUsers.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvUsers.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         binding.rvUsers.adapter = adapter
     }
 

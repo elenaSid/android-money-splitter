@@ -15,6 +15,6 @@ class UserDbMapper : TwoWayDataMapper<UserDbEntity, UserEntity> {
     }
 
     override fun map(data: UserDbEntity): UserEntity {
-        return UserEntity(data.id, data.name, data.familyId, null)
+        return UserEntity(data.id, data.name, data.familyId)
     }
 }

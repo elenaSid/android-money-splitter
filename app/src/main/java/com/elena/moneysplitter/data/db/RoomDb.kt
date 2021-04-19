@@ -1,8 +1,8 @@
 package com.elena.moneysplitter.data.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.elena.moneysplitter.data.family.FamilyDao
 import com.elena.moneysplitter.data.family.FamilyDbEntity
 import com.elena.moneysplitter.data.item.ItemDao

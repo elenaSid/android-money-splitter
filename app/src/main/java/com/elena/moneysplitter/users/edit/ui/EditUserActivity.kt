@@ -3,9 +3,9 @@ package com.elena.moneysplitter.users.edit.ui
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
@@ -76,7 +76,10 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
 
     private fun initWidgets() {
         binding.edtFamily.setOnClickListener { presenter.onFamilyListClicked() }
-        binding.edtFamily.setOnFocusChangeListener { _, _ ->  presenter.onFamilyListClicked()}
+        binding.edtFamily.setOnFocusChangeListener { v, hasFocus ->
+            if (v.id == R.id.edtFamily && hasFocus)
+                presenter.onFamilyListClicked()
+        }
         binding.edtFamily.showSoftInputOnFocus = false
     }
 
@@ -116,7 +119,6 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtName.setText(name)
     }
 
-
     private fun getFamily(): FamilyEntity = binding.edtFamily.tag as FamilyEntity
 
     override fun showFamilies(families: List<FamilyEntity>) {
@@ -142,11 +144,9 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         binding.edtFamily.tag = family
     }
 
-    private fun manageListArrow(isOpen: Boolean) {
-        binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
-                if (isOpen) ContextCompat.getDrawable(this, R.drawable.ic_dropup)
-                else ContextCompat.getDrawable(this, R.drawable.ic_dropdown), null)
-    }
+    private fun manageListArrow(isOpen: Boolean) = binding.edtFamily.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null,
+            ContextCompat.getDrawable(this, if (isOpen) R.drawable.ic_dropup else R.drawable.ic_dropdown), null)
 
     private fun launchAddFamilyActivity() {
         startActivityForResult(Intent(this, AddFamilyActivity::class.java), REQUEST_ADD_FAMILY)

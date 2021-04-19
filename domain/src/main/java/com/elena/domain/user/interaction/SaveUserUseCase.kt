@@ -14,17 +14,14 @@ class SaveUserUseCase(private val userRepository: UserRepository) : UseCase<Save
 
     override fun runUseCase(param: UserParams) {
         val familyId = if (param.familyEntity != null) param.familyEntity.id else null
-        val familyName = if (param.familyEntity != null) param.familyEntity.name else null
 
         if (param.user == null) {
-            userRepository.save(UserEntity(name = param.name, familyId = familyId, familyName = familyName))
+            userRepository.save(UserEntity(name = param.name, familyId = familyId))
             return
         }
 
-        userRepository.save(param.user.copy(name = param.name, familyId = familyId, familyName = familyName))
+        userRepository.save(param.user.copy(name = param.name, familyId = familyId))
     }
 
-    public class UserParams(val user: UserEntity?,
-                            val name: String,
-                            val familyEntity: FamilyEntity?)
+    class UserParams(val user: UserEntity?, val name: String, val familyEntity: FamilyEntity?)
 }

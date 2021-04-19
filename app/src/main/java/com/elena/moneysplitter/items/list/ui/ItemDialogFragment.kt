@@ -1,8 +1,8 @@
 package com.elena.moneysplitter.items.list.ui
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.elena.moneysplitter.PopupDialogFragment
 import com.elena.moneysplitter.R
@@ -30,7 +30,7 @@ class ItemDialogFragment : PopupDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvDebtors.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvDebtors.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
         binding.rvDebtors.adapter = DebtorsAdapter()
     }
 }

@@ -3,9 +3,9 @@ package com.elena.moneysplitter.users.edit.ui
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.widget.PopupWindow
 import com.elena.domain.family.FamilyEntity
@@ -31,10 +31,10 @@ class UserDropdownMenu(private val context: Context?,
         }
 
         val view = LayoutInflater.from(context).inflate(R.layout.popup_family, null)
-        val recyclerView = view.findViewById(R.id.rvFamilies) as RecyclerView
+        val recyclerView = view.findViewById(R.id.rvFamilies) as androidx.recyclerview.widget.RecyclerView
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        recyclerView.addItemDecoration(androidx.recyclerview.widget.DividerItemDecoration(context, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
         recyclerView.adapter = FamilyAdapter(this, families)
         contentView = view
     }

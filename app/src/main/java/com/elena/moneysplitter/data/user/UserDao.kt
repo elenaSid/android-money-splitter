@@ -1,11 +1,9 @@
 package com.elena.moneysplitter.data.user
 
-import android.arch.persistence.room.*
+import androidx.room.*
 
 /**
  * @author elena
- *         Date: 12/01/2019
- *         Time: 19:09
  */
 @Dao
 interface UserDao {

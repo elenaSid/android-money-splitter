@@ -1,13 +1,11 @@
 package com.elena.moneysplitter.di
 
-import android.app.Application
-import android.arch.persistence.room.Room
 import android.content.Context
+import androidx.room.Room
 import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
 import com.elena.moneysplitter.data.PreferencesStorage
-import com.elena.moneysplitter.data.common.RealmManager
 import com.elena.moneysplitter.data.db.RoomDb
 import com.elena.moneysplitter.data.family.FamilyDbMapper
 import com.elena.moneysplitter.data.family.FamilyRepositoryImpl
@@ -15,27 +13,12 @@ import com.elena.moneysplitter.data.user.UserDbMapper
 import com.elena.moneysplitter.data.user.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
-import io.realm.Realm
 
 /**
  * @author elena
- *         Date: 11.06.2018
- *         Time: 19:34
  */
 @Module
 class DataModule {
-
-    @Provides
-    @PerApplication
-    fun provideRealmDatabase(realmManager: RealmManager): Realm {
-        return realmManager.getDatabase()
-    }
-
-    @Provides
-    @PerApplication
-    fun provideRealmManager(context: Context): RealmManager {
-        return RealmManager(context)
-    }
 
     @Provides
     @PerApplication

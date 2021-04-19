@@ -39,6 +39,11 @@ class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
         viewState.setName(user.name)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+    }
+
     fun onFamilyListClicked() {
         val disposable = getFamiliesUseCase.execute(Unit, ArrayList())
                 .subscribeOn(Schedulers.io())

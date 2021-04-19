@@ -1,10 +1,10 @@
 package com.elena.moneysplitter
 
 import android.app.Dialog
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +16,13 @@ import com.elena.moneysplitter.databinding.PopupDialogBinding
  *         Date: 08/01/2019
  *         Time: 16:29
  */
-abstract class PopupDialogFragment : DialogFragment() {
+abstract class PopupDialogFragment : androidx.fragment.app.DialogFragment() {
 
     private lateinit var binding: PopupDialogBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NO_FRAME, R.style.SplitterAppTheme_PopupDialog)
+        setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_FRAME, R.style.SplitterAppTheme_PopupDialog)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -64,7 +64,7 @@ abstract class PopupDialogFragment : DialogFragment() {
 
     protected abstract fun getContent(): View
 
-    fun showAllowingStateLoss(fragmentManager: FragmentManager, tag: String) {
+    fun showAllowingStateLoss(fragmentManager: androidx.fragment.app.FragmentManager, tag: String) {
         fragmentManager.beginTransaction()
                 .add(this, tag)
                 .commitAllowingStateLoss()
