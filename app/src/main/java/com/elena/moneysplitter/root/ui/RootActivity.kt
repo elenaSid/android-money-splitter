@@ -3,11 +3,7 @@ package com.elena.moneysplitter.root.ui
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.fragment.app.Fragment
 import android.view.MenuItem
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.RootActivityBinding
 import com.elena.moneysplitter.items.list.ui.ItemFragment
@@ -17,7 +13,10 @@ import com.elena.moneysplitter.users.list.ui.UserFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
+import moxy.MvpAppCompatActivity
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 /**
@@ -26,7 +25,7 @@ import javax.inject.Inject
  *         Time: 17:17
  */
 open class RootActivity : MvpAppCompatActivity(), RootView,
-        BottomNavigationView.OnNavigationItemSelectedListener, HasSupportFragmentInjector {
+        BottomNavigationView.OnNavigationItemSelectedListener, HasAndroidInjector {
 
     companion object {
         private const val TAG = "current_fragment_tag"
@@ -35,7 +34,7 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
     private lateinit var binding: RootActivityBinding
 
     @Inject
-    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
+    internal lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
     @InjectPresenter
@@ -46,8 +45,8 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
         return presenter
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
-        return fragmentDispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> {
+        return dispatchingAndroidInjector
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

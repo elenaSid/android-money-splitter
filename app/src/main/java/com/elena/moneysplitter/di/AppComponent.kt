@@ -1,6 +1,6 @@
 package com.elena.moneysplitter.di
 
-import android.content.Context
+import android.app.Application
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
 import com.elena.moneysplitter.MoneySplitterApp
@@ -18,15 +18,18 @@ import dagger.android.support.AndroidSupportInjectionModule
     (DataModule::class), (BuilderModule::class)])
 interface AppComponent {
 
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun context(context: Context): Builder
-
-        fun build(): AppComponent
-    }
+    fun appContext(): Application
 
     fun familyRepository(): FamilyRepository
     fun userRepository(): UserRepository
     fun inject(app: MoneySplitterApp)
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun app(application: Application): Builder
+
+        fun build(): AppComponent
+    }
 }

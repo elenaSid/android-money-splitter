@@ -10,9 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.TextView
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
@@ -21,6 +18,9 @@ import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import com.elena.moneysplitter.users.list.mvp.UsersView
 import com.elena.moneysplitter.utils.DisplayUtils
 import dagger.android.support.AndroidSupportInjection
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 /**
@@ -47,7 +47,7 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
         return presenter
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }

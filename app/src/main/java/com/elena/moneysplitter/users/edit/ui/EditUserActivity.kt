@@ -10,9 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.Toast
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.elena.domain.family.FamilyEntity
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
@@ -20,6 +17,9 @@ import com.elena.moneysplitter.databinding.UserEditActivityBinding
 import com.elena.moneysplitter.users.edit.mvp.UserEditPresenter
 import com.elena.moneysplitter.users.edit.mvp.UserEditView
 import dagger.android.AndroidInjection
+import moxy.MvpAppCompatActivity
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
 /**
@@ -84,6 +84,7 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_ADD_FAMILY &&
                 data != null) {
             val bundle = data.extras ?: return

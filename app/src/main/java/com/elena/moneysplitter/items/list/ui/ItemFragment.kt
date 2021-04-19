@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.ItemsFragmentBinding
+import moxy.MvpAppCompatFragment
 
 /**
  * @author elena
@@ -31,7 +31,7 @@ class ItemFragment : MvpAppCompatFragment(), ItemAdapter.ItemListener {
 
     private fun initList() {
         val adapter = ItemAdapter(this)
-        binding.rvItems.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
+        binding.rvItems.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvItems.adapter = adapter
     }
 
