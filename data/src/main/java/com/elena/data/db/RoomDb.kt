@@ -1,14 +1,14 @@
-package com.elena.moneysplitter.data.db
+package com.elena.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.elena.moneysplitter.data.family.FamilyDao
-import com.elena.moneysplitter.data.family.FamilyDbEntity
-import com.elena.moneysplitter.data.item.ItemDao
-import com.elena.moneysplitter.data.item.ItemDbEntity
-import com.elena.moneysplitter.data.user.UserDao
-import com.elena.moneysplitter.data.user.UserDbEntity
+import com.elena.data.family.FamilyDao
+import com.elena.data.family.FamilyDbEntity
+import com.elena.data.item.ItemDao
+import com.elena.data.item.ItemDbEntity
+import com.elena.data.user.UserDao
+import com.elena.data.user.UserDbEntity
 
 /**
  * @author elena

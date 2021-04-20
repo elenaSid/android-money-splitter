@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data.item
+package com.elena.data.item
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

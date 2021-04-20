@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data.user
+package com.elena.data.user
 
 import androidx.room.*
 

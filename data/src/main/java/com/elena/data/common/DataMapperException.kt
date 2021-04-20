@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data.common
+package com.elena.data.common
 
 /**
  * @author elena

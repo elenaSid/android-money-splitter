@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data
+package com.elena.data
 
 import android.content.Context
 import android.content.SharedPreferences

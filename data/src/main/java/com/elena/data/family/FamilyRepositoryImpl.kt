@@ -1,8 +1,8 @@
-package com.elena.moneysplitter.data.family
+package com.elena.data.family
 
 import com.elena.domain.family.FamilyEntity
 import com.elena.domain.family.FamilyRepository
-import com.elena.moneysplitter.data.common.TwoWayDataMapper
+import com.elena.data.common.TwoWayDataMapper
 
 /**
  * @author elena
