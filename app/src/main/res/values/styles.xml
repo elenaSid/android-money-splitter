@@ -1,45 +1,45 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="SplitterAppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Themes -->
+    <style name="MoneySplitter.Theme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="colorPrimaryDark">@color/black_20_tint</item>
         <item name="android:navigationBarColor">@color/black50_tint</item>
-        <item name="android:popupMenuStyle">@style/SplitterAppTheme.PopupMenu</item>
-        <item name="android:popupWindowStyle">@style/SplitterAppTheme.PopupMenu</item>
+        <item name="android:popupMenuStyle">@style/MoneySplitter.PopupMenu</item>
+        <item name="android:popupWindowStyle">@style/MoneySplitter.PopupMenu</item>
     </style>
 
-    <style name="SplitterAppTheme.Root" parent="SplitterAppTheme">
+    <style name="MoneySplitter.Theme_Root" parent="MoneySplitter.Theme">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="SplitterAppTheme.PopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
+    <style name="MoneySplitter.Theme_AddFamily" parent="MoneySplitter.Theme">
+        <item name="colorPrimary">@color/alabaster_background</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/alabaster_background</item>
+    </style>
+
+    <style name="MoneySplitter.ThemeOverlay_BlueAccent" parent="Theme.MaterialComponents.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!-- Themes -->
+
+    <!-- Widgets -->
+    <style name="MoneySplitter.PopupMenu" parent="@style/Widget.AppCompat.PopupMenu">
         <item name="android:dropDownHorizontalOffset">16dp</item>
         <item name="android:dropDownVerticalOffset">-16dp</item>
     </style>
 
-    <style name="SplitterAppTheme.FloatingActionButton" parent="Widget.Design.FloatingActionButton">
+    <style name="MoneySplitter.FloatingActionButton" parent="Widget.Design.FloatingActionButton">
         <item name="android:layout_margin">16dp</item>
         <item name="android:src">@drawable/ic_add</item>
         <item name="elevation">12dp</item>
         <item name="fabSize">normal</item>
     </style>
 
-    <style name="SplitterAppTheme.BlueAccent">
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="SplitterAppTheme.DropDownMenuItem" parent="android:Widget">
+    <style name="MoneySplitter.DropDownMenuItem" parent="android:Widget">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black_text</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -53,65 +53,55 @@
         <item name="android:drawablePadding">12dp</item>
     </style>
 
-    <style name="SplitterAppTheme.TextView.Normal_32" parent="android:Widget">
-        <item name="android:textSize">32sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/black_text</item>
-    </style>
-
-    <style name="SplitterAppTheme.AddFamily" parent="SplitterAppTheme">
-        <item name="colorPrimary">@color/alabaster_background</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/alabaster_background</item>
-    </style>
-
-    <style name="SplitterAppTheme.TextView.Bold_28" parent="android:Widget">
-        <item name="android:textSize">28sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="SplitterAppTheme.TextView.Normal_16" parent="android:Widget">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="SplitterAppTheme.Weight.Starting.TextView.Bold" parent="SplitterAppTheme.TextView.Bold_28">
-        <item name="android:textColor">@color/black_text</item>
-        <item name="android:lineSpacingExtra">0sp</item>
-        <item name="android:gravity">start</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-    </style>
-
-    <style name="SplitterAppTheme.ItemList.ColumnTitle" parent="android:Widget">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/silver_chalice_counter_text</item>
-        <item name="android:lineSpacingExtra">0sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="SplitterAppTheme.ItemList.TextField" parent="SplitterAppTheme.TextView.Normal_16">
+    <style name="MoneySplitter.TextView_ShoppingItem" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black_text</item>
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>
+        <item name="android:textAppearance">@style/MoneySplitter.Text_Normal_16</item>
     </style>
 
-    <style name="SplitterAppTheme.PopupDialog" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MoneySplitter.PopupDialog" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowAnimationStyle">@style/SplitterAppTheme.Animation.PopupDialog</item>
+        <item name="android:windowAnimationStyle">@style/MoneySplitter.Animation.PopupDialog</item>
     </style>
 
-    <style name="SplitterAppTheme.Animation.PopupDialog" parent="Animation.AppCompat.Dialog">
+    <style name="MoneySplitter.Animation.PopupDialog" parent="Animation.AppCompat.Dialog">
         <item name="android:windowEnterAnimation">@anim/anim_dialog_open</item>
         <item name="android:windowExitAnimation">@anim/anim_dialog_close</item>
     </style>
+    <!-- Widgets -->
+
+    <!-- Text's Styles -->
+    <style name="MoneySplitter.Text_Normal_32" parent="android:TextAppearance">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/black_text</item>
+    </style>
+
+    <style name="MoneySplitter.Text_Bold_28" parent="android:TextAppearance">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="MoneySplitter.Text_Normal_16" parent="android:TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="MoneySplitter.Text_ColumnTitle" parent="android:TextAppearance">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/silver_chalice_counter_text</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <!-- Text's Styles -->
 </resources>

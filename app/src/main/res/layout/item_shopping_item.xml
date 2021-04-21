@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/tvItem"
-            style="@style/SplitterAppTheme.ItemList.TextField"
+            style="@style/MoneySplitter.TextView_ShoppingItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/tvPrice"
-            style="@style/SplitterAppTheme.ItemList.TextField"
+            style="@style/MoneySplitter.TextView_ShoppingItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/tvBuyer"
-            style="@style/SplitterAppTheme.ItemList.TextField"
+            style="@style/MoneySplitter.TextView_ShoppingItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

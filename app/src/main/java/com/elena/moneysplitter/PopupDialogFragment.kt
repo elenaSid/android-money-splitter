@@ -22,7 +22,7 @@ abstract class PopupDialogFragment : androidx.fragment.app.DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(androidx.fragment.app.DialogFragment.STYLE_NO_FRAME, R.style.SplitterAppTheme_PopupDialog)
+        setStyle(STYLE_NO_FRAME, R.style.MoneySplitter_PopupDialog)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -64,7 +64,7 @@ abstract class PopupDialogFragment : androidx.fragment.app.DialogFragment() {
 
     protected abstract fun getContent(): View
 
-    fun showAllowingStateLoss(fragmentManager: androidx.fragment.app.FragmentManager, tag: String) {
+    fun showAllowingStateLoss(fragmentManager: FragmentManager, tag: String) {
         fragmentManager.beginTransaction()
                 .add(this, tag)
                 .commitAllowingStateLoss()
