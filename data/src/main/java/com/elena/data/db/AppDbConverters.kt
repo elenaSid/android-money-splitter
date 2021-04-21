@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data.db
+package com.elena.data.db
 
 import androidx.room.TypeConverter
 import com.google.gson.GsonBuilder

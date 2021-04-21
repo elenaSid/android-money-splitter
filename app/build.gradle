@@ -11,11 +11,11 @@ android {
         enabled = true
     }
 
-    compileSdkVersion 28
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.elena.moneysplitter"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 26
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         manifestPlaceholders = [applicationLabel:"@string/app_name"]
@@ -47,16 +47,12 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.33'
     kapt 'com.google.dagger:dagger-android-processor:2.33'
 
-    implementation 'com.google.code.gson:gson:2.8.5'
-
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt  "androidx.room:room-compiler:2.2.5"
-    api 'androidx.room:room-rxjava2:2.2.6'
-
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
     implementation 'com.github.moxy-community:moxy-androidx:2.2.1'
     kapt 'com.github.moxy-community:moxy-compiler:2.2.1'
     implementation 'com.github.moxy-community:moxy-material:2.2.1'
+
     implementation project(':domain')
+    implementation project(':data')
 }

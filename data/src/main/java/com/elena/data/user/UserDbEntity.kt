@@ -1,11 +1,11 @@
-package com.elena.moneysplitter.data.user
+package com.elena.data.user
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
-import com.elena.moneysplitter.data.family.FamilyDbEntity
+import com.elena.data.family.FamilyDbEntity
 
 /**
  * @author elena

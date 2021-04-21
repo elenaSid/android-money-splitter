@@ -104,16 +104,13 @@ open class EditUserActivity : MvpAppCompatActivity(), UserEditView {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item == null) {
-            return super.onOptionsItemSelected(item)
-        }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_item_done) {
             presenter.onUserSave(binding.edtName.text.toString().trim(), getFamily())
             return true
         }
         finish()
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     override fun setName(name: String) {

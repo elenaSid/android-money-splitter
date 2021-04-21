@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.data.family
+package com.elena.data.family
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -5,12 +5,12 @@ import androidx.room.Room
 import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
-import com.elena.moneysplitter.data.PreferencesStorage
-import com.elena.moneysplitter.data.db.RoomDb
-import com.elena.moneysplitter.data.family.FamilyDbMapper
-import com.elena.moneysplitter.data.family.FamilyRepositoryImpl
-import com.elena.moneysplitter.data.user.UserDbMapper
-import com.elena.moneysplitter.data.user.UserRepositoryImpl
+import com.elena.data.PreferencesStorage
+import com.elena.data.db.RoomDb
+import com.elena.data.family.FamilyDbMapper
+import com.elena.data.family.FamilyRepositoryImpl
+import com.elena.data.user.UserDbMapper
+import com.elena.data.user.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
 

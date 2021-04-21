@@ -1,7 +1,7 @@
-package com.elena.moneysplitter.data.user
+package com.elena.data.user
 
 import com.elena.domain.user.UserEntity
-import com.elena.moneysplitter.data.common.TwoWayDataMapper
+import com.elena.data.common.TwoWayDataMapper
 
 /**
  * @author elena
