@@ -8,14 +8,14 @@
         android:label="${applicationLabel}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/MoneySplitter.Theme">
         <activity
             android:name=".root.ui.RootActivity"
             android:configChanges="orientation"
             android:label="${applicationLabel}"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/SplitterAppTheme.Root">
+            android:theme="@style/MoneySplitter.Theme_Root">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,14 +27,14 @@
             android:configChanges="orientation"
             android:label="@string/user_edit_create"
             android:screenOrientation="portrait"
-            android:theme="@style/SplitterAppTheme.Root"
+            android:theme="@style/MoneySplitter.Theme_Root"
             android:parentActivityName=".root.ui.RootActivity" />
 
         <activity android:name=".users.edit.ui.AddFamilyActivity"
                   android:configChanges="orientation"
                   android:label="@string/family_add_title"
                   android:screenOrientation="portrait"
-                  android:theme="@style/SplitterAppTheme.AddFamily"
+                  android:theme="@style/MoneySplitter.Theme_AddFamily"
                   android:parentActivityName=".users.edit.ui.EditUserActivity"/>
 
     </application>
