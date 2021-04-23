@@ -1,9 +1,8 @@
 package com.elena.moneysplitter.items.list.ui
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
-import com.elena.moneysplitter.utils.DisplayUtils
+import com.elena.moneysplitter.extras.toPx
 
 /**
  * @author elena
@@ -14,7 +13,7 @@ class DebtorsAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<android
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val textView = TextView(parent.context)
-        val padding16 = DisplayUtils.dpToPx(parent.context.resources, 16f)
+        val padding16 = 16f.toPx()
         textView.setPadding(padding16, 0, padding16, 0)
         return object : androidx.recyclerview.widget.RecyclerView.ViewHolder(textView) {}
     }

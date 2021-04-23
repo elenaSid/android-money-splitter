@@ -3,7 +3,6 @@ package com.elena.moneysplitter.users.list.ui
 import android.content.Context
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +12,10 @@ import android.widget.TextView
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.UsersFragmentBinding
+import com.elena.moneysplitter.extras.toPx
 import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.list.mvp.UsersPresenter
 import com.elena.moneysplitter.users.list.mvp.UsersView
-import com.elena.moneysplitter.utils.DisplayUtils
 import dagger.android.support.AndroidSupportInjection
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -96,9 +95,9 @@ class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener
 
         val anchorScreenPosition = IntArray(2)
         anchor.getLocationInWindow(anchorScreenPosition)
-        val yOffset = anchorScreenPosition[1] - DisplayUtils.dpToPx(resources, 48F)
+        val yOffset = anchorScreenPosition[1] - 48f.toPx()
         popupWindow.showAtLocation(anchor, Gravity.END or Gravity.TOP,
-                DisplayUtils.dpToPx(resources, 19F), yOffset)
+                19f.toPx(), yOffset)
     }
 
     override fun updateUsers(users: List<UserEntity>) {
