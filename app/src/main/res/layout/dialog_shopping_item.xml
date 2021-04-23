@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data class="ItemDialogFragmentBinding"/>
 
@@ -17,19 +18,19 @@
             android:layout_marginEnd="16dp">
 
             <TextView
-                style="@style/SplitterAppTheme.TextView.Normal_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@string/item_show_price"/>
+                android:text="@string/item_show_price"
+                android:textAppearance="@style/MoneySplitter.Text_Normal_16" />
 
             <TextView
                 android:id="@+id/tvPrice"
-                style="@style/SplitterAppTheme.TextView.Normal_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="100"/>
+                android:textAppearance="@style/MoneySplitter.Text_Normal_16"
+                tools:text="100"/>
         </LinearLayout>
 
         <LinearLayout
@@ -41,23 +42,22 @@
             android:layout_marginEnd="16dp">
 
             <TextView
-                style="@style/SplitterAppTheme.TextView.Normal_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/item_show_buyer"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textAppearance="@style/MoneySplitter.Text_Normal_16"/>
 
             <TextView
                 android:id="@+id/tvCreditor"
-                style="@style/SplitterAppTheme.TextView.Normal_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="West"/>
+                android:textAppearance="@style/MoneySplitter.Text_Normal_16"
+                tools:text="Creditor Name"/>
         </LinearLayout>
 
         <TextView
-            style="@style/SplitterAppTheme.TextView.Normal_16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/item_show_debtors"
@@ -66,7 +66,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textAppearance="@style/MoneySplitter.Text_Normal_16"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDebtors"

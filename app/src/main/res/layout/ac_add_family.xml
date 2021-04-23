@@ -33,7 +33,6 @@
 
                 <EditText
                     android:id="@+id/edtBabyName"
-                    style="@style/SplitterAppTheme.TextView.Normal_32"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:layout_gravity="center_vertical|start"
@@ -43,7 +42,8 @@
                     android:hint="@string/family_add_hint"
                     android:inputType="textPersonName"
                     android:textColorHint="@color/black17_text"
-                    android:theme="@style/SplitterAppTheme.BlueAccent"/>
+                    android:textAppearance="@style/MoneySplitter.Text_Normal_32"
+                    android:theme="@style/MoneySplitter.ThemeOverlay_BlueAccent"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

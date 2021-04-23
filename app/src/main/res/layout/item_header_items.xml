@@ -6,11 +6,16 @@
               android:paddingBottom="13dp">
 
     <TextView
-        style="@style/SplitterAppTheme.Weight.Starting.TextView.Bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
-        android:text="@string/items_title" />
+        android:gravity="start"
+        android:lineSpacingExtra="0sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/items_title"
+        android:textAppearance="@style/MoneySplitter.Text_Bold_28"
+        android:textColor="@color/black_text" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,26 +26,27 @@
         android:paddingTop="8dp">
 
         <TextView
-            style="@style/SplitterAppTheme.ItemList.ColumnTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/items_item" />
+            android:text="@string/items_item"
+            android:textAppearance="@style/MoneySplitter.Text_ColumnTitle" />
 
         <TextView
-            style="@style/SplitterAppTheme.ItemList.ColumnTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="@string/items_price" />
+            android:text="@string/items_price"
+            android:textAppearance="@style/MoneySplitter.Text_ColumnTitle" />
+
         <TextView
-            style="@style/SplitterAppTheme.ItemList.ColumnTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
             android:minWidth="32dp"
-            android:text="@string/items_buyer" />
+            android:text="@string/items_buyer"
+            android:textAppearance="@style/MoneySplitter.Text_ColumnTitle" />
     </LinearLayout>
 </LinearLayout>
