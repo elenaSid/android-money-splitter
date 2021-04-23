@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/MoneySplitter.Theme">
         <activity
-            android:name=".root.ui.RootNewActivity"
+            android:name=".wizard.ui.WizardActivity"
             android:configChanges="orientation"
             android:label="${applicationLabel}"
             android:launchMode="singleTask"

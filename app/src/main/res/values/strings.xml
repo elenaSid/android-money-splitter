@@ -6,6 +6,9 @@
     <string name="fab_menu_person">Person</string>
     <string name="fab_menu_item">Item</string>
 
+    <string name="bottom_menu_back">Back</string>
+    <string name="bottom_menu_next">Next</string>
+
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
     <string name="navigation_menu_items">Items</string>

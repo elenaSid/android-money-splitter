@@ -9,6 +9,9 @@ import com.elena.moneysplitter.users.edit.di.UserEditScope
 import com.elena.moneysplitter.users.list.di.UserScope
 import com.elena.moneysplitter.users.list.di.UsersModule
 import com.elena.moneysplitter.users.list.ui.UserFragment
+import com.elena.moneysplitter.wizard.di.WizardModule
+import com.elena.moneysplitter.wizard.di.WizardScope
+import com.elena.moneysplitter.wizard.ui.WizardActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -30,4 +33,8 @@ abstract class BuilderModule {
     @UserEditScope
     @ContributesAndroidInjector(modules = [(UserEditModule::class)])
     abstract fun bindEditUserActivity(): EditUserActivity
+
+    @WizardScope
+    @ContributesAndroidInjector(modules = [WizardModule::class])
+    abstract fun bindWizardActivity(): WizardActivity
 }
