@@ -21,4 +21,6 @@
     <color name="silver_tint_navigation">#a1a1a1</color>
 
     <color name="tundora_text">#4d4d4d</color>
+
+    <color name="white">#ffffff</color>
 </resources>

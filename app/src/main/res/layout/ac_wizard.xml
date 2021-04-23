@@ -28,10 +28,12 @@
             android:layout_gravity="bottom"
             app:contentInsetStart="0dp"
             app:hideOnScroll="true"
-            app:navigationIcon="@null" >
+            app:navigationIcon="@null">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnBack"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -54,6 +56,7 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            style="@style/MoneySplitter.FloatingActionButton"
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,15 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true">
-
-            <ImageButton
-                android:id="@+id/ibBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/topRowBarrier"
-                app:layout_constraintStart_toStartOf="@+id/startMargin"
-                app:layout_constraintTop_toTopOf="@+id/topMargin"
-                tools:ignore="ContentDescription" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/startMargin"
@@ -99,8 +93,7 @@
                 android:id="@+id/topRowBarrier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="ibBack" />
+                app:barrierDirection="bottom" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
