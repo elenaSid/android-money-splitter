@@ -2,9 +2,11 @@
 <resources>
     <color name="alabaster_background">#f9f9f9</color>
 
+    <color name="black">#000000</color>
     <color name="black17_text">#2d000000</color>
     <color name="black_20_tint">#33000000</color>
     <color name="black50_tint">#80000000</color>
+    <color name="black_60">#99000000</color>
     <color name="black54_text">#8b000000</color>
     <color name="black_97_text">#61000000</color>
     <color name="black_text">#de000000</color>

@@ -43,19 +43,19 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
         binding.btnBack.visibility = if (isHomeButtonVisible) View.VISIBLE else View.GONE
     }
 
-    override fun setActionButtonEnabled(isEnabled: Boolean) {
-        binding.btnNext.isEnabled = isEnabled
-    }
-
-    override fun setStep(stepIndex: Int) {
-    }
-
-    private fun manageFAB(isVisible: Boolean) {
+    override fun setFABVisibility(isVisible: Boolean) {
         if (isVisible) {
             binding.fabAdd.show()
         } else {
             binding.fabAdd.hide()
         }
         invalidateOptionsMenu()
+    }
+
+    override fun setActionButtonEnabled(isEnabled: Boolean) {
+        binding.btnNext.isEnabled = isEnabled
+    }
+
+    override fun setStep(stepIndex: Int) {
     }
 }

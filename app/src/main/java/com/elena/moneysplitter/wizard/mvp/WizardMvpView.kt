@@ -22,6 +22,12 @@ interface WizardMvpView : MvpView {
     fun setActionButtonEnabled(isEnabled: Boolean)
 
     /**
+     * Команда отображения кнопки "добавить", где [isVisible] флаг видимости кнопки
+     */
+    @AddToEndSingle
+    fun setFABVisibility(isVisible: Boolean)
+
+    /**
      * Команда установки шага визарда
      */
     @AddToEndSingle

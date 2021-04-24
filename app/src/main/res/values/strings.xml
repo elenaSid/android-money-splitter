@@ -9,6 +9,12 @@
     <string name="bottom_menu_back">Back</string>
     <string name="bottom_menu_next">Next</string>
 
+    <!-- Wizard Users start-->
+    <string name="users_name">Name</string>
+    <string name="users_add_participants">Add participants:</string>
+    <string name="users_add">Add</string>
+    <!-- Wizard Users end-->
+
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
     <string name="navigation_menu_items">Items</string>

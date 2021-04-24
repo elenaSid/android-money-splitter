@@ -7,15 +7,16 @@ package com.elena.moneysplitter.wizard
  * @author elena
  */
 enum class WizardStep(
-    var value: Int,
-    val backwardNavigation: BackwardNavigation,
-    val forwardNavigation: ForwardNavigation,
+        var value: Int,
+        val backwardNavigation: BackwardNavigation,
+        val forwardNavigation: ForwardNavigation,
+        val hasFAB: Boolean
 ) {
-    USERS(0, BackwardNavigation.NONE, ForwardNavigation.NEXT),
-    GROUPS(1, BackwardNavigation.BACK, ForwardNavigation.SKIP),
-    SPENDING(2, BackwardNavigation.BACK, ForwardNavigation.NEXT),
-    SUMMARY(3, BackwardNavigation.BACK, ForwardNavigation.NEXT),
-    DEBTS(4, BackwardNavigation.BACK, ForwardNavigation.DONE)
+    USERS(0, BackwardNavigation.NONE, ForwardNavigation.NEXT, false),
+    FAMILIES(1, BackwardNavigation.BACK, ForwardNavigation.SKIP, true),
+    SPENDING(2, BackwardNavigation.BACK, ForwardNavigation.NEXT, true),
+    SUMMARY(3, BackwardNavigation.BACK, ForwardNavigation.NEXT, false),
+    DEBTS(4, BackwardNavigation.BACK, ForwardNavigation.DONE, false)
 }
 
 /**

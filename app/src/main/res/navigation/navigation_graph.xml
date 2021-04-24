@@ -5,6 +5,6 @@
     app:startDestination="@+id/usersFragment">
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.elena.moneysplitter.users.edit.ui.UsersFragment"
+        android:name="com.elena.moneysplitter.wizard.steps.users.UsersFragment"
         android:label="UsersFragment"></fragment>
 </navigation>
