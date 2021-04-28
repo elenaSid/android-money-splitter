@@ -4,9 +4,13 @@ import com.elena.moneysplitter.navigation.WizardNavigationScreen
 import com.elena.moneysplitter.wizard.WizardStep
 import com.elena.moneysplitter.wizard.canGoBack
 import com.elena.moneysplitter.wizard.canGoForward
+import com.elena.moneysplitter.wizard.canSkip
+import com.github.terrakok.cicerone.ResultListener
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import moxy.MvpPresenter
+
+const val PARAM_IS_STEP_READY = "is_step_ready"
 
 /**
  * @author elena
@@ -14,6 +18,10 @@ import moxy.MvpPresenter
 class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>() {
 
     private val steps = WizardStep.values()
+    private val resultListener = ResultListener { isStepReady ->
+        viewState.setActionButtonEnabled(isStepReady as Boolean)
+        setStepReadyResultListener()
+    }
     private var currentStep = WizardStep.values()[0]
 
     override fun onFirstViewAttach() {
@@ -56,10 +64,11 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
     private fun setStep(wizardStep: WizardStep) {
         currentStep = wizardStep
         viewState.setHomeButtonVisibility(wizardStep.canGoBack())
-        //viewState.setActionButtonEnabled(wizardStep.canSkip())
+        viewState.setActionButtonEnabled(wizardStep.canSkip())
         viewState.updateActionButton(!wizardStep.canGoForward())
         viewState.setFABVisibility(wizardStep.hasFAB)
         router.navigateTo(getStepFragmentScreen(wizardStep))
+        setStepReadyResultListener()
     }
 
     /**
@@ -71,5 +80,12 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
         WizardStep.SPENDING -> WizardNavigationScreen.familiesStep()
         WizardStep.SUMMARY -> WizardNavigationScreen.familiesStep()
         WizardStep.DEBTS -> WizardNavigationScreen.familiesStep()
+    }
+
+    /**
+     * Устанавливает слушатель событий изменения готовности перехода на следующий шаг
+     */
+    private fun setStepReadyResultListener() {
+        router.setResultListener(PARAM_IS_STEP_READY, resultListener)
     }
 }

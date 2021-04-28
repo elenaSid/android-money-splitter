@@ -4,6 +4,8 @@ import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.DeleteUserUseCase
 import com.elena.domain.user.interaction.GetAllUsersUseCase
 import com.elena.domain.user.interaction.SaveUserUseCase
+import com.elena.moneysplitter.wizard.mvp.PARAM_IS_STEP_READY
+import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 
 /**
@@ -12,7 +14,8 @@ import moxy.MvpPresenter
 class UsersPresenter(
         private val getAllUsersUseCase: GetAllUsersUseCase,
         private val deleteUserUseCase: DeleteUserUseCase,
-        private val saveUserUseCase: SaveUserUseCase
+        private val saveUserUseCase: SaveUserUseCase,
+        private val router: Router
 ) : MvpPresenter<UsersMvpView>() {
 
     override fun onFirstViewAttach() {
@@ -31,6 +34,8 @@ class UsersPresenter(
     }
 
     private fun updateUsers() {
-        viewState.updateUserList(getAllUsersUseCase.execute(Unit, emptyList()))
+        val users = getAllUsersUseCase.execute(Unit, emptyList())
+        viewState.updateUserList(users)
+        router.sendResult(PARAM_IS_STEP_READY, users.isNotEmpty())
     }
 }

@@ -5,6 +5,7 @@ import com.elena.domain.user.interaction.DeleteUserUseCase
 import com.elena.domain.user.interaction.GetAllUsersUseCase
 import com.elena.domain.user.interaction.SaveUserUseCase
 import com.elena.moneysplitter.wizard.steps.users.mvp.UsersPresenter
+import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
 
@@ -31,6 +32,7 @@ class UsersModule {
     fun provideUsersPresenter(
             getAllUsersUseCase: GetAllUsersUseCase,
             deleteUserUseCase: DeleteUserUseCase,
-            saveUserUseCase: SaveUserUseCase
-    ) = UsersPresenter(getAllUsersUseCase, deleteUserUseCase, saveUserUseCase)
+            saveUserUseCase: SaveUserUseCase,
+            router: Router
+    ) = UsersPresenter(getAllUsersUseCase, deleteUserUseCase, saveUserUseCase, router)
 }
