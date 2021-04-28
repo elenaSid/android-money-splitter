@@ -28,6 +28,7 @@ class UserAdapter(private val listener: UserListener) : RecyclerView.Adapter<Rec
         val chipTag = holder.itemView as Chip
         chipTag.text = user.name
         chipTag.setOnCloseIconClickListener { listener.onUserRemoved(user) }
+        chipTag.isClickable = false
     }
 
     fun update(users: List<UserEntity>) {

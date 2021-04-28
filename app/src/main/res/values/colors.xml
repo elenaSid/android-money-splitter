@@ -5,8 +5,8 @@
 
     <color name="black">#000000</color>
     <color name="black17_text">#2d000000</color>
-    <color name="black_20_tint">#33000000</color>
-    <color name="black50_tint">#80000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="black_50">#80000000</color>
     <color name="black_60">#99000000</color>
     <color name="black54_text">#8b000000</color>
     <color name="black_97_text">#61000000</color>
@@ -15,9 +15,17 @@
 
     <color name="colorPrimary">#814233</color>
     <color name="colorPrimaryDark">#76392d</color>
-    <color name="colorAccent">#2facc3</color>
+    <color name="colorAccent">@color/picton_blue</color>
+
+    <color name="east_side">#A66DAF</color>
+    <color name="east_side_60">#99A66DAF</color>
 
     <color name="gallery30_background">#b3ebebeb</color>
+
+    <color name="lilac_bush">#9c7ecf</color>
+
+    <color name="picton_blue">#36A4E9</color>
+    <color name="picton_blue_60">#9936A4E9</color>
 
     <color name="red_orange_text">#ff3b30</color>
 

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="false"
-        tools:background="@color/black_20_tint">
+        tools:background="@color/black_20">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/navigationHost"
