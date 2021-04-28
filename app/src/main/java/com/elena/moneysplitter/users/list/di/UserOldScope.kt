@@ -11,4 +11,4 @@ import javax.inject.Scope
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-internal annotation class UserScope
+internal annotation class UserOldScope

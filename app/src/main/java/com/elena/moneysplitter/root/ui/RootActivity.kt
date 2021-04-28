@@ -9,7 +9,7 @@ import com.elena.moneysplitter.databinding.RootActivityBinding
 import com.elena.moneysplitter.items.list.ui.ItemFragment
 import com.elena.moneysplitter.root.mvp.RootPresenter
 import com.elena.moneysplitter.root.mvp.RootView
-import com.elena.moneysplitter.users.list.ui.UserFragment
+import com.elena.moneysplitter.users.list.ui.UserOldFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -64,9 +64,9 @@ open class RootActivity : MvpAppCompatActivity(), RootView,
                     R.id.menu_item_users,
                     R.id.menu_item_summary,
                     R.id.menu_item_settings) ->
-                fragment = UserFragment()
+                fragment = UserOldFragment()
             R.id.menu_item_shopping -> fragment = ItemFragment()
-            else -> fragment = UserFragment()
+            else -> fragment = UserOldFragment()
         }
         supportFragmentManager
                 .beginTransaction()

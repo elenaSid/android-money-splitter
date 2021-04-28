@@ -56,8 +56,8 @@ class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
     }
 
     fun onUserSave(userName: String, family: FamilyEntity) {
-        val params = SaveUserUseCase.UserParams(this.user, userName, family)
+        /*val params = SaveUserUseCase.UserParams(this.user, userName, family)
         saveUserUseCase.execute(params)
-        viewState.finishWithOkResult()
+        viewState.finishWithOkResult()*/
     }
 }

@@ -6,22 +6,14 @@ import com.elena.domain.user.UserEntity
 import com.elena.domain.user.UserRepository
 
 /**
+ * Сценарий создания нового пользователя
+ *
  * @author elena
- *         Date: 2019-05-05
- *         Time: 12:38
  */
-class SaveUserUseCase(private val userRepository: UserRepository) : UseCase<SaveUserUseCase.UserParams, Unit>() {
+class SaveUserUseCase(private val userRepository: UserRepository) : UseCase<String, Unit>() {
 
-    override fun runUseCase(param: UserParams) {
-        val familyId = if (param.familyEntity != null) param.familyEntity.id else null
-
-        if (param.user == null) {
-            userRepository.save(UserEntity(name = param.name, familyId = familyId))
-            return
-        }
-
-        userRepository.save(param.user.copy(name = param.name, familyId = familyId))
+    override fun runUseCase(param: String) {
+        userRepository.save(UserEntity(name = param, familyId = null))
+        return
     }
-
-    class UserParams(val user: UserEntity?, val name: String, val familyEntity: FamilyEntity?)
 }
