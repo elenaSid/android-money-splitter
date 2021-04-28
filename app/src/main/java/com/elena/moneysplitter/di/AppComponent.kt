@@ -14,8 +14,12 @@ import dagger.android.support.AndroidSupportInjectionModule
  *         Time: 19:30
  */
 @PerApplication
-@Component(modules = [(AndroidSupportInjectionModule::class), (AppModule::class),
-    (DataModule::class), (BuilderModule::class)])
+@Component(modules = [
+    AndroidSupportInjectionModule::class,
+    AppModule::class,
+    DataModule::class,
+    NavigationModule::class,
+    BuilderModule::class])
 interface AppComponent {
 
     fun appContext(): Application

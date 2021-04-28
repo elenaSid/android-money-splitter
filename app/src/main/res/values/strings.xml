@@ -8,6 +8,7 @@
 
     <string name="bottom_menu_back">Back</string>
     <string name="bottom_menu_next">Next</string>
+    <string name="bottom_menu_done">Done</string>
 
     <!-- Wizard Users start-->
     <string name="users_name">Name</string>

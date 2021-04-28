@@ -12,13 +12,10 @@
         tools:background="@color/black_20_tint">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/navigation_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:id="@+id/navigationHost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="false"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation_graph" />
+            android:fitsSystemWindows="false"/>
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
@@ -61,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottomAppBar"
-            app:srcCompat="@drawable/ic_add" />
+            app:srcCompat="@drawable/ic_add"
+            android:contentDescription="@string/users_add"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

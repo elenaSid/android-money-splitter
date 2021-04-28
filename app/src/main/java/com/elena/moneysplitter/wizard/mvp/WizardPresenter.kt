@@ -1,14 +1,17 @@
 package com.elena.moneysplitter.wizard.mvp
 
+import com.elena.moneysplitter.navigation.WizardNavigationScreen
 import com.elena.moneysplitter.wizard.WizardStep
 import com.elena.moneysplitter.wizard.canGoBack
 import com.elena.moneysplitter.wizard.canGoForward
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 import moxy.MvpPresenter
 
 /**
  * @author elena
  */
-class WizardPresenter : MvpPresenter<WizardMvpView>() {
+class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>() {
 
     private val steps = WizardStep.values()
     private var currentStep = WizardStep.values()[0]
@@ -18,7 +21,6 @@ class WizardPresenter : MvpPresenter<WizardMvpView>() {
 
         setStep(currentStep)
     }
-
 
     /**
      * Вызывается при при ручном запросе на смену шага
@@ -33,7 +35,7 @@ class WizardPresenter : MvpPresenter<WizardMvpView>() {
             val nextStepIndex = currentStep.value - 1
             setStep(WizardStep.values()[nextStepIndex])
         } else {
-            //TODO: Закрыть приложение
+            router.finishChain()
         }
     }
 
@@ -54,8 +56,20 @@ class WizardPresenter : MvpPresenter<WizardMvpView>() {
     private fun setStep(wizardStep: WizardStep) {
         currentStep = wizardStep
         viewState.setHomeButtonVisibility(wizardStep.canGoBack())
-        viewState.setStep(wizardStep.value)
-        viewState.setActionButtonEnabled(wizardStep.canGoForward())
-        //TODO: Добавить переход на нужный экран
+        //viewState.setActionButtonEnabled(wizardStep.canSkip())
+        viewState.updateActionButton(!wizardStep.canGoForward())
+        viewState.setFABVisibility(wizardStep.hasFAB)
+        router.navigateTo(getStepFragmentScreen(wizardStep))
+    }
+
+    /**
+     * Возвращает [FragmentScreen] для заданного шага [wizardStep]
+     */
+    private fun getStepFragmentScreen(wizardStep: WizardStep) = when (wizardStep) {
+        WizardStep.USERS -> WizardNavigationScreen.usersStep()
+        WizardStep.FAMILIES -> WizardNavigationScreen.familiesStep()
+        WizardStep.SPENDING -> WizardNavigationScreen.familiesStep()
+        WizardStep.SUMMARY -> WizardNavigationScreen.familiesStep()
+        WizardStep.DEBTS -> WizardNavigationScreen.familiesStep()
     }
 }

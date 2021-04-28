@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.WizardActivityBinding
+import com.elena.moneysplitter.navigation.NavigationLifecycleObserver
 import com.elena.moneysplitter.wizard.mvp.WizardMvpView
 import com.elena.moneysplitter.wizard.mvp.WizardPresenter
 import dagger.android.AndroidInjection
@@ -19,6 +20,9 @@ import javax.inject.Inject
 class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
 
     @Inject
+    lateinit var navigationLifecycleObserver: NavigationLifecycleObserver
+
+    @Inject
     @InjectPresenter
     lateinit var presenter: WizardPresenter
     private lateinit var binding: WizardActivityBinding
@@ -30,9 +34,11 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.ac_wizard)
+        lifecycle.addObserver(navigationLifecycleObserver)
 
-        binding.fabAdd.setOnClickListener {
-        }
+        binding.fabAdd.setOnClickListener {}
+        binding.btnNext.setOnClickListener { presenter.onNextStepRequested() }
+        binding.btnBack.setOnClickListener { presenter.onPreviousStepRequested() }
     }
 
     override fun onBackPressed() {
@@ -52,10 +58,13 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
         invalidateOptionsMenu()
     }
 
-    override fun setActionButtonEnabled(isEnabled: Boolean) {
-        binding.btnNext.isEnabled = isEnabled
+    override fun updateActionButton(isActionDone: Boolean) {
+        binding.btnNext.setText(
+                if (isActionDone) R.string.bottom_menu_done else R.string.bottom_menu_next
+        )
     }
 
-    override fun setStep(stepIndex: Int) {
+    override fun setActionButtonEnabled(isEnabled: Boolean) {
+        binding.btnNext.isEnabled = isEnabled
     }
 }
