@@ -14,28 +14,28 @@ import dagger.Provides
  *         Time: 09:36
  */
 @Module
-class UsersModule {
+class UsersOldModule {
 
     @Provides
-    @UserScope
+    @UserOldScope
     fun provideGetAllUsersUseCase(userRepository: UserRepository): GetAllUsersUseCase {
         return GetAllUsersUseCase(userRepository)
     }
 
     @Provides
-    @UserScope
+    @UserOldScope
     fun provideSaveUserUseCase(userRepository: UserRepository): SaveUserUseCase {
         return SaveUserUseCase(userRepository)
     }
 
     @Provides
-    @UserScope
+    @UserOldScope
     fun provideDeleteUserUseCase(userRepository: UserRepository): DeleteUserUseCase {
         return DeleteUserUseCase(userRepository)
     }
 
     @Provides
-    @UserScope
+    @UserOldScope
     fun provideUsersPresenter(getAllUsersUseCase: GetAllUsersUseCase,
                               deleteUserUseCase: DeleteUserUseCase): UsersPresenter {
         return UsersPresenter(getAllUsersUseCase, deleteUserUseCase)

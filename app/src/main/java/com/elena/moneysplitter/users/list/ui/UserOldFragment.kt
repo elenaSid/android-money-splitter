@@ -27,7 +27,7 @@ import javax.inject.Inject
  *         Date: 03/01/2019
  *         Time: 23:03
  */
-class UserFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener {
+class UserOldFragment : MvpAppCompatFragment(), UsersView, UserAdapter.UserListener {
 
     companion object {
         private const val REQUEST_EDIT = 0

@@ -6,11 +6,14 @@ import com.elena.moneysplitter.root.ui.RootActivity
 import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.edit.di.UserEditModule
 import com.elena.moneysplitter.users.edit.di.UserEditScope
-import com.elena.moneysplitter.users.list.di.UserScope
-import com.elena.moneysplitter.users.list.di.UsersModule
-import com.elena.moneysplitter.users.list.ui.UserFragment
+import com.elena.moneysplitter.users.list.di.UserOldScope
+import com.elena.moneysplitter.users.list.di.UsersOldModule
+import com.elena.moneysplitter.users.list.ui.UserOldFragment
 import com.elena.moneysplitter.wizard.di.WizardModule
 import com.elena.moneysplitter.wizard.di.WizardScope
+import com.elena.moneysplitter.wizard.steps.users.di.UsersModule
+import com.elena.moneysplitter.wizard.steps.users.di.UsersScope
+import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
 import com.elena.moneysplitter.wizard.ui.WizardActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -26,9 +29,9 @@ abstract class BuilderModule {
     @ContributesAndroidInjector(modules = [(RootModule::class)])
     abstract fun bindSplitterActivity(): RootActivity
 
-    @UserScope
-    @ContributesAndroidInjector(modules = [(UsersModule::class)])
-    abstract fun bindUsersFragment(): UserFragment
+    @UserOldScope
+    @ContributesAndroidInjector(modules = [(UsersOldModule::class)])
+    abstract fun bindUsersOldFragment(): UserOldFragment
 
     @UserEditScope
     @ContributesAndroidInjector(modules = [(UserEditModule::class)])
@@ -37,4 +40,8 @@ abstract class BuilderModule {
     @WizardScope
     @ContributesAndroidInjector(modules = [WizardModule::class])
     abstract fun bindWizardActivity(): WizardActivity
+
+    @UsersScope
+    @ContributesAndroidInjector(modules = [UsersModule::class])
+    abstract fun bindUsersFragment(): UsersFragment
 }
