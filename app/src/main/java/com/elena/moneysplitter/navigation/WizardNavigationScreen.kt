@@ -1,6 +1,6 @@
 package com.elena.moneysplitter.navigation
 
-import com.elena.moneysplitter.wizard.steps.families.FamiliesFragment
+import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 

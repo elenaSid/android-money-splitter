@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.wizard.steps.users.di
+package com.elena.moneysplitter.wizard.steps.families.di
 
 import javax.inject.Scope
 
@@ -7,4 +7,4 @@ import javax.inject.Scope
  */
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class UsersScope
+annotation class FamiliesScope
