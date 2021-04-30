@@ -22,6 +22,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".family.ui.FamilyEditActivity"
+            android:configChanges="orientation"
+            android:label="@string/family_add_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/MoneySplitter.Theme_EditFamily"
+            android:parentActivityName=".wizard.ui.WizardActivity"/>
+
         <activity
             android:name=".users.edit.ui.EditUserActivity"
             android:configChanges="orientation"
@@ -34,7 +41,7 @@
                   android:configChanges="orientation"
                   android:label="@string/family_add_title"
                   android:screenOrientation="portrait"
-                  android:theme="@style/MoneySplitter.Theme_AddFamily"
+                  android:theme="@style/MoneySplitter.Theme_EditFamily"
                   android:parentActivityName=".users.edit.ui.EditUserActivity"/>
 
     </application>

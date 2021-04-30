@@ -5,11 +5,10 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="colorPrimaryDark">@color/black_20</item>
-        <item name="android:navigationBarColor">@color/black_50</item>
         <item name="android:popupMenuStyle">@style/MoneySplitter.PopupMenu</item>
         <item name="android:popupWindowStyle">@style/MoneySplitter.PopupMenu</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/white</item>
     </style>
 
     <style name="MoneySplitter.Theme_Root" parent="MoneySplitter.Theme">
@@ -21,14 +20,21 @@
         <item name="colorPrimary">@color/colorAccent</item>
     </style>
 
-    <style name="MoneySplitter.Theme_AddFamily" parent="MoneySplitter.Theme">
-        <item name="colorPrimary">@color/alabaster_background</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/alabaster_background</item>
+    <style name="MoneySplitter.ThemeOverlay_BlueAccent" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimaryDark">@color/black_20</item>
+        <item name="colorPrimary">@color/colorAccent</item>
     </style>
 
-    <style name="MoneySplitter.ThemeOverlay_BlueAccent" parent="Theme.MaterialComponents.Light">
+    <style name="MoneySplitter.Theme_EditFamily" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/MoneySplitter.ActionBar.Close</item>
+    </style>
+
+    <style name="MoneySplitter.ActionBar.Close" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/black_87</item>
+        <item name="navigationIcon">@drawable/ic_close</item>
     </style>
     <!-- Themes -->
 
@@ -133,6 +139,29 @@
         <item name="android:ellipsize">end</item>
         <item name="android:textAppearance">@style/MoneySplitter.Text_Medium_14</item>
         <item name="chipBackgroundColor">@color/colorAccent</item>
+    </style>
+
+    <style name="MoneySplitter.TextAppearanceButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.09</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="MoneySplitter.MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/material_btn_background</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="rippleColor">@color/black_20</item>
+        <item name="iconSize">16dp</item>
+        <item name="iconPadding">2dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:textAppearance">@style/MoneySplitter.TextAppearanceButton</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <!-- Widgets -->
 
