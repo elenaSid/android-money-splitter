@@ -1,5 +1,8 @@
 package com.elena.moneysplitter.di
 
+import com.elena.moneysplitter.family.di.FamilyEditModule
+import com.elena.moneysplitter.family.di.FamilyEditScope
+import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.root.di.RootModule
 import com.elena.moneysplitter.root.di.RootScope
 import com.elena.moneysplitter.root.ui.RootActivity
@@ -51,4 +54,8 @@ abstract class BuilderModule {
     @FamiliesScope
     @ContributesAndroidInjector(modules = [FamiliesModule::class])
     abstract fun bindFamiliesFragment(): FamiliesFragment
+
+    @FamilyEditScope
+    @ContributesAndroidInjector(modules = [FamilyEditModule::class])
+    abstract fun bindFamilyEditActivity(): FamilyEditActivity
 }

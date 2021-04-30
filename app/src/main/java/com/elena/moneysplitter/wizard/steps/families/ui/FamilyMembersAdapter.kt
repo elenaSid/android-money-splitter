@@ -46,7 +46,7 @@ class FamilyMembersAdapter(
             users: List<UserEntity> = emptyList(),
             usersInFamily: List<UserEntity>
     ) {
-        this.users = if (isEditable) usersInFamily else users.sortedBy { usersInFamily.contains(it) }
+        this.users = if (!isEditable) usersInFamily else users
         this.usersInFamily = usersInFamily
         notifyDataSetChanged()
     }

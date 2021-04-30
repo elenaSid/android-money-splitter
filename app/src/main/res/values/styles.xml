@@ -152,7 +152,7 @@
 
     <style name="MoneySplitter.MaterialButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/material_btn_background</item>
-        <item name="cornerRadius">4dp</item>
+        <item name="cornerRadius">0dp</item>
         <item name="rippleColor">@color/black_20</item>
         <item name="iconSize">16dp</item>
         <item name="iconPadding">2dp</item>
