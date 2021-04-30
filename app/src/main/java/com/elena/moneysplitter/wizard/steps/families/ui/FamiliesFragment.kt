@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.elena.domain.family.FamilyEntity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elena.domain.family.FamilyMembers
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.FamiliesFragmentBinding
@@ -27,6 +27,7 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
     @InjectPresenter
     lateinit var presenter: FamiliesPresenter
     private lateinit var binding: FamiliesFragmentBinding
+    private val adapter = FamilyAdapter()
 
     @ProvidePresenter
     fun provideUsersPresenter() = presenter
@@ -45,8 +46,16 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.rvFamilies.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvFamilies.adapter = adapter
+    }
+
     override fun updateFamilies(families: List<FamilyMembers>) {
         binding.ivEmpty.alpha = 0f
+        adapter.update(families)
     }
 
     override fun showEmptyState() {
