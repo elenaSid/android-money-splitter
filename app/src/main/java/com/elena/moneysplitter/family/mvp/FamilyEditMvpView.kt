@@ -11,6 +11,9 @@ import moxy.viewstate.strategy.alias.Skip
 interface FamilyEditMvpView : MvpView {
 
     @AddToEndSingle
+    fun showEmptyState()
+
+    @AddToEndSingle
     fun setFamilyName(familyName: String)
 
     @AddToEndSingle

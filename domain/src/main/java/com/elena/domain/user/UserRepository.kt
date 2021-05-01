@@ -8,6 +8,8 @@ interface UserRepository {
 
     fun getUsersWithFamily(familyId: Int) : List<UserEntity>
 
+    fun getUsersWithoutFamily() : List<UserEntity>
+
     fun save(user: UserEntity)
 
     fun get(id: Int): UserEntity

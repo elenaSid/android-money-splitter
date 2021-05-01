@@ -20,10 +20,14 @@
     <color name="east_side">#A66DAF</color>
     <color name="east_side_60">#99A66DAF</color>
 
+    <color name="jaffa">#E97B36</color>
+
     <color name="gallery30_background">#b3ebebeb</color>
     <color name="glacier">#79AAC8</color>
 
     <color name="lilac_bush">#9c7ecf</color>
+
+    <color name="monza">#B00020</color>
 
     <color name="picton_blue">#36A4E9</color>
     <color name="picton_blue_60">#9936A4E9</color>

@@ -2,14 +2,14 @@ package com.elena.moneysplitter.family.mvp
 
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserEntity
-import com.elena.domain.user.interaction.GetAllUsersUseCase
+import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
 import moxy.MvpPresenter
 
 /**
  * @author elena
  */
 class FamilyEditPresenter(
-        private val getAllUsersUseCase: GetAllUsersUseCase,
+        private val getUsersWithoutFamilyUseCase: GetUsersWithoutFamilyUseCase,
         private val saveFamilyUseCase: SaveFamilyUseCase
 ) : MvpPresenter<FamilyEditMvpView>() {
 
@@ -20,11 +20,14 @@ class FamilyEditPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        users = getAllUsersUseCase.execute(Unit, emptyList())
+        users = getUsersWithoutFamilyUseCase.execute(Unit, emptyList())
         //TODO: Добавить выборку добавленных членов семьи
-        users.sortedBy { !familyMembers.contains(it) }
-
-        updateFamilyMembers()
+        if (users.size <= 1) {
+            viewState.showEmptyState()
+        } else {
+            users.sortedBy { !familyMembers.contains(it) }
+            updateFamilyMembers()
+        }
     }
 
     fun onFamilyNameChanged(familyName: String) {
@@ -51,11 +54,16 @@ class FamilyEditPresenter(
         viewState.saveFinish()
     }
 
+    fun onFamilyDeleteRequested() {
+        //TODO: Добавить удаление семьи
+        viewState.saveFinish()
+    }
+
     private fun updateFamilyMembers() {
         viewState.updateFamilyMembers(users, familyMembers)
     }
 
     private fun updateSaveState() {
-        viewState.manageSaveBtnAvailability(familyName != null && familyMembers.isNotEmpty())
+        viewState.manageSaveBtnAvailability(familyName != null && familyMembers.size > 1)
     }
 }

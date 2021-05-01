@@ -3,6 +3,9 @@ package com.elena.moneysplitter.family.ui
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
@@ -20,6 +23,7 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
+private const val MENU_DELETE_ID = 1;
 /**
  * @author elena
  */
@@ -31,7 +35,7 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
     lateinit var binding: FamilyEditFragmentBinding
 
     @ProvidePresenter
-    fun provideWFamilyEditPresenter() = presenter
+    fun provideFamilyEditPresenter() = presenter
 
     private val adapter = FamilyMembersAdapter(true) { presenter.onUserSelected(it) }
     private val textWatcher: TextWatcher = object : TextWatcher {
@@ -54,9 +58,32 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
         binding.btnSave.setOnClickListener { presenter.onFamilySaveRequested() }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //TODO: Отображать иконку только в режиме редактирования
+        menu?.let {
+            val item = menu.add(Menu.NONE, MENU_DELETE_ID, Menu.NONE, R.string.family_delete)
+            item.setIcon(R.drawable.ic_delete)
+            item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == MENU_DELETE_ID) {
+            presenter.onFamilyDeleteRequested()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         binding.edtFamilyName.removeTextChangedListener(textWatcher)
+    }
+
+    override fun showEmptyState() {
+        binding.tvTitle.visibility = View.GONE
+        binding.rvUsers.visibility = View.GONE
+        binding.tvWarning.visibility = View.VISIBLE
     }
 
     override fun setFamilyName(familyName: String) {

@@ -27,7 +27,9 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
     @InjectPresenter
     lateinit var presenter: FamiliesPresenter
     private lateinit var binding: FamiliesFragmentBinding
-    private val adapter = FamilyAdapter()
+    private val adapter = FamilyAdapter {
+        //TODO: Открывать экран редактирования семьи
+    }
 
     @ProvidePresenter
     fun provideUsersPresenter() = presenter

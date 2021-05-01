@@ -24,6 +24,10 @@ class UserRepositoryImpl(
         return userDao.getUsersWithFamily(familyId).map { mapper.map(it) }
     }
 
+    override fun getUsersWithoutFamily(): List<UserEntity> {
+        return userDao.getUsersWithoutFamily().map { mapper.map(it) }
+    }
+
     override fun get(id: Int): UserEntity {
         return mapper.map(userDao.get(id))
     }
