@@ -1,5 +1,7 @@
 package com.elena.moneysplitter.family.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -23,7 +25,6 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
-private const val MENU_DELETE_ID = 1;
 /**
  * @author elena
  */
@@ -54,16 +55,17 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
         binding = DataBindingUtil.setContentView(this, R.layout.ac_edit_family)
         setToolbar()
         initFamilyMembersList()
-        binding.edtFamilyName.addTextChangedListener(textWatcher)
         binding.btnSave.setOnClickListener { presenter.onFamilySaveRequested() }
+        parseFamilyId()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //TODO: Отображать иконку только в режиме редактирования
-        menu?.let {
-            val item = menu.add(Menu.NONE, MENU_DELETE_ID, Menu.NONE, R.string.family_delete)
-            item.setIcon(R.drawable.ic_delete)
-            item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        if (intent != null && intent.hasExtra(PARAM_FAMILY_ID)) {
+            menu?.let {
+                val item = menu.add(Menu.NONE, MENU_DELETE_ID, Menu.NONE, R.string.family_delete)
+                item.setIcon(R.drawable.ic_delete)
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            }
         }
         return super.onCreateOptionsMenu(menu)
     }
@@ -86,8 +88,10 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
         binding.tvWarning.visibility = View.VISIBLE
     }
 
-    override fun setFamilyName(familyName: String) {
+    override fun setFamilyName(familyName: String?) {
         binding.edtFamilyName.setText(familyName)
+        binding.edtFamilyName.requestFocus()
+        binding.edtFamilyName.addTextChangedListener(textWatcher)
     }
 
     override fun updateFamilyMembers(users: List<UserEntity>, usersInFamily: List<UserEntity>) {
@@ -122,5 +126,24 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
         val spaces = listOf(4.toPx(), 4.toPx(), 4.toPx(), 4.toPx())
         binding.rvUsers.addItemDecoration(SpaceDecoration(spaces))
         binding.rvUsers.adapter = adapter
+    }
+
+    private fun parseFamilyId() {
+        intent?.let {
+            if (intent.hasExtra(PARAM_FAMILY_ID)) {
+                presenter.onFamilyIdParsed(intent.getIntExtra(PARAM_FAMILY_ID, 0))
+            }
+        }
+    }
+
+    companion object {
+        private const val MENU_DELETE_ID = 1
+        private const val PARAM_FAMILY_ID = "family_id"
+
+        fun getInstance(context: Context, familyId: Int): Intent {
+            val intent = Intent(context, FamilyEditActivity::class.java)
+            intent.putExtra(PARAM_FAMILY_ID, familyId)
+            return intent
+        }
     }
 }

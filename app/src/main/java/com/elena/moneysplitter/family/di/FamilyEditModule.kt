@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.family.di
 
 import com.elena.domain.family.FamilyRepository
+import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserRepository
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
@@ -28,8 +29,20 @@ class FamilyEditModule {
 
     @Provides
     @FamilyEditScope
+    fun provideGetFamilyWithMembers(
+            familyRepository: FamilyRepository,
+            userRepository: UserRepository
+    ) = GetFamilyWithMembersUseCase(familyRepository, userRepository)
+
+    @Provides
+    @FamilyEditScope
     fun provideFamilyEditPresenter(
             getUsersWithoutFamilyUseCase: GetUsersWithoutFamilyUseCase,
+            getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
             saveFamilyUseCase: SaveFamilyUseCase
-    ) = FamilyEditPresenter(getUsersWithoutFamilyUseCase, saveFamilyUseCase)
+    ) = FamilyEditPresenter(
+            getUsersWithoutFamilyUseCase,
+            getFamilyWithMembersUseCase,
+            saveFamilyUseCase
+    )
 }

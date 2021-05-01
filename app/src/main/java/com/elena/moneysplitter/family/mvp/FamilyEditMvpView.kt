@@ -14,7 +14,7 @@ interface FamilyEditMvpView : MvpView {
     fun showEmptyState()
 
     @AddToEndSingle
-    fun setFamilyName(familyName: String)
+    fun setFamilyName(familyName: String?)
 
     @AddToEndSingle
     fun updateFamilyMembers(users: List<UserEntity>, usersInFamily: List<UserEntity>)

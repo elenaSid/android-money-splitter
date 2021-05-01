@@ -17,22 +17,22 @@ import com.elena.moneysplitter.extras.toPx
 class FamilyAdapter(private val listener: FamilyListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var families = emptyList<FamilyMembers>()
-    private val adapter = FamilyMembersAdapter()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_family_item, null)
-
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_family_item, parent, false)
         val rvFamilyMembers = view.findViewById<RecyclerView>(R.id.rvFamilyMembers)
         rvFamilyMembers.layoutManager = TaggedLayoutManager()
         val spaces = listOf(4.toPx(), 4.toPx(), 4.toPx(), 4.toPx())
         rvFamilyMembers.addItemDecoration(SpaceDecoration(spaces))
-        rvFamilyMembers.adapter = adapter
         return object : RecyclerView.ViewHolder(view) {}
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val family = families[position]
         holder.itemView.findViewById<TextView>(R.id.tvFamily).text = family.family.name
+        val rvFamilyMembers = holder.itemView.findViewById<RecyclerView>(R.id.rvFamilyMembers)
+        val adapter = FamilyMembersAdapter()
+        rvFamilyMembers.adapter = adapter
         adapter.update(usersInFamily = family.users)
         holder.itemView.setOnClickListener { listener.onFamilyClicked(family.family) }
     }

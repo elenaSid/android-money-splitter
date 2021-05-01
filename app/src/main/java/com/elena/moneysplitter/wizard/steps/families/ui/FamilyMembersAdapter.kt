@@ -20,7 +20,7 @@ class FamilyMembersAdapter(
     var usersInFamily = emptyList<UserEntity>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_family_member_item, null)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_family_member_item, viewGroup, false)
         return object : RecyclerView.ViewHolder(view) {}
     }
 
@@ -36,6 +36,7 @@ class FamilyMembersAdapter(
         familyMemberChip.text = user.name
         familyMemberChip.setOnClickListener { listener?.onUserClicked(user) }
         familyMemberChip.isClickable = isEditable
+        familyMemberChip.isFocusable = isEditable
         familyMemberChip.setChipBackgroundColorResource(
                 if (isSelected) R.color.colorAccent else R.color.alto_bg
         )

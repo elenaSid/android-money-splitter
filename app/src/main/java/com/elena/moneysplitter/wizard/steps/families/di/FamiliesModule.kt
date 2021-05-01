@@ -4,6 +4,7 @@ import com.elena.domain.family.FamilyRepository
 import com.elena.domain.family.interaction.GetAllFamiliesWithMembersUseCase
 import com.elena.domain.user.UserRepository
 import com.elena.moneysplitter.wizard.steps.families.mvp.FamiliesPresenter
+import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
 
@@ -22,6 +23,8 @@ class FamiliesModule {
 
     @Provides
     @FamiliesScope
-    fun provideFamiliesPresenter(getAllFamiliesWithMembersUseCase: GetAllFamiliesWithMembersUseCase) =
-            FamiliesPresenter(getAllFamiliesWithMembersUseCase)
+    fun provideFamiliesPresenter(
+            router: Router,
+            getAllFamiliesWithMembersUseCase: GetAllFamiliesWithMembersUseCase
+    ) = FamiliesPresenter(router, getAllFamiliesWithMembersUseCase)
 }

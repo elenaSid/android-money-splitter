@@ -1,5 +1,6 @@
 package com.elena.moneysplitter.family.mvp
 
+import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
@@ -10,24 +11,36 @@ import moxy.MvpPresenter
  */
 class FamilyEditPresenter(
         private val getUsersWithoutFamilyUseCase: GetUsersWithoutFamilyUseCase,
+        private val getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
         private val saveFamilyUseCase: SaveFamilyUseCase
 ) : MvpPresenter<FamilyEditMvpView>() {
 
     private var familyId: Int? = null
     private var familyName: String? = null
-    private lateinit var users: List<UserEntity>
-    private val familyMembers = mutableListOf<UserEntity>()
+    private val usersInFamily = mutableListOf<UserEntity>()
+    private var users = mutableListOf<UserEntity>()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        users = getUsersWithoutFamilyUseCase.execute(Unit, emptyList())
-        //TODO: Добавить выборку добавленных членов семьи
+        users.addAll(getUsersWithoutFamilyUseCase.execute(Unit, emptyList()))
+
+        familyId?.let {
+            val familyMembers = getFamilyWithMembersUseCase.execute(it)
+            familyName = familyMembers.family.name
+            usersInFamily.addAll(familyMembers.users)
+            users.addAll(usersInFamily)
+        }
+        viewState.setFamilyName(familyName)
         if (users.size <= 1) {
             viewState.showEmptyState()
         } else {
-            users.sortedBy { !familyMembers.contains(it) }
+            users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
             updateFamilyMembers()
         }
+    }
+
+    fun onFamilyIdParsed(familyId: Int) {
+        this.familyId = familyId
     }
 
     fun onFamilyNameChanged(familyName: String) {
@@ -40,17 +53,17 @@ class FamilyEditPresenter(
     }
 
     fun onUserSelected(user: UserEntity) {
-        if (familyMembers.contains(user)) {
-            familyMembers.remove(user)
+        if (usersInFamily.contains(user)) {
+            usersInFamily.remove(user)
         } else {
-            familyMembers.add(user)
+            usersInFamily.add(user)
         }
         updateFamilyMembers()
         updateSaveState()
     }
 
     fun onFamilySaveRequested() {
-        saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, familyMembers))
+        saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, usersInFamily))
         viewState.saveFinish()
     }
 
@@ -60,10 +73,10 @@ class FamilyEditPresenter(
     }
 
     private fun updateFamilyMembers() {
-        viewState.updateFamilyMembers(users, familyMembers)
+        viewState.updateFamilyMembers(users, usersInFamily)
     }
 
     private fun updateSaveState() {
-        viewState.manageSaveBtnAvailability(familyName != null && familyMembers.size > 1)
+        viewState.manageSaveBtnAvailability(familyName != null && usersInFamily.size > 1)
     }
 }

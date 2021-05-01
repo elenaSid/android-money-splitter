@@ -6,7 +6,7 @@ import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
 
 /**
- * Сценарий получения семьи со всеми ее участниками
+ * Сценарий получения всех семей со всеми их участниками
  *
  * @author elena
  */

@@ -25,5 +25,11 @@ object WizardNavigationScreen {
     /**
      * Формирует экземплар экрана редактирования семьи/группы пользователей
      */
-    fun familyEdit() = ActivityScreen { Intent(it, FamilyEditActivity::class.java) }
+    fun familyEdit(familyId: Int? = null) = ActivityScreen {
+        if (familyId == null) {
+            Intent(it, FamilyEditActivity::class.java)
+        } else {
+            FamilyEditActivity.getInstance(it, familyId)
+        }
+    }
 }

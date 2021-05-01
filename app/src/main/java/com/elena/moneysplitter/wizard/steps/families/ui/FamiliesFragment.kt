@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.elena.domain.family.FamilyMembers
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.FamiliesFragmentBinding
+import com.elena.moneysplitter.extras.FirstLastSpaceDecoration
+import com.elena.moneysplitter.extras.SpaceDecoration
+import com.elena.moneysplitter.extras.toPx
 import com.elena.moneysplitter.wizard.steps.families.mvp.FamiliesMvpView
 import com.elena.moneysplitter.wizard.steps.families.mvp.FamiliesPresenter
 import dagger.android.support.AndroidSupportInjection
@@ -27,9 +30,7 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
     @InjectPresenter
     lateinit var presenter: FamiliesPresenter
     private lateinit var binding: FamiliesFragmentBinding
-    private val adapter = FamilyAdapter {
-        //TODO: Открывать экран редактирования семьи
-    }
+    private val adapter = FamilyAdapter { presenter.onFamilyEditClicked(it) }
 
     @ProvidePresenter
     fun provideUsersPresenter() = presenter
@@ -52,6 +53,8 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
         super.onViewCreated(view, savedInstanceState)
         binding.rvFamilies.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val spaces = listOf(0, 0, 0, 76.toPx())
+        binding.rvFamilies.addItemDecoration(FirstLastSpaceDecoration(spaces))
         binding.rvFamilies.adapter = adapter
     }
 
