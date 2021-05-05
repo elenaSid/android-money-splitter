@@ -120,6 +120,13 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
         supportActionBar?.let {
             it.elevation = 0f
             it.setHomeButtonEnabled(true)
+            it.setTitle(
+                    if (intent.hasExtra(PARAM_FAMILY_ID)) {
+                        R.string.family_edit_title
+                    } else {
+                        R.string.family_add_title
+                    }
+            )
         }
     }
 
