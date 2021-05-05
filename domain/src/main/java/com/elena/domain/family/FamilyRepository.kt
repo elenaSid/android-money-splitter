@@ -8,4 +8,6 @@ interface FamilyRepository {
     fun getLast(): FamilyEntity
 
     fun get(id: Int): FamilyEntity
+
+    fun delete(family: FamilyEntity)
 }

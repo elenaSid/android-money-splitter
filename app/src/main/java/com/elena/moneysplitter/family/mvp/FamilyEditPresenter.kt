@@ -1,5 +1,7 @@
 package com.elena.moneysplitter.family.mvp
 
+import com.elena.domain.family.FamilyEntity
+import com.elena.domain.family.interaction.DeleteFamilyUseCase
 import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserEntity
@@ -12,10 +14,12 @@ import moxy.MvpPresenter
 class FamilyEditPresenter(
         private val getUsersWithoutFamilyUseCase: GetUsersWithoutFamilyUseCase,
         private val getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
+        private val deleteFamilyUseCase: DeleteFamilyUseCase,
         private val saveFamilyUseCase: SaveFamilyUseCase
 ) : MvpPresenter<FamilyEditMvpView>() {
 
     private var familyId: Int? = null
+    private var family: FamilyEntity? = null
     private var familyName: String? = null
     private val usersInFamily = mutableListOf<UserEntity>()
     private var users = mutableListOf<UserEntity>()
@@ -26,6 +30,7 @@ class FamilyEditPresenter(
 
         familyId?.let {
             val familyMembers = getFamilyWithMembersUseCase.execute(it)
+            family = familyMembers.family
             familyName = familyMembers.family.name
             usersInFamily.addAll(familyMembers.users)
             users.addAll(usersInFamily)
@@ -68,7 +73,10 @@ class FamilyEditPresenter(
     }
 
     fun onFamilyDeleteRequested() {
-        //TODO: Добавить удаление семьи
+        val familyToDelete = family?.copy()
+        familyToDelete?.let {
+            deleteFamilyUseCase.execute(familyToDelete, Unit)
+        }
         viewState.saveFinish()
     }
 

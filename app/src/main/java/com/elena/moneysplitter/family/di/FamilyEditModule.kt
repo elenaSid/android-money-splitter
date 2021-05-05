@@ -1,9 +1,11 @@
 package com.elena.moneysplitter.family.di
 
 import com.elena.domain.family.FamilyRepository
+import com.elena.domain.family.interaction.DeleteFamilyUseCase
 import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserRepository
+import com.elena.domain.user.interaction.DeleteUserUseCase
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
 import com.elena.moneysplitter.family.mvp.FamilyEditPresenter
 import dagger.Module
@@ -24,8 +26,9 @@ class FamilyEditModule {
 
     @Provides
     @FamilyEditScope
-    fun provideGetUsersWithoutFamilyUseCase(userRepository: UserRepository) =
-            GetUsersWithoutFamilyUseCase(userRepository)
+    fun provideGetUsersWithoutFamilyUseCase(
+            userRepository: UserRepository
+    ) = GetUsersWithoutFamilyUseCase(userRepository)
 
     @Provides
     @FamilyEditScope
@@ -36,13 +39,21 @@ class FamilyEditModule {
 
     @Provides
     @FamilyEditScope
+    fun provideDeleteFamilyUseCase(
+            familyRepository: FamilyRepository
+    ) = DeleteFamilyUseCase(familyRepository)
+
+    @Provides
+    @FamilyEditScope
     fun provideFamilyEditPresenter(
             getUsersWithoutFamilyUseCase: GetUsersWithoutFamilyUseCase,
             getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
+            deleteFamilyUseCase: DeleteFamilyUseCase,
             saveFamilyUseCase: SaveFamilyUseCase
     ) = FamilyEditPresenter(
             getUsersWithoutFamilyUseCase,
             getFamilyWithMembersUseCase,
+            deleteFamilyUseCase,
             saveFamilyUseCase
     )
 }
