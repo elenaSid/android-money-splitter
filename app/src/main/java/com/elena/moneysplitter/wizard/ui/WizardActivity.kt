@@ -36,7 +36,7 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
         binding = DataBindingUtil.setContentView(this, R.layout.ac_wizard)
         lifecycle.addObserver(navigationLifecycleObserver)
 
-        binding.fabAdd.setOnClickListener {}
+        binding.fabAdd.setOnClickListener { presenter.onAddNewInstanceRequested() }
         binding.btnNext.setOnClickListener { presenter.onNextStepRequested() }
         binding.btnBack.setOnClickListener { presenter.onPreviousStepRequested() }
     }

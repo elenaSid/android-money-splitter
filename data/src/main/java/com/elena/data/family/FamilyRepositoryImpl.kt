@@ -6,8 +6,6 @@ import com.elena.data.common.TwoWayDataMapper
 
 /**
  * @author elena
- *         Date: 12/01/2019
- *         Time: 19:17
  */
 class FamilyRepositoryImpl(private val familyDao: FamilyDao,
                            private val mapper: TwoWayDataMapper<FamilyDbEntity, FamilyEntity>) : FamilyRepository {
@@ -26,5 +24,9 @@ class FamilyRepositoryImpl(private val familyDao: FamilyDao,
 
     override fun get(id: Int): FamilyEntity {
         return mapper.map(familyDao.get(id))
+    }
+
+    override fun delete(family: FamilyEntity) {
+        familyDao.delete(mapper.map2(family))
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.elena.moneysplitter.extras.InterceptTouchLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llParent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/tvFamily"
+        style="@style/MoneySplitter.Text_Medium_18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        tools:text="Smith's:"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFamilyMembers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:overScrollMode="never"/>
+</com.elena.moneysplitter.extras.InterceptTouchLinearLayout>

@@ -6,17 +6,26 @@ import com.elena.data.common.TwoWayDataMapper
 
 /**
  * @author elena
- *         Date: 2019-05-04
- *         Time: 17:34
  */
-class UserRepositoryImpl(private val userDao: UserDao,
-                         private val mapper: TwoWayDataMapper<UserDbEntity, UserEntity>) : UserRepository {
+class UserRepositoryImpl(
+        private val userDao: UserDao,
+        private val mapper: TwoWayDataMapper<UserDbEntity, UserEntity>
+) : UserRepository {
+
     override fun save(user: UserEntity) {
         userDao.insertOrReplace(mapper.map2(user))
     }
 
     override fun getAll(): List<UserEntity> {
         return userDao.getAll().map { mapper.map(it) }
+    }
+
+    override fun getUsersWithFamily(familyId: Int): List<UserEntity> {
+        return userDao.getUsersWithFamily(familyId).map { mapper.map(it) }
+    }
+
+    override fun getUsersWithoutFamily(): List<UserEntity> {
+        return userDao.getUsersWithoutFamily().map { mapper.map(it) }
     }
 
     override fun get(id: Int): UserEntity {

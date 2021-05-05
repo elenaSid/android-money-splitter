@@ -16,6 +16,11 @@
     <string name="users_add">Add</string>
     <!-- Wizard Users end-->
 
+    <!-- Wizard Families start-->
+    <string name="families_add_new">Create groups or families:</string>
+    <!-- Wizard Families end-->
+
+
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
     <string name="navigation_menu_items">Items</string>
@@ -40,7 +45,13 @@
     <!-- Family Add Screen start-->
     <string name="family_add_hint">@string/user_edit_family</string>
     <string name="family_add_title">Add new family</string>
+    <string name="family_edit_title">Edit family</string>
+    <string name="family_add_members">Add members:</string>
+    <string name="family_name">Family or group name</string>
+    <string name="family_edit_save">Save</string>
+    <string name="family_no_available_members">No available members.\nProbably all members have been already added to families</string>
     <string name="family_not_set_error">Family name is required</string>
+    <string name="family_delete">Delete</string>
     <!-- Family Add Screen end-->
 
     <!-- Item List Screen start-->

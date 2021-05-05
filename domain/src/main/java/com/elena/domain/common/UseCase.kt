@@ -50,4 +50,10 @@ abstract class UseCase<P, R> {
      */
     @Throws(DomainException::class)
     protected abstract fun runUseCase(param: P): R
+
+    /**
+     * Inner method for using UseCase inside other UseCases
+     */
+    @Throws(DomainException::class)
+    fun use(param: P): R? = runUseCase(param)
 }

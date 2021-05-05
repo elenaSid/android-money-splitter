@@ -1,9 +1,6 @@
 package com.elena.data.family
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 /**
  * @author elena
@@ -22,4 +19,7 @@ interface FamilyDao {
 
     @Query("SELECT * FROM family ORDER BY id DESC LIMIT 1")
     fun getLast(): FamilyDbEntity
+
+    @Delete
+    fun delete(family: FamilyDbEntity)
 }

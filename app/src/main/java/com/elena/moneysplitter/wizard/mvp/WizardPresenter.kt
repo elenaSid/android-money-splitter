@@ -47,6 +47,12 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
         }
     }
 
+    fun onAddNewInstanceRequested() {
+        if (currentStep == WizardStep.FAMILIES) {
+            router.navigateTo(WizardNavigationScreen.familyEdit())
+        }
+    }
+
     /**
      * Устанавливает следующий шаг онбординга
      */

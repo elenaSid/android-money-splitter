@@ -43,11 +43,6 @@ class UserEditPresenter(private val getUserUseCase: GetUserUseCase,
     }
 
     fun onFamilyListClicked() {
-        val disposable = getFamiliesUseCase.execute(Unit, ArrayList())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ viewState.showFamilies(it) }, { it.printStackTrace() })
-        compositeDisposable.add(disposable)
     }
 
     fun onFamilyAdded(familyName: String) {
