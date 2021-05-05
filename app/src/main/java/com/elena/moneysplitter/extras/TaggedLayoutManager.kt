@@ -24,7 +24,7 @@ class TaggedLayoutManager : RecyclerView.LayoutManager() {
     }
 
     override fun canScrollVertically(): Boolean {
-        return false
+        return true
     }
 
     override fun isAutoMeasureEnabled(): Boolean {
