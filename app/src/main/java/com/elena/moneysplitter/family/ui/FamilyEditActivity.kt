@@ -90,7 +90,9 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
 
     override fun setFamilyName(familyName: String?) {
         binding.edtFamilyName.setText(familyName)
-        binding.edtFamilyName.requestFocus()
+        if (familyName == null) {
+            binding.edtFamilyName.requestFocus()
+        }
         binding.edtFamilyName.addTextChangedListener(textWatcher)
     }
 

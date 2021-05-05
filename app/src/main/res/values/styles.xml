@@ -36,6 +36,11 @@
         <item name="titleTextColor">@color/black_87</item>
         <item name="navigationIcon">@drawable/ic_close</item>
     </style>
+
+    <style name="MoneySplitter.ThemeOverlay_TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
     <!-- Themes -->
 
     <!-- Widgets -->
@@ -91,6 +96,7 @@
         <item name="android:textColorHint">@color/black_60</item>
         <item name="hintTextColor">@color/colorAccent</item>
         <item name="boxStrokeColor">@color/text_input_box</item>
+        <item name="materialThemeOverlay">@style/MoneySplitter.ThemeOverlay_TextInputEditText</item>
     </style>
 
     <style name="MoneySplitter.TextInputEditText" parent="android:Widget">
