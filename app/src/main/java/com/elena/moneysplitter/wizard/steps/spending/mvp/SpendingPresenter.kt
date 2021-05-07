@@ -1,8 +1,7 @@
-package com.elena.moneysplitter.wizard.steps.spendings.mvp
+package com.elena.moneysplitter.wizard.steps.spending.mvp
 
 import com.elena.domain.item.ItemEntity
 import com.elena.domain.item.interaction.GetAllItemsUseCase
-import com.elena.moneysplitter.navigation.WizardNavigationScreen
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 

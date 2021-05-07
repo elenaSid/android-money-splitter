@@ -1,8 +1,8 @@
-package com.elena.moneysplitter.wizard.steps.spendings.di
+package com.elena.moneysplitter.wizard.steps.spending.di
 
 import com.elena.domain.item.ItemRepository
 import com.elena.domain.item.interaction.GetAllItemsUseCase
-import com.elena.moneysplitter.wizard.steps.spendings.mvp.SpendingPresenter
+import com.elena.moneysplitter.wizard.steps.spending.mvp.SpendingPresenter
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides

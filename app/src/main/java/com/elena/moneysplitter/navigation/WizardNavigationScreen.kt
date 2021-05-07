@@ -3,7 +3,7 @@ package com.elena.moneysplitter.navigation
 import android.content.Intent
 import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
-import com.elena.moneysplitter.wizard.steps.spendings.ui.SpendingFragment
+import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen

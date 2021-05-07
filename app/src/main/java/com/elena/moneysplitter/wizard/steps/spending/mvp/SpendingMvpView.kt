@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.wizard.steps.spendings.mvp
+package com.elena.moneysplitter.wizard.steps.spending.mvp
 
 import com.elena.domain.item.ItemEntity
 import moxy.MvpView

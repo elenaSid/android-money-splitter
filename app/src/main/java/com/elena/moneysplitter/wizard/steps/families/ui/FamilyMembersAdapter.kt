@@ -20,7 +20,7 @@ class FamilyMembersAdapter(
     var usersInFamily = emptyList<UserEntity>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_family_member_item, viewGroup, false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_user_item, viewGroup, false)
         return object : RecyclerView.ViewHolder(view) {}
     }
 

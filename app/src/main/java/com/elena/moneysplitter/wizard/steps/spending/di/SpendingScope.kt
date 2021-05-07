@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.wizard.steps.spendings.di
+package com.elena.moneysplitter.wizard.steps.spending.di
 
 import javax.inject.Scope
 

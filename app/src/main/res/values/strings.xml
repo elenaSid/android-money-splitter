@@ -57,6 +57,10 @@
     <string name="family_delete">Delete</string>
     <!-- Family Add Screen end-->
 
+    <!-- Spending Add Screen start-->
+    <string name="spending_everyone">Everyone</string>
+    <!-- Spending Add Screen end-->
+
     <!-- Item List Screen start-->
     <string name="items_title">Items</string>
     <string name="items_item">Item</string>

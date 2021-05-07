@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.wizard.steps.spendings.ui
+package com.elena.moneysplitter.wizard.steps.spending.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import com.elena.domain.item.ItemEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.SpendingFragmentBinding
-import com.elena.moneysplitter.wizard.steps.spendings.mvp.SpendingMvpView
-import com.elena.moneysplitter.wizard.steps.spendings.mvp.SpendingPresenter
+import com.elena.moneysplitter.wizard.steps.spending.mvp.SpendingMvpView
+import com.elena.moneysplitter.wizard.steps.spending.mvp.SpendingPresenter
 import dagger.android.support.AndroidSupportInjection
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter

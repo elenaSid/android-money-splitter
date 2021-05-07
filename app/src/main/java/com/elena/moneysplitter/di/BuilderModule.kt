@@ -17,9 +17,9 @@ import com.elena.moneysplitter.wizard.di.WizardScope
 import com.elena.moneysplitter.wizard.steps.families.di.FamiliesModule
 import com.elena.moneysplitter.wizard.steps.families.di.FamiliesScope
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
-import com.elena.moneysplitter.wizard.steps.spendings.di.SpendingModule
-import com.elena.moneysplitter.wizard.steps.spendings.di.SpendingScope
-import com.elena.moneysplitter.wizard.steps.spendings.ui.SpendingFragment
+import com.elena.moneysplitter.wizard.steps.spending.di.SpendingModule
+import com.elena.moneysplitter.wizard.steps.spending.di.SpendingScope
+import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.users.di.UsersModule
 import com.elena.moneysplitter.wizard.steps.users.di.UsersScope
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
