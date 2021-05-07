@@ -59,6 +59,14 @@
 
     <!-- Spending Add Screen start-->
     <string name="spending_everyone">Everyone</string>
+    <string name="spending_edit_add">Add spending</string>
+    <string name="spending_edit_edit">Edit spending</string>
+    <string name="spending_edit_paid_by">Paid by:</string>
+    <string name="spending_edit_consumed_by">Consumed by:</string>
+    <string name="spending_edit_item_name">Name</string>
+    <string name="spending_edit_price">Price</string>
+    <string name="spending_edit_save">@string/family_edit_save</string>
+    <string name="spending_edit_delete">@string/family_delete</string>
     <!-- Spending Add Screen end-->
 
     <!-- Item List Screen start-->

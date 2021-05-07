@@ -26,7 +26,14 @@
             android:configChanges="orientation"
             android:label="@string/family_add_title"
             android:screenOrientation="portrait"
-            android:theme="@style/MoneySplitter.Theme_EditFamily"
+            android:theme="@style/MoneySplitter.Theme_Edit"
+            android:parentActivityName=".wizard.ui.WizardActivity"/>
+
+        <activity android:name=".spending.ui.SpendingEditActivity"
+            android:configChanges="orientation"
+            android:label="@string/spending_edit_add"
+            android:screenOrientation="portrait"
+            android:theme="@style/MoneySplitter.Theme_Edit"
             android:parentActivityName=".wizard.ui.WizardActivity"/>
 
         <activity
@@ -41,7 +48,7 @@
                   android:configChanges="orientation"
                   android:label="@string/family_add_title"
                   android:screenOrientation="portrait"
-                  android:theme="@style/MoneySplitter.Theme_EditFamily"
+                  android:theme="@style/MoneySplitter.Theme_Edit"
                   android:parentActivityName=".users.edit.ui.EditUserActivity"/>
 
     </application>

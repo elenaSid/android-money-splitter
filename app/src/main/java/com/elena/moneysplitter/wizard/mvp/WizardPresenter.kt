@@ -50,6 +50,8 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
     fun onAddNewInstanceRequested() {
         if (currentStep == WizardStep.FAMILIES) {
             router.navigateTo(WizardNavigationScreen.familyEdit())
+        } else if (currentStep == WizardStep.SPENDING) {
+            router.navigateTo(WizardNavigationScreen.spendingEdit())
         }
     }
 

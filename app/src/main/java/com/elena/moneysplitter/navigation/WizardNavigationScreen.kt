@@ -2,6 +2,7 @@ package com.elena.moneysplitter.navigation
 
 import android.content.Intent
 import com.elena.moneysplitter.family.ui.FamilyEditActivity
+import com.elena.moneysplitter.spending.ui.SpendingEditActivity
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
@@ -38,4 +39,15 @@ object WizardNavigationScreen {
      * Формирует экземпляр шага визарда - добавление трат
      */
     fun spendingStep() = FragmentScreen { SpendingFragment() }
+
+    /**
+     * Формирует экземплар экрана редактирования трат пользователей
+     */
+    fun spendingEdit(itemId: Int? = null) = ActivityScreen {
+        if (itemId == null) {
+            Intent(it, SpendingEditActivity::class.java)
+        } else {
+            SpendingEditActivity.getInstance(it, itemId)
+        }
+    }
 }

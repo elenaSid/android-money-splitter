@@ -11,7 +11,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
-import com.elena.moneysplitter.databinding.FamilyEditFragmentBinding
+import com.elena.moneysplitter.databinding.FamilyEditActivityBinding
 import com.elena.moneysplitter.extras.SpaceDecoration
 import com.elena.moneysplitter.extras.TaggedLayoutManager
 import com.elena.moneysplitter.extras.toPx
@@ -33,7 +33,7 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
     @Inject
     @InjectPresenter
     lateinit var presenter: FamilyEditPresenter
-    lateinit var binding: FamilyEditFragmentBinding
+    lateinit var binding: FamilyEditActivityBinding
 
     @ProvidePresenter
     fun provideFamilyEditPresenter() = presenter
