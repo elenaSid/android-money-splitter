@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.WizardActivityBinding
+import com.elena.moneysplitter.extras.KeyboardManager
 import com.elena.moneysplitter.navigation.NavigationLifecycleObserver
 import com.elena.moneysplitter.wizard.mvp.WizardMvpView
 import com.elena.moneysplitter.wizard.mvp.WizardPresenter
@@ -37,11 +38,18 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
         lifecycle.addObserver(navigationLifecycleObserver)
 
         binding.fabAdd.setOnClickListener { presenter.onAddNewInstanceRequested() }
-        binding.btnNext.setOnClickListener { presenter.onNextStepRequested() }
-        binding.btnBack.setOnClickListener { presenter.onPreviousStepRequested() }
+        binding.btnNext.setOnClickListener {
+            presenter.onNextStepRequested()
+            KeyboardManager.hide(this, binding.root.windowToken)
+        }
+        binding.btnBack.setOnClickListener {
+            presenter.onPreviousStepRequested()
+            KeyboardManager.hide(this, binding.root.windowToken)
+        }
     }
 
     override fun onBackPressed() {
+        KeyboardManager.hide(this, binding.root.windowToken)
         presenter.onPreviousStepRequested()
     }
 
