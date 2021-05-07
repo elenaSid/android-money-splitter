@@ -83,7 +83,7 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
     private fun getStepFragmentScreen(wizardStep: WizardStep) = when (wizardStep) {
         WizardStep.USERS -> WizardNavigationScreen.usersStep()
         WizardStep.FAMILIES -> WizardNavigationScreen.familiesStep()
-        WizardStep.SPENDING -> WizardNavigationScreen.familiesStep()
+        WizardStep.SPENDING -> WizardNavigationScreen.spendingStep()
         WizardStep.SUMMARY -> WizardNavigationScreen.familiesStep()
         WizardStep.DEBTS -> WizardNavigationScreen.familiesStep()
     }

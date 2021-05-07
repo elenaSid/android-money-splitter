@@ -7,11 +7,13 @@ import com.elena.data.common.TwoWayDataMapper
 /**
  * @author elena
  */
-class FamilyRepositoryImpl(private val familyDao: FamilyDao,
-                           private val mapper: TwoWayDataMapper<FamilyDbEntity, FamilyEntity>) : FamilyRepository {
+class FamilyRepositoryImpl(
+        private val familyDao: FamilyDao,
+        private val mapper: TwoWayDataMapper<FamilyDbEntity, FamilyEntity>
+) : FamilyRepository {
+
     override fun getAll(): List<FamilyEntity> {
-        return familyDao.getAll()
-                .map { mapper.map(it) }
+        return familyDao.getAll().map { mapper.map(it) }
     }
 
     override fun save(family: FamilyEntity) {

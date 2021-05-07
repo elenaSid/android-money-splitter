@@ -9,6 +9,7 @@
         <item name="android:popupWindowStyle">@style/MoneySplitter.PopupMenu</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="MoneySplitter.Theme_Root" parent="MoneySplitter.Theme">
@@ -30,6 +31,7 @@
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/MoneySplitter.ActionBar.Close</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="MoneySplitter.ActionBar.Close" parent="@style/Widget.MaterialComponents.Toolbar">

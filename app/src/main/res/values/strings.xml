@@ -20,6 +20,9 @@
     <string name="families_add_new">Create groups or families:</string>
     <!-- Wizard Families end-->
 
+    <!-- Wizard Spending start-->
+    <string name="spending_add">Add spending:</string>
+    <!-- Wizard Spending end-->
 
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
