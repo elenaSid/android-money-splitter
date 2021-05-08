@@ -1,4 +1,4 @@
-package com.elena.moneysplitter.wizard.steps.spending.ui
+package com.elena.moneysplitter.spending.ui
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -52,7 +52,7 @@ class SpendingUserAdapter(
             userChip.setTextColor(if (isEveryoneSelected) Color.WHITE else Color.BLACK)
             return
         }
-        val user = users[position]
+        val user = users[position - 1]
         val isSelected = selectedUsers.contains(user)
         userChip.text = user.name
         userChip.setOnClickListener { listener?.onUserClicked(listOf(user)) }

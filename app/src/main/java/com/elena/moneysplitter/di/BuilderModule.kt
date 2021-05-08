@@ -6,6 +6,9 @@ import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.root.di.RootModule
 import com.elena.moneysplitter.root.di.RootScope
 import com.elena.moneysplitter.root.ui.RootActivity
+import com.elena.moneysplitter.spending.di.SpendingEditModule
+import com.elena.moneysplitter.spending.di.SpendingEditScope
+import com.elena.moneysplitter.spending.ui.SpendingEditActivity
 import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.edit.di.UserEditModule
 import com.elena.moneysplitter.users.edit.di.UserEditScope
@@ -65,5 +68,9 @@ abstract class BuilderModule {
     @SpendingScope
     @ContributesAndroidInjector(modules = [SpendingModule::class])
     abstract fun bindSpendingFragment(): SpendingFragment
+
+    @SpendingEditScope
+    @ContributesAndroidInjector(modules = [SpendingEditModule::class])
+    abstract fun bindSpendingEditActivity(): SpendingEditActivity
 
 }

@@ -35,9 +35,6 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
     lateinit var presenter: FamilyEditPresenter
     lateinit var binding: FamilyEditActivityBinding
 
-    @ProvidePresenter
-    fun provideFamilyEditPresenter() = presenter
-
     private val adapter = FamilyMembersAdapter(true) { presenter.onUserSelected(it) }
     private val textWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -48,6 +45,9 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
             presenter.onFamilyNameChanged(s.trimmedContent())
         }
     }
+
+    @ProvidePresenter
+    fun provideFamilyEditPresenter() = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
