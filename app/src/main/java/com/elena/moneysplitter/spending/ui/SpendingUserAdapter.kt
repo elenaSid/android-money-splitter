@@ -15,8 +15,8 @@ class SpendingUserAdapter(
         private val listener: UserListener? = null
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var users = emptyList<UserEntity>()
-    var selectedUsers = emptyList<UserEntity>()
+    private var users = emptyList<UserEntity>()
+    private var selectedUsers = emptyList<UserEntity>()
 
     enum class ViewType(val value: Int) {
         EVERYONE(0),
@@ -57,10 +57,13 @@ class SpendingUserAdapter(
         userChip.text = user.name
         userChip.setOnClickListener { listener?.onUserClicked(listOf(user)) }
         userChip.setChipBackgroundColorResource(
-                if (isSelected && !isEveryoneSelected) R.color.colorAccent else R.color.alto_bg
+                when {
+                    isEveryoneSelected -> R.color.picton_blue_60
+                    isSelected -> R.color.colorAccent
+                    else -> R.color.alto_bg
+                }
         )
         userChip.setTextColor(if (isSelected && !isEveryoneSelected) Color.WHITE else Color.BLACK)
-        userChip.isEnabled = !isEveryoneSelected
     }
 
     fun update(
