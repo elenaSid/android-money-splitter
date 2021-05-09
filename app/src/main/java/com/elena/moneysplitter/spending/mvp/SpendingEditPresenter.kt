@@ -45,6 +45,7 @@ class SpendingEditPresenter(
         viewState.setItemPrice(price)
         updatePayers(true)
         updateConsumers(true)
+        updateSaveState()
     }
 
     fun onItemIdParsed(itemId: Int) {

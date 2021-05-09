@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.wizard.steps.spending.mvp
 
 import com.elena.domain.item.ItemEntity
+import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingData
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
@@ -10,7 +11,7 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface SpendingMvpView: MvpView {
 
     @AddToEndSingle
-    fun updateItems(items: List<ItemEntity>)
+    fun updateSpendingList(spendingList: List<SpendingData>)
 
     @AddToEndSingle
     fun showEmptyState()

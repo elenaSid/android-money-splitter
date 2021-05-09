@@ -22,6 +22,8 @@
 
     <!-- Wizard Spending start-->
     <string name="spending_add">Add spending:</string>
+    <string name="spending_payers">Payers:</string>
+    <string name="spending_consumers">Consumers:</string>
     <!-- Wizard Spending end-->
 
     <!-- Navigation Menu start-->

@@ -100,11 +100,7 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
 
     override fun setItemPrice(itemPrice: Double) {
         binding.edtItemPrice.removeTextChangedListener(textWatcherPrice)
-
         binding.edtItemPrice.setText(if (itemPrice == 0.0) null else itemPrice.toString())
-        if (itemPrice == 0.0) {
-            binding.edtItemPrice.requestFocus()
-        }
         binding.edtItemPrice.addTextChangedListener(textWatcherPrice)
     }
 
