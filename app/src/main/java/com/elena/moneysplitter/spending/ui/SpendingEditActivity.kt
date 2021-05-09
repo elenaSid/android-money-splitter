@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
@@ -16,8 +18,6 @@ import dagger.android.AndroidInjection
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import java.text.NumberFormat
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -30,7 +30,6 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
     lateinit var presenter: SpendingEditPresenter
     lateinit var binding: SpendingEditActivityBinding
 
-    private val currencyFormat = NumberFormat.getCurrencyInstance()
     private val adapterPayers = SpendingUserAdapter { presenter.onPayersSelected(it) }
     private val adapterConsumers = SpendingUserAdapter { presenter.onConsumersSelected(it) }
     private val textWatcherItem: TextWatcher = object : TextWatcher {
@@ -48,7 +47,7 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
         override fun afterTextChanged(s: Editable) {
-            val price = s.trimmedNumberContent().toFloat()
+            val price = s.trimmedNumberContent().toDouble()
             presenter.onItemPriceChanged(price)
         }
     }
@@ -61,9 +60,33 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.ac_edit_spending)
         setToolbar()
-        currencyFormat.currency = Currency.getInstance(Locale.getDefault())
         initUsersLists()
         binding.btnSave.setOnClickListener { presenter.onItemSaveRequested() }
+        parseItemId()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if (intent != null && intent.hasExtra(PARAM_ITEM_ID)) {
+            menu?.let {
+                val item = menu.add(Menu.NONE, MENU_DELETE_ID, Menu.NONE, R.string.spending_edit_delete)
+                item.setIcon(R.drawable.ic_delete)
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            }
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == MENU_DELETE_ID) {
+            presenter.onItemDeleteRequested()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.edtItemPrice.removeTextChangedListener(textWatcherPrice)
+        binding.edtItemName.removeTextChangedListener(textWatcherItem)
     }
 
     override fun setItemName(itemName: String?) {
@@ -75,12 +98,11 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
         binding.edtItemName.addTextChangedListener(textWatcherItem)
     }
 
-    override fun setItemPrice(itemPrice: Float) {
+    override fun setItemPrice(itemPrice: Double) {
         binding.edtItemPrice.removeTextChangedListener(textWatcherPrice)
 
-        //TODO: Проверить денежный формат
-        binding.edtItemPrice.setText(if (itemPrice == 0f) null else currencyFormat.format(itemPrice))
-        if (itemPrice == 0f) {
+        binding.edtItemPrice.setText(if (itemPrice == 0.0) null else itemPrice.toString())
+        if (itemPrice == 0.0) {
             binding.edtItemPrice.requestFocus()
         }
         binding.edtItemPrice.addTextChangedListener(textWatcherPrice)
@@ -134,7 +156,6 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
             }
         }
     }
-
 
     companion object {
         private const val MENU_DELETE_ID = 1

@@ -14,7 +14,7 @@ interface SpendingEditMvpView: MvpView {
     fun setItemName(itemName: String?)
 
     @AddToEndSingle
-    fun setItemPrice(itemPrice: Float)
+    fun setItemPrice(itemPrice: Double)
 
     @AddToEndSingle
     fun updatePayerUsers(users: List<UserEntity>, selectedUsers: List<UserEntity>)

@@ -1,10 +1,6 @@
 package com.elena.data.item
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-
+import androidx.room.*
 
 /**
  * @author elena
@@ -16,4 +12,10 @@ interface ItemDao {
 
     @Query("SELECT * FROM item")
     fun getAll(): List<ItemDbEntity>
+
+    @Query("SELECT * FROM item WHERE id = :id")
+    fun get(id: Int): ItemDbEntity
+
+    @Delete
+    fun delete(item: ItemDbEntity)
 }

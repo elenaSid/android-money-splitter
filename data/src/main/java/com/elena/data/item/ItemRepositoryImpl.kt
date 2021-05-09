@@ -15,4 +15,16 @@ class ItemRepositoryImpl(
     override fun getAll(): List<ItemEntity> {
         return itemDao.getAll().map { mapper.map(it) }
     }
+
+    override fun save(item: ItemEntity) {
+        itemDao.insertOrReplace(mapper.map2(item))
+    }
+
+    override fun get(id: Int): ItemEntity {
+        return mapper.map(itemDao.get(id))
+    }
+
+    override fun delete(item: ItemEntity) {
+        itemDao.delete(mapper.map2(item))
+    }
 }

@@ -1,8 +1,12 @@
 package com.elena.moneysplitter.spending.mvp
 
 import com.elena.domain.item.ItemEntity
+import com.elena.domain.item.interaction.DeleteItemUseCase
+import com.elena.domain.item.interaction.GetItemUseCase
+import com.elena.domain.item.interaction.SaveItemUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetAllUsersUseCase
+import com.elena.domain.user.interaction.GetUsersUseCase
 import moxy.MvpPresenter
 import java.util.ArrayList
 
@@ -10,13 +14,17 @@ import java.util.ArrayList
  * @author elena
  */
 class SpendingEditPresenter(
-        private val getAllUsersUseCase: GetAllUsersUseCase
+        private val getAllUsersUseCase: GetAllUsersUseCase,
+        private val deleteItemUseCase: DeleteItemUseCase,
+        private val saveItemUseCase: SaveItemUseCase,
+        private val getUsersUseCase: GetUsersUseCase,
+        private val getItemUseCase: GetItemUseCase
 ) : MvpPresenter<SpendingEditMvpView>() {
 
     private var itemId: Int? = null
     private var item: ItemEntity? = null
     private var itemName: String? = null
-    private var price: Float = 0f
+    private var price: Double = 0.0
     private val usersPayers = mutableListOf<UserEntity>()
     private val usersConsumers = mutableListOf<UserEntity>()
     private var users = mutableListOf<UserEntity>()
@@ -26,14 +34,15 @@ class SpendingEditPresenter(
         users.addAll(getAllUsersUseCase.execute(Unit, emptyList()))
 
         itemId?.let {
-            /*val item = getItemUseCase.execute(it)
+            val item = getItemUseCase.execute(it)
             itemName = item.name
             price = item.price
-            usersConsumers.addAll()
-            usersPayers.addAll()
-            this.item = item*/
+            usersConsumers.addAll(getUsersUseCase.execute(item.usedByUserIds, emptyList()))
+            usersPayers.addAll(getUsersUseCase.execute(item.payedByUserIds, emptyList()))
+            this.item = item
         }
         viewState.setItemName(itemName)
+        viewState.setItemPrice(price)
         updatePayers(true)
         updateConsumers(true)
     }
@@ -50,11 +59,10 @@ class SpendingEditPresenter(
         updateSaveState()
     }
 
-    fun onItemPriceChanged(price: Float) {
-        if (price != 0f) {
+    fun onItemPriceChanged(price: Double) {
+        if (price != 0.0) {
             this.price = price
         }
-        viewState.setItemPrice(price)
         updateSaveState()
     }
 
@@ -79,15 +87,17 @@ class SpendingEditPresenter(
     }
 
     fun onItemSaveRequested() {
-        //saveItemUseCase.execute(SaveItemUseCase.Param(itemId, itemName!!, price, usersPayers, usersConsumers))
+        saveItemUseCase.execute(
+                SaveItemUseCase.Param(itemId, itemName!!, price, usersPayers, usersConsumers)
+        )
         viewState.saveFinish()
     }
 
     fun onItemDeleteRequested() {
-        /*val itemToDelete = item?.copy()
+        val itemToDelete = item?.copy()
         itemToDelete?.let {
             deleteItemUseCase.execute(itemToDelete, Unit)
-        }*/
+        }
         viewState.saveFinish()
     }
 
@@ -108,7 +118,9 @@ class SpendingEditPresenter(
     }
 
     private fun updateSaveState() {
-        //TODO: проверять чтобы был хотя бы один кто платит и хотя бы один кто потребляет, было название и цена
-        //viewState.manageSaveBtnAvailability(itemName != null)
+        viewState.manageSaveBtnAvailability(
+                itemName != null && price > 0.0 &&
+                        usersConsumers.isNotEmpty() && usersPayers.isNotEmpty()
+        )
     }
 }
