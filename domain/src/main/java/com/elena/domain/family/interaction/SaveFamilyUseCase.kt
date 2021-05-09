@@ -17,6 +17,8 @@ class SaveFamilyUseCase(
     override fun runUseCase(param: Param) {
         if (param.familyId == null) {
             familyRepository.save(FamilyEntity(name = param.familyName))
+        } else {
+            familyRepository.save(FamilyEntity(id = param.familyId, name = param.familyName))
         }
         val familyId = param.familyId ?: familyRepository.getLast().id
         for (user in param.users) {

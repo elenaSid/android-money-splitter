@@ -9,6 +9,7 @@
         <item name="android:popupWindowStyle">@style/MoneySplitter.PopupMenu</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="MoneySplitter.Theme_Root" parent="MoneySplitter.Theme">
@@ -25,11 +26,12 @@
         <item name="colorPrimary">@color/colorAccent</item>
     </style>
 
-    <style name="MoneySplitter.Theme_EditFamily" parent="Theme.MaterialComponents.Light">
+    <style name="MoneySplitter.Theme_Edit" parent="Theme.MaterialComponents.Light">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/MoneySplitter.ActionBar.Close</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="MoneySplitter.ActionBar.Close" parent="@style/Widget.MaterialComponents.Toolbar">
@@ -107,6 +109,32 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:textAppearance">@style/MoneySplitter.Text_Normal_16</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
+
+    <style name="MoneySplitter.TextInputLayout_Price"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextAppearance">@style/MoneySplitter.Text_Normal_12</item>
+        <item name="android:textColorHint">@color/black_60</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/text_input_box</item>
+        <item name="materialThemeOverlay">@style/MoneySplitter.ThemeOverlay_TextInputEditText</item>
+        <item name="android:textAppearance">@style/MoneySplitter.Text_Normal_16</item>
+        <item name="suffixTextAppearance">@style/MoneySplitter.Text_Normal_16</item>
+        <item name="endIconDrawable">@drawable/ic_money</item>
+        <item name="endIconMode">custom</item>
+    </style>
+
+    <style name="MoneySplitter.TextInputEditText_Price" parent="android:Widget">
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minHeight">58dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:textAppearance">@style/MoneySplitter.Text_Normal_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:maxLength">10</item>
         <item name="android:imeOptions">actionDone</item>
     </style>
 
@@ -198,6 +226,12 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="MoneySplitter.Text_Medium_16" parent="android:TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="MoneySplitter.Text_Normal_16" parent="android:TextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
@@ -208,6 +242,12 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="MoneySplitter.Text_Normal_14" parent="android:TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="MoneySplitter.Text_Normal_12" parent="android:TextAppearance">

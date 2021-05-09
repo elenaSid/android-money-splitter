@@ -9,8 +9,11 @@ import com.elena.data.PreferencesStorage
 import com.elena.data.db.RoomDb
 import com.elena.data.family.FamilyDbMapper
 import com.elena.data.family.FamilyRepositoryImpl
+import com.elena.data.item.ItemDbMapper
+import com.elena.data.item.ItemRepositoryImpl
 import com.elena.data.user.UserDbMapper
 import com.elena.data.user.UserRepositoryImpl
+import com.elena.domain.item.ItemRepository
 import dagger.Module
 import dagger.Provides
 
@@ -45,5 +48,11 @@ class DataModule {
     @PerApplication
     fun provideUserRepository(db: RoomDb): UserRepository {
         return UserRepositoryImpl(db.userDao(), UserDbMapper())
+    }
+
+    @Provides
+    @PerApplication
+    fun provideItemRepository(db: RoomDb): ItemRepository {
+        return ItemRepositoryImpl(db.itemDao(), ItemDbMapper())
     }
 }

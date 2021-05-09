@@ -1,7 +1,7 @@
 package com.elena.domain.item
 
 data class ItemEntity(
-        val id: Int,
+        val id: Int = 0,
         val name: String,
         val price: Double,
 

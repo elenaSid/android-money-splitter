@@ -2,6 +2,7 @@ package com.elena.moneysplitter.di
 
 import android.app.Application
 import com.elena.domain.family.FamilyRepository
+import com.elena.domain.item.ItemRepository
 import com.elena.domain.user.UserRepository
 import com.elena.moneysplitter.MoneySplitterApp
 import dagger.BindsInstance
@@ -26,6 +27,8 @@ interface AppComponent {
 
     fun familyRepository(): FamilyRepository
     fun userRepository(): UserRepository
+    fun itemRepository(): ItemRepository
+
     fun inject(app: MoneySplitterApp)
 
     @Component.Builder

@@ -50,6 +50,8 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
     fun onAddNewInstanceRequested() {
         if (currentStep == WizardStep.FAMILIES) {
             router.navigateTo(WizardNavigationScreen.familyEdit())
+        } else if (currentStep == WizardStep.SPENDING) {
+            router.navigateTo(WizardNavigationScreen.spendingEdit())
         }
     }
 
@@ -83,7 +85,7 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
     private fun getStepFragmentScreen(wizardStep: WizardStep) = when (wizardStep) {
         WizardStep.USERS -> WizardNavigationScreen.usersStep()
         WizardStep.FAMILIES -> WizardNavigationScreen.familiesStep()
-        WizardStep.SPENDING -> WizardNavigationScreen.familiesStep()
+        WizardStep.SPENDING -> WizardNavigationScreen.spendingStep()
         WizardStep.SUMMARY -> WizardNavigationScreen.familiesStep()
         WizardStep.DEBTS -> WizardNavigationScreen.familiesStep()
     }

@@ -6,6 +6,9 @@ import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.root.di.RootModule
 import com.elena.moneysplitter.root.di.RootScope
 import com.elena.moneysplitter.root.ui.RootActivity
+import com.elena.moneysplitter.spending.di.SpendingEditModule
+import com.elena.moneysplitter.spending.di.SpendingEditScope
+import com.elena.moneysplitter.spending.ui.SpendingEditActivity
 import com.elena.moneysplitter.users.edit.ui.EditUserActivity
 import com.elena.moneysplitter.users.edit.di.UserEditModule
 import com.elena.moneysplitter.users.edit.di.UserEditScope
@@ -17,6 +20,9 @@ import com.elena.moneysplitter.wizard.di.WizardScope
 import com.elena.moneysplitter.wizard.steps.families.di.FamiliesModule
 import com.elena.moneysplitter.wizard.steps.families.di.FamiliesScope
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
+import com.elena.moneysplitter.wizard.steps.spending.di.SpendingModule
+import com.elena.moneysplitter.wizard.steps.spending.di.SpendingScope
+import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.users.di.UsersModule
 import com.elena.moneysplitter.wizard.steps.users.di.UsersScope
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
@@ -58,4 +64,13 @@ abstract class BuilderModule {
     @FamilyEditScope
     @ContributesAndroidInjector(modules = [FamilyEditModule::class])
     abstract fun bindFamilyEditActivity(): FamilyEditActivity
+
+    @SpendingScope
+    @ContributesAndroidInjector(modules = [SpendingModule::class])
+    abstract fun bindSpendingFragment(): SpendingFragment
+
+    @SpendingEditScope
+    @ContributesAndroidInjector(modules = [SpendingEditModule::class])
+    abstract fun bindSpendingEditActivity(): SpendingEditActivity
+
 }

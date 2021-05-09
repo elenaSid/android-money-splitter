@@ -42,6 +42,7 @@ class FamilyEditPresenter(
             users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
             updateFamilyMembers()
         }
+        updateSaveState()
     }
 
     fun onFamilyIdParsed(familyId: Int) {

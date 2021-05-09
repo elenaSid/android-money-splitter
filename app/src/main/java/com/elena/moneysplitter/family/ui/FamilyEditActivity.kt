@@ -11,7 +11,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
-import com.elena.moneysplitter.databinding.FamilyEditFragmentBinding
+import com.elena.moneysplitter.databinding.FamilyEditActivityBinding
 import com.elena.moneysplitter.extras.SpaceDecoration
 import com.elena.moneysplitter.extras.TaggedLayoutManager
 import com.elena.moneysplitter.extras.toPx
@@ -33,10 +33,7 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
     @Inject
     @InjectPresenter
     lateinit var presenter: FamilyEditPresenter
-    lateinit var binding: FamilyEditFragmentBinding
-
-    @ProvidePresenter
-    fun provideFamilyEditPresenter() = presenter
+    lateinit var binding: FamilyEditActivityBinding
 
     private val adapter = FamilyMembersAdapter(true) { presenter.onUserSelected(it) }
     private val textWatcher: TextWatcher = object : TextWatcher {
@@ -48,6 +45,9 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
             presenter.onFamilyNameChanged(s.trimmedContent())
         }
     }
+
+    @ProvidePresenter
+    fun provideFamilyEditPresenter() = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
