@@ -1,17 +1,12 @@
 package com.elena.moneysplitter.wizard.steps.spending.ui
 
 import android.content.Context
-import android.content.res.TypedArray
-import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.Px
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.SpendingFragmentBinding
 import com.elena.moneysplitter.extras.FirstLastSpaceDecoration

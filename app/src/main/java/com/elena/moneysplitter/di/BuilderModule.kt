@@ -23,6 +23,9 @@ import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.di.SpendingModule
 import com.elena.moneysplitter.wizard.steps.spending.di.SpendingScope
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
+import com.elena.moneysplitter.wizard.steps.summary.di.SummaryModule
+import com.elena.moneysplitter.wizard.steps.summary.di.SummaryScope
+import com.elena.moneysplitter.wizard.steps.summary.ui.SummaryFragment
 import com.elena.moneysplitter.wizard.steps.users.di.UsersModule
 import com.elena.moneysplitter.wizard.steps.users.di.UsersScope
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
@@ -73,4 +76,7 @@ abstract class BuilderModule {
     @ContributesAndroidInjector(modules = [SpendingEditModule::class])
     abstract fun bindSpendingEditActivity(): SpendingEditActivity
 
+    @SummaryScope
+    @ContributesAndroidInjector(modules = [SummaryModule::class])
+    abstract fun bindSummaryFragment(): SummaryFragment
 }

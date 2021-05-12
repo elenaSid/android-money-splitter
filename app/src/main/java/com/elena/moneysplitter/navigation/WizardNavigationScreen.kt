@@ -5,7 +5,7 @@ import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.spending.ui.SpendingEditActivity
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
-import com.elena.moneysplitter.wizard.steps.summary.SummaryFragment
+import com.elena.moneysplitter.wizard.steps.summary.ui.SummaryFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
