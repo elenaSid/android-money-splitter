@@ -1,5 +1,6 @@
 package com.elena.moneysplitter.wizard.steps.summary.mvp
 
+import com.elena.domain.summary.SummaryForFamily
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 
@@ -9,5 +10,5 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface SummaryMvpView: MvpView {
 
     @AddToEndSingle
-    fun updateSummaryList()
+    fun updateSummaryList(summarySet: Set<SummaryForFamily>)
 }

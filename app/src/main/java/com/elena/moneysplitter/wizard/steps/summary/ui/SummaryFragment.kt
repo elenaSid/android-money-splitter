@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.elena.domain.summary.SummaryForFamily
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.SummaryFragmentBinding
 import com.elena.moneysplitter.wizard.steps.summary.mvp.SummaryMvpView
@@ -26,6 +28,8 @@ class SummaryFragment: MvpAppCompatFragment(), SummaryMvpView {
     lateinit var presenter: SummaryPresenter
     private lateinit var binding: SummaryFragmentBinding
 
+    private val adapter = SummaryForFamilyAdapter()
+
     @ProvidePresenter
     fun provideUsersPresenter() = presenter
 
@@ -43,7 +47,13 @@ class SummaryFragment: MvpAppCompatFragment(), SummaryMvpView {
         return binding.root
     }
 
-    override fun updateSummaryList() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.rvSummary.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvSummary.adapter = adapter
+    }
 
+    override fun updateSummaryList(summarySet: Set<SummaryForFamily>) {
+        adapter.update(summarySet)
     }
 }

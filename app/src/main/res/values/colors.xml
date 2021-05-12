@@ -34,11 +34,13 @@
     <color name="picton_blue_40">#6636A4E9</color>
 
     <color name="red_orange_text">#ff3b30</color>
+    <color name="red_orange">#33FF3B30</color>
 
     <color name="silver_chalice_counter_text">#a8a8a8</color>
     <color name="silver_tint_navigation">#a1a1a1</color>
 
     <color name="tundora_text">#4d4d4d</color>
+    <color name="turquoise_blue">#3361EDA9</color>
 
     <color name="white">#ffffff</color>
 </resources>
