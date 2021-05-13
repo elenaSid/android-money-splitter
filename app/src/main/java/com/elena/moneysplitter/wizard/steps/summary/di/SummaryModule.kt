@@ -24,7 +24,7 @@ class SummaryModule {
 
     @Provides
     @SummaryScope
-    fun provide(
+    fun provideGetSummaryForAllFamiliesUseCase(
             getSummaryForAllUsersUseCase: GetSummaryForAllUsersUseCase,
             userRepository: UserRepository,
             familyRepository: FamilyRepository

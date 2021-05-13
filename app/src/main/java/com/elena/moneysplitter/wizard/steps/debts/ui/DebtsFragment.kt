@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elena.domain.summary.OptimizedTransactionForFamily
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.DebtsFragmentBinding
@@ -44,7 +45,12 @@ class DebtsFragment: MvpAppCompatFragment(), DebtsMvpView {
         return binding.root
     }
 
-    override fun updateDebts(debts: Set<OptimizedTransactionForFamily>) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.rvDebts.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    }
 
+    override fun updateDebts(debts: Set<OptimizedTransactionForFamily>) {
+        binding.rvDebts.adapter = DebtsAdapter(debts)
     }
 }
