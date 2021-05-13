@@ -16,6 +16,7 @@ class SummaryForFamilyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     private val numberFormat = DecimalFormat("##.###")
     private var summarySet = emptySet<SummaryForFamily>()
+    private val expandedMap = mutableMapOf<Int, Boolean>()
 
     enum class ViewType {
         FAMILY,
@@ -51,6 +52,14 @@ class SummaryForFamilyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
         if (isFamily) {
             holder.itemView.findViewById<TextView>(R.id.tvFamily).text = summary.familyName
+            val isExpanded = expandedMap.getOrDefault(summary.familyId!!, false)
+            holder.itemView.findViewById<TextView>(R.id.tvFamily).setCompoundDrawablesWithIntrinsicBounds(
+                    if (isExpanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
+                    0,
+                    0,
+                    0
+            )
+            holder.itemView.setOnClickListener { manageExpandable(position, summary) }
         } else {
             holder.itemView.findViewById<TextView>(R.id.tvUser).text = summary.familyName
         }
@@ -78,6 +87,19 @@ class SummaryForFamilyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     fun update(summarySet: Set<SummaryForFamily>) {
         this.summarySet = summarySet
+        summarySet.forEach {
+            if (it.familyId != null) {
+                expandedMap[it.familyId!!] = false
+            }
+        }
         notifyDataSetChanged()
+    }
+
+    private fun manageExpandable(position: Int, summary: SummaryForFamily) {
+        val isExpanded = expandedMap[summary.familyId]
+        isExpanded?.let {
+            expandedMap.replace(summary.familyId!!, !it)
+        }
+        notifyItemChanged(position)
     }
 }
