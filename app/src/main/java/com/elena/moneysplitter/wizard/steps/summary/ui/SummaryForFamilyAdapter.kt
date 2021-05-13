@@ -1,8 +1,10 @@
 package com.elena.moneysplitter.wizard.steps.summary.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elena.domain.summary.SummaryForFamily
@@ -59,12 +61,20 @@ class SummaryForFamilyAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
                     0,
                     0
             )
+            val rvUsers = holder.itemView.findViewById<RecyclerView>(R.id.rvUsers)
+            rvUsers.adapter = SummaryForUserAdapter(summary.summaryForUsers)
+            rvUsers.visibility = if (isExpanded) View.VISIBLE else View.GONE
             holder.itemView.setOnClickListener { manageExpandable(position, summary) }
         } else {
             holder.itemView.findViewById<TextView>(R.id.tvUser).text = summary.familyName
         }
         val diff = summary.getDifference()
-        holder.itemView.setBackgroundResource(
+        val layout = if (isFamily) {
+            holder.itemView.findViewById<ConstraintLayout>(R.id.clFamily)
+        } else {
+            holder.itemView
+        }
+        layout.setBackgroundResource(
                 when {
                     diff < 0 -> R.color.red_orange
                     diff == 0.0 -> android.R.color.transparent
