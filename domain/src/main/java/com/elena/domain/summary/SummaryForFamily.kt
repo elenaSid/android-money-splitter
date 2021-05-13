@@ -5,7 +5,8 @@ data class SummaryForFamily(
         val familyName: String, // in case familyId is null we will store user.name here
 
         val paid: Double,
-        val spent: Double
+        val spent: Double,
+        val summaryForUsers: List<SummaryForUser>
 ) {
     fun getDifference() = paid - spent
 }

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clFamily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvFamily"
+            style="@style/MoneySplitter.Text_Normal_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:drawablePadding="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            app:drawableStartCompat="@drawable/ic_expand_more"
+            app:layout_constraintEnd_toStartOf="@id/verticalCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Family" />
+
+        <TextView
+            android:id="@+id/tvPaid"
+            style="@style/MoneySplitter.Text_Normal_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvFamily"
+            app:layout_constraintEnd_toStartOf="@+id/tvConsume"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/verticalCenter"
+            app:layout_constraintTop_toTopOf="@id/tvFamily"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/tvConsume"
+            style="@style/MoneySplitter.Text_Normal_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/summary_consume"
+            app:layout_constraintBottom_toBottomOf="@id/tvFamily"
+            app:layout_constraintEnd_toStartOf="@+id/tvDifference"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvPaid"
+            app:layout_constraintTop_toTopOf="@id/tvFamily"
+            tools:text="50" />
+
+        <TextView
+            android:id="@+id/tvDifference"
+            style="@style/MoneySplitter.Text_Normal_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/summary_difference"
+            app:layout_constraintBottom_toBottomOf="@id/tvFamily"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvConsume"
+            app:layout_constraintTop_toTopOf="@id/tvFamily"
+            tools:text="50" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/black_60"
+            app:layout_constraintTop_toBottomOf="@id/tvFamily" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/clFamily" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

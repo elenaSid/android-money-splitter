@@ -15,7 +15,7 @@ enum class WizardStep(
     USERS(0, BackwardNavigation.NONE, ForwardNavigation.NEXT, false),
     FAMILIES(1, BackwardNavigation.BACK, ForwardNavigation.SKIP, true),
     SPENDING(2, BackwardNavigation.BACK, ForwardNavigation.NEXT, true),
-    SUMMARY(3, BackwardNavigation.BACK, ForwardNavigation.NEXT, false),
+    SUMMARY(3, BackwardNavigation.BACK, ForwardNavigation.SKIP, false),
     DEBTS(4, BackwardNavigation.BACK, ForwardNavigation.DONE, false)
 }
 

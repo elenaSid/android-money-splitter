@@ -31,7 +31,8 @@ class GetSummaryForAllFamiliesUseCase(
                     familyId = null,
                     familyName = summaryForUserWithoutFamily.userName,
                     paid = summaryForUserWithoutFamily.paid,
-                    spent = summaryForUserWithoutFamily.spent
+                    spent = summaryForUserWithoutFamily.spent,
+                    summaryForUsers = listOf(summaryForUserWithoutFamily)
             )
         }
 
@@ -53,11 +54,13 @@ class GetSummaryForAllFamiliesUseCase(
 
         allFamilies.forEach { family ->
             val id = family.id
+            val usersInFamily = usersWithFamilyById.filterValues { it.familyId == id }
             result.add(SummaryForFamily(
                     familyId = id,
                     familyName = family.name,
                     paid = paidByFamilyId.remove(id) ?: 0.0,
-                    spent = spentByFamilyId.remove(id) ?: 0.0
+                    spent = spentByFamilyId.remove(id) ?: 0.0,
+                    summaryForUsers = summaryForUsersWithFamily.filter { it.userId in usersInFamily.keys }
             ))
         }
 

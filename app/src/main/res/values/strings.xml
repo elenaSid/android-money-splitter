@@ -26,6 +26,13 @@
     <string name="spending_consumers">Consumers:</string>
     <!-- Wizard Spending end-->
 
+    <!-- Wizard Summary start-->
+    <string name="summary_title">Summary:</string>
+    <string name="summary_paid">Paid</string>
+    <string name="summary_consume">Consume</string>
+    <string name="summary_difference">Total</string>
+    <!-- Wizard Summary end-->
+
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
     <string name="navigation_menu_items">Items</string>
