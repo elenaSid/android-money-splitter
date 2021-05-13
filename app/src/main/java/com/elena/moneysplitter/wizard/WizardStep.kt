@@ -22,7 +22,7 @@ enum class WizardStep(
 /**
  * Получает флаг возможности пропуска шага. true - шаг может быть пропущен
  */
-fun WizardStep.canSkip() = this.forwardNavigation == ForwardNavigation.SKIP
+fun WizardStep.canSkip() = this.forwardNavigation != ForwardNavigation.NEXT
 
 /**
  * Получает флаг возможности возвращения к предыдущему шагу

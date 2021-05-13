@@ -87,7 +87,7 @@ class WizardPresenter(private val router: Router) : MvpPresenter<WizardMvpView>(
         WizardStep.FAMILIES -> WizardNavigationScreen.familiesStep()
         WizardStep.SPENDING -> WizardNavigationScreen.spendingStep()
         WizardStep.SUMMARY -> WizardNavigationScreen.summaryStep()
-        WizardStep.DEBTS -> WizardNavigationScreen.summaryStep()
+        WizardStep.DEBTS -> WizardNavigationScreen.debtsStep()
     }
 
     /**
