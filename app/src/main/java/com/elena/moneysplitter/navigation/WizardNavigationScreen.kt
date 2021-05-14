@@ -3,6 +3,7 @@ package com.elena.moneysplitter.navigation
 import android.content.Intent
 import com.elena.moneysplitter.family.ui.FamilyEditActivity
 import com.elena.moneysplitter.spending.ui.SpendingEditActivity
+import com.elena.moneysplitter.wizard.steps.debts.ui.DebtsFragment
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.summary.ui.SummaryFragment
@@ -56,4 +57,9 @@ object WizardNavigationScreen {
      * Формирует экземпляр шага визарда - итоги
      */
     fun summaryStep() = FragmentScreen { SummaryFragment() }
+
+    /**
+     * Формирует экземпляр шага визарда - долги
+     */
+    fun debtsStep() = FragmentScreen { DebtsFragment() }
 }

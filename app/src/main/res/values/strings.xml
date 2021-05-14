@@ -33,6 +33,11 @@
     <string name="summary_difference">Total</string>
     <!-- Wizard Summary end-->
 
+    <!-- Wizard Debts start-->
+    <string name="debts_title">Debts:</string>
+    <string name="debts_owe">owe(s)</string>
+    <!-- Wizard Debts end-->
+
     <!-- Navigation Menu start-->
     <string name="navigation_menu_users">Users</string>
     <string name="navigation_menu_items">Items</string>

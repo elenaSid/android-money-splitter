@@ -1,11 +1,12 @@
-package com.elena.moneysplitter.wizard.steps.summary.di
+package com.elena.moneysplitter.wizard.steps.debts.di
 
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.item.ItemRepository
+import com.elena.domain.summary.interaction.GetOptimizedTransactionsForAllFamiliesUseCase
 import com.elena.domain.summary.interaction.GetSummaryForAllFamiliesUseCase
 import com.elena.domain.summary.interaction.GetSummaryForAllUsersUseCase
 import com.elena.domain.user.UserRepository
-import com.elena.moneysplitter.wizard.steps.summary.mvp.SummaryPresenter
+import com.elena.moneysplitter.wizard.steps.debts.mvp.DebtsPresenter
 import dagger.Module
 import dagger.Provides
 
@@ -13,17 +14,17 @@ import dagger.Provides
  * @author elena
  */
 @Module
-class SummaryModule {
+class DebtsModule {
 
     @Provides
-    @SummaryScope
+    @DebtsScope
     fun provideGetSummaryForAllUsersUseCase(
             userRepository: UserRepository,
             itemRepository: ItemRepository
     ) = GetSummaryForAllUsersUseCase(userRepository, itemRepository)
 
     @Provides
-    @SummaryScope
+    @DebtsScope
     fun provideGetSummaryForAllFamiliesUseCase(
             getSummaryForAllUsersUseCase: GetSummaryForAllUsersUseCase,
             userRepository: UserRepository,
@@ -35,8 +36,14 @@ class SummaryModule {
     )
 
     @Provides
-    @SummaryScope
-    fun provideSummaryPresenter(
+    @DebtsScope
+    fun provideGetOptimizedTransactionsForAllFamiliesUseCase(
             getSummaryForAllFamiliesUseCase: GetSummaryForAllFamiliesUseCase
-    ) = SummaryPresenter(getSummaryForAllFamiliesUseCase)
+    ) = GetOptimizedTransactionsForAllFamiliesUseCase(getSummaryForAllFamiliesUseCase)
+
+    @Provides
+    @DebtsScope
+    fun provideDebtsPresenter(
+            getOptimizedTransactionsForAllFamiliesUseCase: GetOptimizedTransactionsForAllFamiliesUseCase
+    ) = DebtsPresenter(getOptimizedTransactionsForAllFamiliesUseCase)
 }
