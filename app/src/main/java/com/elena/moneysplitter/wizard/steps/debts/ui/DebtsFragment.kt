@@ -63,7 +63,7 @@ class DebtsFragment: MvpAppCompatFragment(), DebtsMvpView {
             String.format(
                     requireContext().getString(R.string.debt_copy_format),
                     it.debtorFamilyName,
-                    it.debtorFamilyName,
+                    it.creditorFamilyName,
                     it.debt
             )
         }
