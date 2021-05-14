@@ -1,10 +1,13 @@
 package com.elena.moneysplitter.wizard.steps.debts.ui
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elena.domain.summary.OptimizedTransactionForFamily
@@ -48,9 +51,25 @@ class DebtsFragment: MvpAppCompatFragment(), DebtsMvpView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvDebts.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.btnCopyAll.setOnClickListener { presenter.onCopiedAsTextClicked() }
     }
 
     override fun updateDebts(debts: Set<OptimizedTransactionForFamily>) {
         binding.rvDebts.adapter = DebtsAdapter(debts)
+    }
+
+    override fun copyAllDebtsToClipboard(debts: Set<OptimizedTransactionForFamily>) {
+        val text = debts.joinToString("\n") {
+            String.format(
+                    requireContext().getString(R.string.debt_copy_format),
+                    it.debtorFamilyName,
+                    it.debtorFamilyName,
+                    it.debt
+            )
+        }
+        val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(requireContext().getString(R.string.debts_title), text)
+        clipboard.setPrimaryClip(clip)
+        Toast.makeText(context, R.string.debts_copied, Toast.LENGTH_SHORT).show()
     }
 }
