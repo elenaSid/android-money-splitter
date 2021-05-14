@@ -26,6 +26,19 @@
                 android:textAppearance="@style/MoneySplitter.Text_Medium_20"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopyAll"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_copy"
+                android:text="@string/debts_copy"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:textSize="12sp"
+                android:theme="@style/MoneySplitter.ThemeOverlay_BlueAccent"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvDebts"
                 android:layout_width="match_parent"
@@ -35,7 +48,7 @@
                 android:paddingBottom="66dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@id/btnCopyAll" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
