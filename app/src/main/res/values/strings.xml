@@ -31,6 +31,7 @@
     <string name="summary_paid">Paid</string>
     <string name="summary_consume">Consume</string>
     <string name="summary_difference">Total</string>
+    <string name="summary_share">Share summary</string>
     <!-- Wizard Summary end-->
 
     <!-- Wizard Debts start-->

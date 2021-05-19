@@ -11,11 +11,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="46dp"
@@ -24,48 +24,72 @@
                 android:paddingBottom="38dp"
                 android:text="@string/summary_title"
                 android:textAppearance="@style/MoneySplitter.Text_Medium_20"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvPaidTitle"
-                style="@style/MoneySplitter.Text_Medium_14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/summary_paid"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toStartOf="@id/tvConsumeTitle"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
-
-            <TextView
-                android:id="@+id/tvConsumeTitle"
-                style="@style/MoneySplitter.Text_Medium_14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/summary_consume"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/tvDifferenceTitle"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
-
-            <TextView
-                android:id="@+id/tvDifferenceTitle"
-                style="@style/MoneySplitter.Text_Medium_14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/summary_difference"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSummary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:layout_marginTop="4dp"
-                android:paddingBottom="66dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPaidTitle" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_icon_selected"
+                android:contentDescription="@string/summary_share"
+                android:padding="8dp"
+                android:src="@drawable/ic_share"
+                android:tint="@color/colorAccent"
+                app:layout_constraintEnd_toStartOf="@id/tvTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+                <TextView
+                    android:id="@+id/tvPaidTitle"
+                    style="@style/MoneySplitter.Text_Medium_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/summary_paid"
+                    app:layout_constraintEnd_toStartOf="@id/tvConsumeTitle"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvConsumeTitle"
+                    style="@style/MoneySplitter.Text_Medium_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/summary_consume"
+                    app:layout_constraintEnd_toStartOf="@+id/tvDifferenceTitle"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDifferenceTitle"
+                    style="@style/MoneySplitter.Text_Medium_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/summary_difference"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:paddingBottom="66dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPaidTitle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

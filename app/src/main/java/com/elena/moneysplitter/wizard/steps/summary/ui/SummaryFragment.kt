@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elena.domain.summary.SummaryForFamily
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.SummaryFragmentBinding
+import com.elena.moneysplitter.extras.ViewShare
 import com.elena.moneysplitter.wizard.steps.summary.mvp.SummaryMvpView
 import com.elena.moneysplitter.wizard.steps.summary.mvp.SummaryPresenter
 import dagger.android.support.AndroidSupportInjection
@@ -51,9 +54,18 @@ class SummaryFragment: MvpAppCompatFragment(), SummaryMvpView {
         super.onViewCreated(view, savedInstanceState)
         binding.rvSummary.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvSummary.adapter = adapter
+        binding.ibShare.setOnClickListener { share() }
     }
 
     override fun updateSummaryList(summarySet: Set<SummaryForFamily>) {
         adapter.update(summarySet)
+    }
+
+    private fun share() {
+        ShareCompat.IntentBuilder.from(requireActivity())
+                .setType("image/*")
+                .addStream(ViewShare.getUri(requireContext(), binding.clRoot))
+                .setChooserTitle(requireContext().getString(R.string.summary_share))
+                .startChooser()
     }
 }
