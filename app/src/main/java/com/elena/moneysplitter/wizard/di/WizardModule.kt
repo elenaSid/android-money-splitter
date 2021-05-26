@@ -1,5 +1,9 @@
 package com.elena.moneysplitter.wizard.di
 
+import com.elena.domain.family.FamilyRepository
+import com.elena.domain.item.ItemRepository
+import com.elena.domain.user.UserRepository
+import com.elena.domain.user.interaction.RemoveAllDataUseCase
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.navigation.FragmentNavigator
 import com.elena.moneysplitter.navigation.NavigationLifecycleObserver
@@ -26,9 +30,20 @@ class WizardModule {
     fun provideNavigationLifecycleObserver(
             navigator: FragmentNavigator,
             navigatorHolder: NavigatorHolder
-    ): NavigationLifecycleObserver = NavigationLifecycleObserver(navigator, navigatorHolder)
+    ) = NavigationLifecycleObserver(navigator, navigatorHolder)
 
     @Provides
     @WizardScope
-    fun provideWizardPresenter(router: Router) = WizardPresenter(router)
+    fun provideRemoveAllDataUseCase(
+            familyRepository: FamilyRepository,
+            itemRepository: ItemRepository,
+            userRepository: UserRepository,
+    ) = RemoveAllDataUseCase(familyRepository, itemRepository, userRepository)
+
+    @Provides
+    @WizardScope
+    fun provideWizardPresenter(
+            removeAllDataUseCase: RemoveAllDataUseCase,
+            router: Router
+    ) = WizardPresenter(removeAllDataUseCase, router)
 }

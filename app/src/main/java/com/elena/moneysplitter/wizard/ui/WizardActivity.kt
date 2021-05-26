@@ -2,6 +2,7 @@ package com.elena.moneysplitter.wizard.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.WizardActivityBinding
@@ -27,6 +28,7 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
     @InjectPresenter
     lateinit var presenter: WizardPresenter
     private lateinit var binding: WizardActivityBinding
+    private var confirmationDialog: AlertDialog? = null
 
     @ProvidePresenter
     fun provideWizardPresenter() = presenter
@@ -46,6 +48,11 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
             presenter.onPreviousStepRequested()
             KeyboardManager.hide(this, binding.root.windowToken)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        confirmationDialog?.dismiss()
     }
 
     override fun onBackPressed() {
@@ -74,5 +81,19 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
 
     override fun setActionButtonEnabled(isEnabled: Boolean) {
         binding.btnNext.isEnabled = isEnabled
+    }
+
+    override fun showConfirmationDialog() {
+        confirmationDialog = AlertDialog.Builder(this)
+                .setMessage(R.string.wizard_clear_data)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    presenter.onClearDataRequested()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setCancelable(true)
+                .show()
     }
 }

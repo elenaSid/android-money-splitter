@@ -8,4 +8,6 @@ interface ItemRepository {
     fun get(id: Int): ItemEntity
 
     fun delete(item: ItemEntity)
+
+    fun deleteAll()
 }

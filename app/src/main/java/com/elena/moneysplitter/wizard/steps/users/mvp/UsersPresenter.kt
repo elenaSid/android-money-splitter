@@ -36,6 +36,6 @@ class UsersPresenter(
     private fun updateUsers() {
         val users = getAllUsersUseCase.execute(Unit, emptyList())
         viewState.updateUserList(users)
-        router.sendResult(PARAM_IS_STEP_READY, users.isNotEmpty())
+        router.sendResult(PARAM_IS_STEP_READY, users.size > 1)
     }
 }

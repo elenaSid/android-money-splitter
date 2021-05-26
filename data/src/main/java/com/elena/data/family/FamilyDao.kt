@@ -22,4 +22,7 @@ interface FamilyDao {
 
     @Delete
     fun delete(family: FamilyDbEntity)
+
+    @Query("DELETE FROM family")
+    fun deleteAll()
 }
