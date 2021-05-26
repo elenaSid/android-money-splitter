@@ -35,4 +35,8 @@ class UserRepositoryImpl(
     override fun delete(user: UserEntity) {
         userDao.delete(mapper.map2(user))
     }
+
+    override fun deleteAll() {
+        userDao.deleteAll()
+    }
 }

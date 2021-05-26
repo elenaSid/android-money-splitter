@@ -10,4 +10,6 @@ interface FamilyRepository {
     fun get(id: Int): FamilyEntity
 
     fun delete(family: FamilyEntity)
+
+    fun deleteAll()
 }

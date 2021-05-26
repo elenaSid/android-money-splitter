@@ -35,4 +35,10 @@ interface WizardMvpView : MvpView {
      */
     @AddToEndSingle
     fun setFABVisibility(isVisible: Boolean)
+
+    /**
+     * Команда отображения диалогового окна с подтверждением сброса данных
+     */
+    @Skip
+    fun showConfirmationDialog()
 }

@@ -27,4 +27,8 @@ class ItemRepositoryImpl(
     override fun delete(item: ItemEntity) {
         itemDao.delete(mapper.map2(item))
     }
+
+    override fun deleteAll() {
+        itemDao.deleteAll()
+    }
 }

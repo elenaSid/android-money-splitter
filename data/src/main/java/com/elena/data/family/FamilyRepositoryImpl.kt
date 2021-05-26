@@ -31,4 +31,8 @@ class FamilyRepositoryImpl(
     override fun delete(family: FamilyEntity) {
         familyDao.delete(mapper.map2(family))
     }
+
+    override fun deleteAll() {
+        familyDao.deleteAll()
+    }
 }
