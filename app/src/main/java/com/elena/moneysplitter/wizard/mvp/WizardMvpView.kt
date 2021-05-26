@@ -41,4 +41,10 @@ interface WizardMvpView : MvpView {
      */
     @Skip
     fun showConfirmationDialog()
+
+    /**
+     * Команда обновления подписи с текущим шагом
+     */
+    @AddToEndSingle
+    fun updateStepCount(currentStepIndex: Int, stepsCount: Int)
 }

@@ -86,6 +86,7 @@ class WizardPresenter(
         viewState.setFABVisibility(wizardStep.hasFAB)
         router.navigateTo(getStepFragmentScreen(wizardStep))
         setStepReadyResultListener()
+        viewState.updateStepCount(wizardStep.value + 1, WizardStep.values().size)
     }
 
     /**

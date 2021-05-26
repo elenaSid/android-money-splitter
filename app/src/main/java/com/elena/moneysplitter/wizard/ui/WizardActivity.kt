@@ -96,4 +96,8 @@ class WizardActivity : MvpAppCompatActivity(), WizardMvpView {
                 .setCancelable(true)
                 .show()
     }
+
+    override fun updateStepCount(currentStepIndex: Int, stepsCount: Int) {
+        binding.tvSteps.text = getString(R.string.wizard_step_of, currentStepIndex, stepsCount)
+    }
 }
