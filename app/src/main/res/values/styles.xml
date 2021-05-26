@@ -256,6 +256,12 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="MoneySplitter.Text_Medium_10" parent="android:TextAppearance">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="MoneySplitter.Text_ColumnTitle" parent="android:TextAppearance">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/silver_chalice_counter_text</item>
