@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">ДелиСчет</string>
+
+    <string name="bottom_menu_back">Назад</string>
+    <string name="bottom_menu_next">Далее</string>
+    <string name="bottom_menu_done">Готово</string>
+
+    <string name="wizard_step_of">%1$d из %2$d</string>
+    <string name="wizard_clear_data">Хотите вернуться в начало и удалить все текущие данные?</string>
+
+    <!-- Wizard Users start-->
+    <string name="users_name">Имя</string>
+    <string name="users_add_participants">Добавь участников:</string>
+    <string name="users_add">Добавить</string>
+    <!-- Wizard Users end-->
+
+    <!-- Wizard Families start-->
+    <string name="families_add_new">Добавь группы или семьи:</string>
+    <!-- Wizard Families end-->
+
+    <!-- Wizard Spending start-->
+    <string name="spending_add">Добавь траты:</string>
+    <string name="spending_payers">Заплатил(и):</string>
+    <string name="spending_consumers">Потребил(и):</string>
+    <!-- Wizard Spending end-->
+
+    <!-- Wizard Summary start-->
+    <string name="summary_title">Итоги:</string>
+    <string name="summary_paid">Заплатил</string>
+    <string name="summary_consume">Потребил</string>
+    <string name="summary_difference">Разница</string>
+    <string name="summary_share">Поделится итогами</string>
+    <!-- Wizard Summary end-->
+
+    <!-- Wizard Debts start-->
+    <string name="debts_title">Долги:</string>
+    <string name="debts_owe">owe(s)</string>
+    <string name="debts_copy">Копировать как текст</string>
+    <string name="debts_copied">Скопировано в буфер обмена!</string>
+    <string name="debt_copy_format">%1$s должен(ы) %2$s %3$s</string>
+    <string name="debts_empty">Похоже ни у кого нет долга\n😉</string>
+    <!-- Wizard Debts end-->
+
+    <!-- Family Add Screen start-->
+    <string name="family_add_title">Создание семью</string>
+    <string name="family_edit_title">Редактирование семьи</string>
+    <string name="family_add_members">Добавь членов семьи:</string>
+    <string name="family_name">Фамилия или имя группы</string>
+    <string name="family_edit_save">Сохранить</string>
+    <string name="family_no_available_members">Нет свободных участников.\nВероятно все участники уже были добавлены в семьи или группы</string>
+    <string name="family_not_set_error">Необходимо задать имя</string>
+    <string name="family_delete">Удалить</string>
+    <!-- Family Add Screen end-->
+
+    <!-- Spending Add Screen start-->
+    <string name="spending_everyone">Все</string>
+    <string name="spending_edit_add">Добавление траты</string>
+    <string name="spending_edit_edit">Редактирование траты</string>
+    <string name="spending_edit_paid_by">Оплатил(и):</string>
+    <string name="spending_edit_consumed_by">Потребил(и):</string>
+    <string name="spending_edit_item_name">Название</string>
+    <string name="spending_edit_price">Цена</string>
+    <string name="spending_edit_save">@string/family_edit_save</string>
+    <string name="spending_edit_delete">@string/family_delete</string>
+    <!-- Spending Add Screen end-->
+
+</resources>
