@@ -54,6 +54,11 @@ class DebtsFragment: MvpAppCompatFragment(), DebtsMvpView {
         binding.btnCopyAll.setOnClickListener { presenter.onCopiedAsTextClicked() }
     }
 
+    override fun setEmptyState() {
+        binding.tvEmpty.visibility = View.VISIBLE
+        binding.btnCopyAll.visibility = View.GONE
+    }
+
     override fun updateDebts(debts: Set<OptimizedTransactionForFamily>) {
         binding.rvDebts.adapter = DebtsAdapter(debts)
     }

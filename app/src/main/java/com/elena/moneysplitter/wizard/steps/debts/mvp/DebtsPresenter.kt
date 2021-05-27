@@ -15,7 +15,11 @@ class DebtsPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         debts = getOptimizedTransactionsForAllFamiliesUseCase.execute(Unit, emptySet())
-        viewState.updateDebts(debts)
+        if (debts.isEmpty()) {
+            viewState.setEmptyState()
+        } else {
+            viewState.updateDebts(debts)
+        }
     }
 
     fun onCopiedAsTextClicked() {

@@ -43,6 +43,7 @@
     <string name="debts_copy">Copy as text</string>
     <string name="debts_copied">Copied to clipboard!</string>
     <string name="debt_copy_format">%1$s owe(s) %2$s %3$s</string>
+    <string name="debts_empty">Looks like no debts here\n😉</string>
     <!-- Wizard Debts end-->
 
     <!-- Navigation Menu start-->
