@@ -1,6 +1,5 @@
 package com.elena.moneysplitter.wizard.mvp
 
-import com.elena.moneysplitter.wizard.WizardStep
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 import moxy.viewstate.strategy.alias.Skip

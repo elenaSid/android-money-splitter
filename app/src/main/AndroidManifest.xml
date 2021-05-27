@@ -36,21 +36,6 @@
             android:theme="@style/MoneySplitter.Theme_Edit"
             android:parentActivityName=".wizard.ui.WizardActivity"/>
 
-        <activity
-            android:name=".users.edit.ui.EditUserActivity"
-            android:configChanges="orientation"
-            android:label="@string/user_edit_create"
-            android:screenOrientation="portrait"
-            android:theme="@style/MoneySplitter.Theme_Root"
-            android:parentActivityName=".root.ui.RootActivity" />
-
-        <activity android:name=".users.edit.ui.AddFamilyActivity"
-                  android:configChanges="orientation"
-                  android:label="@string/family_add_title"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/MoneySplitter.Theme_Edit"
-                  android:parentActivityName=".users.edit.ui.EditUserActivity"/>
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.elena.moneysplitter.fileprovider"

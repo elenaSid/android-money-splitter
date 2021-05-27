@@ -14,7 +14,7 @@ import java.time.LocalDate
 /**
  * @author elena
  */
-object ViewShare {
+object ShareHelper {
 
     fun getUri(context: Context, view: View): Uri {
         val rootBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)

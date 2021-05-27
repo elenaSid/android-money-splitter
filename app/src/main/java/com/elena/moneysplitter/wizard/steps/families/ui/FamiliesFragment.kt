@@ -11,7 +11,6 @@ import com.elena.domain.family.FamilyMembers
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.FamiliesFragmentBinding
 import com.elena.moneysplitter.extras.FirstLastSpaceDecoration
-import com.elena.moneysplitter.extras.SpaceDecoration
 import com.elena.moneysplitter.extras.toPx
 import com.elena.moneysplitter.wizard.steps.families.mvp.FamiliesMvpView
 import com.elena.moneysplitter.wizard.steps.families.mvp.FamiliesPresenter

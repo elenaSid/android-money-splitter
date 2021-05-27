@@ -5,7 +5,6 @@ import com.elena.domain.family.interaction.DeleteFamilyUseCase
 import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserRepository
-import com.elena.domain.user.interaction.DeleteUserUseCase
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
 import com.elena.moneysplitter.family.mvp.FamilyEditPresenter
 import dagger.Module

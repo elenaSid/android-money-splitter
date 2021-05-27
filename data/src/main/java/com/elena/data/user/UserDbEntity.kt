@@ -3,7 +3,6 @@ package com.elena.data.user
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.ForeignKey.SET_NULL
 import androidx.room.PrimaryKey
 import com.elena.data.family.FamilyDbEntity

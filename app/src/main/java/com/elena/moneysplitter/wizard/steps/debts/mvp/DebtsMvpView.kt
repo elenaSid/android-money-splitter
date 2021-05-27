@@ -4,7 +4,6 @@ import com.elena.domain.summary.OptimizedTransactionForFamily
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle
 import moxy.viewstate.strategy.alias.SingleState
-import moxy.viewstate.strategy.alias.Skip
 
 /**
  * @author elena

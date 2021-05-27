@@ -1,8 +1,6 @@
 package com.elena.domain.item.interaction
 
 import com.elena.domain.common.UseCase
-import com.elena.domain.family.FamilyEntity
-import com.elena.domain.family.FamilyRepository
 import com.elena.domain.item.ItemEntity
 import com.elena.domain.item.ItemRepository
 

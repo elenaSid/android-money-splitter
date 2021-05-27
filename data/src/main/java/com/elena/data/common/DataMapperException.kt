@@ -6,18 +6,10 @@ package com.elena.data.common
  *         Time: 14:51
  */
 class DataMapperException : Exception {
-    /**
-     * {@inheritDoc}
-     */
-    constructor() : super() {}
 
-    /**
-     * {@inheritDoc}
-     */
-    constructor(message: String) : super(message) {}
+    constructor() : super()
 
-    /**
-     * {@inheritDoc}
-     */
-    constructor(cause: Throwable) : super(cause) {}
+    constructor(message: String) : super(message)
+
+    constructor(cause: Throwable) : super(cause)
 }

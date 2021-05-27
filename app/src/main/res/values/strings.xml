@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">MoneySplitter</string>
 
-    <string name="splitter_settings">Settings</string>
-
-    <string name="fab_menu_person">Person</string>
-    <string name="fab_menu_item">Item</string>
-
     <string name="bottom_menu_back">Back</string>
     <string name="bottom_menu_next">Next</string>
     <string name="bottom_menu_done">Done</string>
@@ -46,29 +41,7 @@
     <string name="debts_empty">Looks like no debts here\n😉</string>
     <!-- Wizard Debts end-->
 
-    <!-- Navigation Menu start-->
-    <string name="navigation_menu_users">Users</string>
-    <string name="navigation_menu_items">Items</string>
-    <string name="navigation_menu_summary">Summary</string>
-    <string name="navigation_menu_settings">Settings</string>
-    <!-- Navigation Menu end-->
-
-    <string name="context_menu_edit">Edit</string>
-    <string name="context_menu_delete">Delete</string>
-
-    <!-- User Edit Screen start-->
-    <string name="user_edit_name">Name</string>
-    <string name="user_edit_family">Family</string>
-    <string name="user_edit_none">None</string>
-    <string name="user_edit_menu_item_save">Save</string>
-    <string name="user_edit_create">Create</string>
-    <string name="user_edit_edit">@string/context_menu_edit</string>
-
-    <string name="user_edit_add_family">Add family</string>
-    <!-- User Edit Screen end-->
-
     <!-- Family Add Screen start-->
-    <string name="family_add_hint">@string/user_edit_family</string>
     <string name="family_add_title">Add new family</string>
     <string name="family_edit_title">Edit family</string>
     <string name="family_add_members">Add members:</string>
@@ -90,18 +63,5 @@
     <string name="spending_edit_save">@string/family_edit_save</string>
     <string name="spending_edit_delete">@string/family_delete</string>
     <!-- Spending Add Screen end-->
-
-    <!-- Item List Screen start-->
-    <string name="items_title">Items</string>
-    <string name="items_item">Item</string>
-    <string name="items_price">Price</string>
-    <string name="items_buyer">Buyer</string>
-    <!-- Item List Screen end-->
-
-    <!-- Item Show Screen start-->
-    <string name="item_show_price">Price:</string>
-    <string name="item_show_buyer">Creditor:</string>
-    <string name="item_show_debtors">Debtors:</string>
-    <!-- Item Show Screen end-->
 
 </resources>

@@ -7,10 +7,10 @@ package com.elena.domain.common.exception
  */
 class RepositoryException : DomainException {
 
-    constructor() : super() {}
+    constructor() : super()
 
-    constructor(message: String) : super(message) {}
+    constructor(message: String) : super(message)
 
-    constructor(throwable: Throwable) : super(throwable) {}
+    constructor(throwable: Throwable) : super(throwable)
 
 }

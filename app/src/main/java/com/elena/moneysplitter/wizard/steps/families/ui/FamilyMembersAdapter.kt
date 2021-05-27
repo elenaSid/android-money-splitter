@@ -16,8 +16,8 @@ class FamilyMembersAdapter(
         private val listener: UserListener? = null
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var users = emptyList<UserEntity>()
-    var usersInFamily = emptyList<UserEntity>()
+    private var users = emptyList<UserEntity>()
+    private var usersInFamily = emptyList<UserEntity>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.view_user_item, viewGroup, false)

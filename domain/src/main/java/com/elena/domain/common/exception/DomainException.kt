@@ -7,9 +7,9 @@ package com.elena.domain.common.exception
  */
 abstract class DomainException : Exception {
 
-    internal constructor() : super() {}
+    internal constructor() : super()
 
-    internal constructor(message: String) : super(message) {}
+    internal constructor(message: String) : super(message)
 
-    internal constructor(throwable: Throwable) : super(throwable) {}
+    internal constructor(throwable: Throwable) : super(throwable)
 }
