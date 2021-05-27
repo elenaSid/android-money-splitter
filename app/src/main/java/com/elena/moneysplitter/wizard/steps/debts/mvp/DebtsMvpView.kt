@@ -12,6 +12,9 @@ import moxy.viewstate.strategy.alias.Skip
 interface DebtsMvpView: MvpView {
 
     @AddToEndSingle
+    fun setEmptyState()
+
+    @AddToEndSingle
     fun updateDebts(debts: Set<OptimizedTransactionForFamily>)
 
     @SingleState
