@@ -4,9 +4,12 @@ import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.DeleteUserUseCase
 import com.elena.domain.user.interaction.GetAllUsersUseCase
 import com.elena.domain.user.interaction.SaveUserUseCase
+import com.elena.moneysplitter.extras.CoroutineMvpPresenter
 import com.elena.moneysplitter.wizard.mvp.PARAM_IS_STEP_READY
 import com.github.terrakok.cicerone.Router
+import kotlinx.coroutines.*
 import moxy.MvpPresenter
+import kotlin.coroutines.CoroutineContext
 
 /**
  * @author elena
@@ -16,7 +19,7 @@ class UsersPresenter(
         private val deleteUserUseCase: DeleteUserUseCase,
         private val saveUserUseCase: SaveUserUseCase,
         private val router: Router
-) : MvpPresenter<UsersMvpView>() {
+) : CoroutineMvpPresenter<UsersMvpView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -24,8 +27,10 @@ class UsersPresenter(
     }
 
     fun onUserCreated(name: String) {
-        saveUserUseCase.execute(name, Unit)
-        updateUsers()
+        launch {
+            saveUserUseCase.execute(name, Unit)
+            withContext(Dispatchers.Main) { updateUsers() }
+        }
     }
 
     fun onUserDeleted(user: UserEntity) {

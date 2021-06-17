@@ -6,7 +6,10 @@ import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
-import moxy.MvpPresenter
+import com.elena.moneysplitter.extras.CoroutineMvpPresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * @author elena
@@ -16,7 +19,7 @@ class FamilyEditPresenter(
         private val getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
         private val deleteFamilyUseCase: DeleteFamilyUseCase,
         private val saveFamilyUseCase: SaveFamilyUseCase
-) : MvpPresenter<FamilyEditMvpView>() {
+) : CoroutineMvpPresenter<FamilyEditMvpView>() {
 
     private var familyId: Int? = null
     private var family: FamilyEntity? = null
@@ -69,8 +72,10 @@ class FamilyEditPresenter(
     }
 
     fun onFamilySaveRequested() {
-        saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, usersInFamily))
-        viewState.saveFinish()
+        launch {
+            saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, usersInFamily))
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
+        }
     }
 
     fun onFamilyDeleteRequested() {

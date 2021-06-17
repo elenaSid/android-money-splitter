@@ -40,7 +40,6 @@ abstract class UseCase<P, R> {
         } catch (e: UseCaseException) {
             defaultResult
         }
-
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.elena.domain.family.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.family.FamilyEntity
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserEntity
@@ -12,9 +12,9 @@ import com.elena.domain.user.UserRepository
 class SaveFamilyUseCase(
         private val familyRepository: FamilyRepository,
         private val userRepository: UserRepository
-) : UseCase<SaveFamilyUseCase.Param, Unit>() {
+) : CoroutineUseCase<SaveFamilyUseCase.Param, Unit>() {
 
-    override fun runUseCase(param: Param) {
+    override suspend fun runUseCase(param: Param) {
         if (param.familyId == null) {
             familyRepository.save(FamilyEntity(name = param.familyName))
         } else {

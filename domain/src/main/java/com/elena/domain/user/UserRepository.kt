@@ -10,7 +10,7 @@ interface UserRepository {
 
     fun getUsersWithoutFamily() : List<UserEntity>
 
-    fun save(user: UserEntity)
+    suspend fun save(user: UserEntity)
 
     fun get(id: Int): UserEntity
 

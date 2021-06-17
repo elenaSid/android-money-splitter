@@ -1,4 +1,4 @@
-package com.elena.domain.common.exception
+package com.elena.domain.common
 
 /**
  * @author elena

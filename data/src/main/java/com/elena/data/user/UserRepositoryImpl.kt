@@ -12,7 +12,7 @@ class UserRepositoryImpl(
         private val mapper: TwoWayDataMapper<UserDbEntity, UserEntity>
 ) : UserRepository {
 
-    override fun save(user: UserEntity) {
+    override suspend fun save(user: UserEntity) {
         userDao.insertOrReplace(mapper.map2(user))
     }
 
