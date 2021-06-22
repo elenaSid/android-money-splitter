@@ -1,13 +1,13 @@
 package com.elena.domain.summary.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.summary.OptimizedTransactionForUser
 
 class GetOptimizedTransactionsForAllUsersUseCase(
         private val getSummaryForAllUsersUseCase: GetSummaryForAllUsersUseCase
-) : UseCase<Unit, Set<OptimizedTransactionForUser>>() {
+) : CoroutineUseCase<Unit, Set<OptimizedTransactionForUser>>() {
 
-    override fun runUseCase(param: Unit): Set<OptimizedTransactionForUser> {
+    override suspend fun runUseCase(param: Unit): Set<OptimizedTransactionForUser> {
         val summaryForAllUsers = getSummaryForAllUsersUseCase.execute(Unit)
 
         val differences = summaryForAllUsers.map { summary ->
