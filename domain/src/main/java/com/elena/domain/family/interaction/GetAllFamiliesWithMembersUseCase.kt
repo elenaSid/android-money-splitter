@@ -1,6 +1,6 @@
 package com.elena.domain.family.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.family.FamilyMembers
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
@@ -14,9 +14,9 @@ class GetAllFamiliesWithMembersUseCase(
         private val familyRepository: FamilyRepository,
         private val userRepository: UserRepository
 
-) : UseCase<Unit, List<FamilyMembers>>() {
+) : CoroutineUseCase<Unit, List<FamilyMembers>>() {
 
-    override fun runUseCase(param: Unit): List<FamilyMembers> {
+    override suspend fun runUseCase(param: Unit): List<FamilyMembers> {
         return familyRepository.getAll().map {
             FamilyMembers(it, userRepository.getUsersWithFamily(it.id))
         }

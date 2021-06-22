@@ -29,23 +29,27 @@ class FamilyEditPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        users.addAll(getUsersWithoutFamilyUseCase.execute(Unit, emptyList()))
+        launch {
+            users.addAll(getUsersWithoutFamilyUseCase.execute(Unit, emptyList()))
+            familyId?.let {
+                val familyMembers = getFamilyWithMembersUseCase.execute(it)
+                family = familyMembers.family
+                familyName = familyMembers.family.name
+                usersInFamily.addAll(familyMembers.users)
+                users.addAll(usersInFamily)
+            }
 
-        familyId?.let {
-            val familyMembers = getFamilyWithMembersUseCase.execute(it)
-            family = familyMembers.family
-            familyName = familyMembers.family.name
-            usersInFamily.addAll(familyMembers.users)
-            users.addAll(usersInFamily)
+            withContext(Dispatchers.Main) {
+                viewState.setFamilyName(familyName)
+                if (users.size <= 1) {
+                    viewState.showEmptyState()
+                } else {
+                    users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
+                    updateFamilyMembers()
+                }
+                updateSaveState()
+            }
         }
-        viewState.setFamilyName(familyName)
-        if (users.size <= 1) {
-            viewState.showEmptyState()
-        } else {
-            users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
-            updateFamilyMembers()
-        }
-        updateSaveState()
     }
 
     fun onFamilyIdParsed(familyId: Int) {
@@ -79,11 +83,13 @@ class FamilyEditPresenter(
     }
 
     fun onFamilyDeleteRequested() {
-        val familyToDelete = family?.copy()
-        familyToDelete?.let {
-            deleteFamilyUseCase.execute(familyToDelete, Unit)
+        launch {
+            val familyToDelete = family?.copy()
+            familyToDelete?.let {
+                deleteFamilyUseCase.execute(familyToDelete, Unit)
+            }
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
         }
-        viewState.saveFinish()
     }
 
     private fun updateFamilyMembers() {
