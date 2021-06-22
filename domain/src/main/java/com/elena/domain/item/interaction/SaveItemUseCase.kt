@@ -1,6 +1,6 @@
 package com.elena.domain.item.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.item.ItemEntity
 import com.elena.domain.item.ItemRepository
 import com.elena.domain.user.UserEntity
@@ -10,9 +10,9 @@ import com.elena.domain.user.UserEntity
  */
 class SaveItemUseCase(
         private val itemRepository: ItemRepository
-) : UseCase<SaveItemUseCase.Param, Unit>() {
+) : CoroutineUseCase<SaveItemUseCase.Param, Unit>() {
 
-    override fun runUseCase(param: Param) {
+    override suspend fun runUseCase(param: Param) {
         val payers = param.payers.map { it.id }.toSet()
         val consumers = param.consumers.map { it.id }.toSet()
 

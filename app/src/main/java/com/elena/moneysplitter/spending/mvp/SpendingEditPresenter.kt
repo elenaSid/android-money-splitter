@@ -95,18 +95,22 @@ class SpendingEditPresenter(
     }
 
     fun onItemSaveRequested() {
-        saveItemUseCase.execute(
-                SaveItemUseCase.Param(itemId, itemName!!, price, usersPayers, usersConsumers)
-        )
-        viewState.saveFinish()
+        launch {
+            saveItemUseCase.execute(
+                    SaveItemUseCase.Param(itemId, itemName!!, price, usersPayers, usersConsumers)
+            )
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
+        }
     }
 
     fun onItemDeleteRequested() {
-        val itemToDelete = item?.copy()
-        itemToDelete?.let {
-            deleteItemUseCase.execute(itemToDelete, Unit)
+        launch {
+            val itemToDelete = item?.copy()
+            itemToDelete?.let {
+                deleteItemUseCase.execute(itemToDelete, Unit)
+            }
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
         }
-        viewState.saveFinish()
     }
 
     private fun updatePayers(isSorted: Boolean = false) {
