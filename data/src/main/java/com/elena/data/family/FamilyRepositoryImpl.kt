@@ -12,27 +12,27 @@ class FamilyRepositoryImpl(
         private val mapper: TwoWayDataMapper<FamilyDbEntity, FamilyEntity>
 ) : FamilyRepository {
 
-    override fun getAll(): List<FamilyEntity> {
+    override suspend fun getAll(): List<FamilyEntity> {
         return familyDao.getAll().map { mapper.map(it) }
     }
 
-    override fun save(family: FamilyEntity) {
+    override suspend fun save(family: FamilyEntity) {
         familyDao.insertOrReplace(mapper.map2(family))
     }
 
-    override fun getLast(): FamilyEntity {
+    override suspend fun getLast(): FamilyEntity {
         return mapper.map(familyDao.getLast())
     }
 
-    override fun get(id: Int): FamilyEntity {
+    override suspend fun get(id: Int): FamilyEntity {
         return mapper.map(familyDao.get(id))
     }
 
-    override fun delete(family: FamilyEntity) {
+    override suspend fun delete(family: FamilyEntity) {
         familyDao.delete(mapper.map2(family))
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         familyDao.deleteAll()
     }
 }

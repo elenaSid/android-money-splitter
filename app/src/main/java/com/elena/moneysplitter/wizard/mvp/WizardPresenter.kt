@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.wizard.mvp
 
 import com.elena.domain.user.interaction.RemoveAllDataUseCase
+import com.elena.moneysplitter.extras.CoroutineMvpPresenter
 import com.elena.moneysplitter.navigation.WizardNavigationScreen
 import com.elena.moneysplitter.wizard.WizardStep
 import com.elena.moneysplitter.wizard.canGoBack
@@ -9,7 +10,9 @@ import com.elena.moneysplitter.wizard.canSkip
 import com.github.terrakok.cicerone.ResultListener
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import moxy.MvpPresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 const val PARAM_IS_STEP_READY = "is_step_ready"
 
@@ -19,7 +22,7 @@ const val PARAM_IS_STEP_READY = "is_step_ready"
 class WizardPresenter(
         private val removeAllDataUseCase: RemoveAllDataUseCase,
         private val router: Router
-) : MvpPresenter<WizardMvpView>() {
+) : CoroutineMvpPresenter<WizardMvpView>() {
 
     private val steps = WizardStep.values()
     private val resultListener = ResultListener { isStepReady ->
@@ -60,8 +63,10 @@ class WizardPresenter(
     }
 
     fun onClearDataRequested() {
-        removeAllDataUseCase.execute(Unit)
-        setStep(WizardStep.USERS)
+        launch {
+            removeAllDataUseCase.execute(Unit)
+            withContext(Dispatchers.Main) { setStep(WizardStep.USERS) }
+        }
     }
 
     /**

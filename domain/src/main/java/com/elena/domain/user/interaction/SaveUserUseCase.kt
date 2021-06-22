@@ -1,6 +1,6 @@
 package com.elena.domain.user.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.UserRepository
 
@@ -9,9 +9,9 @@ import com.elena.domain.user.UserRepository
  *
  * @author elena
  */
-class SaveUserUseCase(private val userRepository: UserRepository) : UseCase<String, Unit>() {
+class SaveUserUseCase(private val userRepository: UserRepository) : CoroutineUseCase<String, Unit>() {
 
-    override fun runUseCase(param: String) {
+    override suspend fun runUseCase(param: String) {
         userRepository.save(UserEntity(name = param, familyId = null))
         return
     }

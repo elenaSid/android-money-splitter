@@ -12,31 +12,31 @@ class UserRepositoryImpl(
         private val mapper: TwoWayDataMapper<UserDbEntity, UserEntity>
 ) : UserRepository {
 
-    override fun save(user: UserEntity) {
+    override suspend fun save(user: UserEntity) {
         userDao.insertOrReplace(mapper.map2(user))
     }
 
-    override fun getAll(): List<UserEntity> {
+    override suspend fun getAll(): List<UserEntity> {
         return userDao.getAll().map { mapper.map(it) }
     }
 
-    override fun getUsersWithFamily(familyId: Int): List<UserEntity> {
+    override suspend fun getUsersWithFamily(familyId: Int): List<UserEntity> {
         return userDao.getUsersWithFamily(familyId).map { mapper.map(it) }
     }
 
-    override fun getUsersWithoutFamily(): List<UserEntity> {
+    override suspend fun getUsersWithoutFamily(): List<UserEntity> {
         return userDao.getUsersWithoutFamily().map { mapper.map(it) }
     }
 
-    override fun get(id: Int): UserEntity {
+    override suspend fun get(id: Int): UserEntity {
         return mapper.map(userDao.get(id))
     }
 
-    override fun delete(user: UserEntity) {
+    override suspend fun delete(user: UserEntity) {
         userDao.delete(mapper.map2(user))
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         userDao.deleteAll()
     }
 }

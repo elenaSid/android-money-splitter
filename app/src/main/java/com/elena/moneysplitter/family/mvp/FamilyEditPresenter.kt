@@ -6,7 +6,10 @@ import com.elena.domain.family.interaction.GetFamilyWithMembersUseCase
 import com.elena.domain.family.interaction.SaveFamilyUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetUsersWithoutFamilyUseCase
-import moxy.MvpPresenter
+import com.elena.moneysplitter.extras.CoroutineMvpPresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * @author elena
@@ -16,7 +19,7 @@ class FamilyEditPresenter(
         private val getFamilyWithMembersUseCase: GetFamilyWithMembersUseCase,
         private val deleteFamilyUseCase: DeleteFamilyUseCase,
         private val saveFamilyUseCase: SaveFamilyUseCase
-) : MvpPresenter<FamilyEditMvpView>() {
+) : CoroutineMvpPresenter<FamilyEditMvpView>() {
 
     private var familyId: Int? = null
     private var family: FamilyEntity? = null
@@ -26,23 +29,27 @@ class FamilyEditPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        users.addAll(getUsersWithoutFamilyUseCase.execute(Unit, emptyList()))
+        launch {
+            users.addAll(getUsersWithoutFamilyUseCase.execute(Unit, emptyList()))
+            familyId?.let {
+                val familyMembers = getFamilyWithMembersUseCase.execute(it)
+                family = familyMembers.family
+                familyName = familyMembers.family.name
+                usersInFamily.addAll(familyMembers.users)
+                users.addAll(usersInFamily)
+            }
 
-        familyId?.let {
-            val familyMembers = getFamilyWithMembersUseCase.execute(it)
-            family = familyMembers.family
-            familyName = familyMembers.family.name
-            usersInFamily.addAll(familyMembers.users)
-            users.addAll(usersInFamily)
+            withContext(Dispatchers.Main) {
+                viewState.setFamilyName(familyName)
+                if (users.size <= 1) {
+                    viewState.showEmptyState()
+                } else {
+                    users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
+                    updateFamilyMembers()
+                }
+                updateSaveState()
+            }
         }
-        viewState.setFamilyName(familyName)
-        if (users.size <= 1) {
-            viewState.showEmptyState()
-        } else {
-            users = users.sortedBy { !usersInFamily.contains(it) }.toMutableList()
-            updateFamilyMembers()
-        }
-        updateSaveState()
     }
 
     fun onFamilyIdParsed(familyId: Int) {
@@ -69,16 +76,20 @@ class FamilyEditPresenter(
     }
 
     fun onFamilySaveRequested() {
-        saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, usersInFamily))
-        viewState.saveFinish()
+        launch {
+            saveFamilyUseCase.execute(SaveFamilyUseCase.Param(familyId, familyName!!, usersInFamily))
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
+        }
     }
 
     fun onFamilyDeleteRequested() {
-        val familyToDelete = family?.copy()
-        familyToDelete?.let {
-            deleteFamilyUseCase.execute(familyToDelete, Unit)
+        launch {
+            val familyToDelete = family?.copy()
+            familyToDelete?.let {
+                deleteFamilyUseCase.execute(familyToDelete, Unit)
+            }
+            withContext(Dispatchers.Main) { viewState.saveFinish() }
         }
-        viewState.saveFinish()
     }
 
     private fun updateFamilyMembers() {

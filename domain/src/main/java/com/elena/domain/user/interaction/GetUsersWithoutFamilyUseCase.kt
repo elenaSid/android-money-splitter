@@ -1,6 +1,6 @@
 package com.elena.domain.user.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.UserRepository
 
@@ -9,9 +9,9 @@ import com.elena.domain.user.UserRepository
  *
  * @author elena
  */
-class GetUsersWithoutFamilyUseCase(private val userRepository: UserRepository) : UseCase<Unit, List<UserEntity>>() {
+class GetUsersWithoutFamilyUseCase(private val userRepository: UserRepository) : CoroutineUseCase<Unit, List<UserEntity>>() {
 
-    override fun runUseCase(param: Unit): List<UserEntity> {
+    override suspend fun runUseCase(param: Unit): List<UserEntity> {
         return userRepository.getUsersWithoutFamily()
     }
 }

@@ -1,6 +1,6 @@
 package com.elena.domain.summary.interaction
 
-import com.elena.domain.common.UseCase
+import com.elena.domain.common.CoroutineUseCase
 import com.elena.domain.item.ItemRepository
 import com.elena.domain.summary.SummaryForUser
 import com.elena.domain.user.UserRepository
@@ -8,9 +8,9 @@ import com.elena.domain.user.UserRepository
 class GetSummaryForAllUsersUseCase(
         private val userRepository: UserRepository,
         private val itemRepository: ItemRepository
-) : UseCase<Unit, Set<SummaryForUser>>() {
+) : CoroutineUseCase<Unit, Set<SummaryForUser>>() {
 
-    override fun runUseCase(param: Unit): Set<SummaryForUser> {
+    override suspend fun runUseCase(param: Unit): Set<SummaryForUser> {
         val allItems = itemRepository.getAll()
         if (allItems.isEmpty()) return emptySet()
 
