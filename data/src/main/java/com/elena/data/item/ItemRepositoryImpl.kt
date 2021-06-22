@@ -12,23 +12,23 @@ class ItemRepositoryImpl(
         private val mapper: TwoWayDataMapper<ItemDbEntity, ItemEntity>
 ) : ItemRepository {
 
-    override fun getAll(): List<ItemEntity> {
+    override suspend fun getAll(): List<ItemEntity> {
         return itemDao.getAll().map { mapper.map(it) }
     }
 
-    override fun save(item: ItemEntity) {
+    override suspend fun save(item: ItemEntity) {
         itemDao.insertOrReplace(mapper.map2(item))
     }
 
-    override fun get(id: Int): ItemEntity {
+    override suspend fun get(id: Int): ItemEntity {
         return mapper.map(itemDao.get(id))
     }
 
-    override fun delete(item: ItemEntity) {
+    override suspend fun delete(item: ItemEntity) {
         itemDao.delete(mapper.map2(item))
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         itemDao.deleteAll()
     }
 }

@@ -16,19 +16,19 @@ class UserRepositoryImpl(
         userDao.insertOrReplace(mapper.map2(user))
     }
 
-    override fun getAll(): List<UserEntity> {
+    override suspend fun getAll(): List<UserEntity> {
         return userDao.getAll().map { mapper.map(it) }
     }
 
-    override fun getUsersWithFamily(familyId: Int): List<UserEntity> {
+    override suspend fun getUsersWithFamily(familyId: Int): List<UserEntity> {
         return userDao.getUsersWithFamily(familyId).map { mapper.map(it) }
     }
 
-    override fun getUsersWithoutFamily(): List<UserEntity> {
+    override suspend fun getUsersWithoutFamily(): List<UserEntity> {
         return userDao.getUsersWithoutFamily().map { mapper.map(it) }
     }
 
-    override fun get(id: Int): UserEntity {
+    override suspend fun get(id: Int): UserEntity {
         return mapper.map(userDao.get(id))
     }
 
@@ -36,7 +36,7 @@ class UserRepositoryImpl(
         userDao.delete(mapper.map2(user))
     }
 
-    override fun deleteAll() {
+    override suspend fun deleteAll() {
         userDao.deleteAll()
     }
 }

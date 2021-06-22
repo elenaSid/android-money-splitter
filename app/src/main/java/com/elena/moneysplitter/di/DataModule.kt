@@ -32,10 +32,11 @@ class DataModule {
     @Provides
     @PerApplication
     fun provideAppDatabase(applicationContext: Application): RoomDb {
-        return Room.databaseBuilder(applicationContext, RoomDb::class.java, "money-splitter-db.db")
-                .allowMainThreadQueries()
-                //.addMigrations()
-                .build()
+        return Room.databaseBuilder(
+                applicationContext,
+                RoomDb::class.java,
+                "money-splitter-db.db"
+        ).build()
     }
 
     @Provides

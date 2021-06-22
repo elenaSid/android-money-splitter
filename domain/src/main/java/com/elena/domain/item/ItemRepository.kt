@@ -1,13 +1,13 @@
 package com.elena.domain.item
 
 interface ItemRepository {
-    fun getAll(): List<ItemEntity>
+    suspend fun getAll(): List<ItemEntity>
 
-    fun save(item: ItemEntity)
+    suspend fun save(item: ItemEntity)
 
-    fun get(id: Int): ItemEntity
+    suspend fun get(id: Int): ItemEntity
 
-    fun delete(item: ItemEntity)
+    suspend fun delete(item: ItemEntity)
 
-    fun deleteAll()
+    suspend fun deleteAll()
 }

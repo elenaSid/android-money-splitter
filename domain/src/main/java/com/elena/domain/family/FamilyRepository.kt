@@ -1,15 +1,15 @@
 package com.elena.domain.family
 
 interface FamilyRepository {
-    fun getAll(): List<FamilyEntity>
+    suspend fun getAll(): List<FamilyEntity>
 
-    fun save(family: FamilyEntity)
+    suspend fun save(family: FamilyEntity)
 
-    fun getLast(): FamilyEntity
+    suspend fun getLast(): FamilyEntity
 
-    fun get(id: Int): FamilyEntity
+    suspend fun get(id: Int): FamilyEntity
 
-    fun delete(family: FamilyEntity)
+    suspend fun delete(family: FamilyEntity)
 
-    fun deleteAll()
+    suspend fun deleteAll()
 }
