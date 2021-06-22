@@ -7,7 +7,10 @@ import com.elena.domain.item.interaction.SaveItemUseCase
 import com.elena.domain.user.UserEntity
 import com.elena.domain.user.interaction.GetAllUsersUseCase
 import com.elena.domain.user.interaction.GetUsersUseCase
-import moxy.MvpPresenter
+import com.elena.moneysplitter.extras.CoroutineMvpPresenter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.ArrayList
 
 /**
@@ -19,7 +22,7 @@ class SpendingEditPresenter(
         private val saveItemUseCase: SaveItemUseCase,
         private val getUsersUseCase: GetUsersUseCase,
         private val getItemUseCase: GetItemUseCase
-) : MvpPresenter<SpendingEditMvpView>() {
+) : CoroutineMvpPresenter<SpendingEditMvpView>() {
 
     private var itemId: Int? = null
     private var item: ItemEntity? = null
@@ -31,21 +34,25 @@ class SpendingEditPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        users.addAll(getAllUsersUseCase.execute(Unit, emptyList()))
 
-        itemId?.let {
-            val item = getItemUseCase.execute(it)
-            itemName = item.name
-            price = item.price
-            usersConsumers.addAll(getUsersUseCase.execute(item.usedByUserIds, emptyList()))
-            usersPayers.addAll(getUsersUseCase.execute(item.payedByUserIds, emptyList()))
-            this.item = item
+        launch {
+            users.addAll(getAllUsersUseCase.execute(Unit, emptyList()))
+            itemId?.let {
+                val itemEntity = getItemUseCase.execute(it)
+                itemName = itemEntity.name
+                price = itemEntity.price
+                usersConsumers.addAll(getUsersUseCase.execute(itemEntity.usedByUserIds, emptyList()))
+                usersPayers.addAll(getUsersUseCase.execute(itemEntity.payedByUserIds, emptyList()))
+                item = itemEntity
+            }
+            withContext(Dispatchers.Main){
+                viewState.setItemName(itemName)
+                viewState.setItemPrice(price)
+                updatePayers(true)
+                updateConsumers(true)
+                updateSaveState()
+            }
         }
-        viewState.setItemName(itemName)
-        viewState.setItemPrice(price)
-        updatePayers(true)
-        updateConsumers(true)
-        updateSaveState()
     }
 
     fun onItemIdParsed(itemId: Int) {

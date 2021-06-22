@@ -14,7 +14,7 @@ interface UserRepository {
 
     fun get(id: Int): UserEntity
 
-    fun delete(user: UserEntity)
+    suspend fun delete(user: UserEntity)
 
     fun deleteAll()
 }

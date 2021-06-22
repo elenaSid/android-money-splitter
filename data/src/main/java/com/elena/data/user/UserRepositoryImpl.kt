@@ -32,7 +32,7 @@ class UserRepositoryImpl(
         return mapper.map(userDao.get(id))
     }
 
-    override fun delete(user: UserEntity) {
+    override suspend fun delete(user: UserEntity) {
         userDao.delete(mapper.map2(user))
     }
 

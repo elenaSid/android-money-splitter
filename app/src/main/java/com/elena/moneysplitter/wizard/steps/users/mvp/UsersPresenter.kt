@@ -8,8 +8,6 @@ import com.elena.moneysplitter.extras.CoroutineMvpPresenter
 import com.elena.moneysplitter.wizard.mvp.PARAM_IS_STEP_READY
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.*
-import moxy.MvpPresenter
-import kotlin.coroutines.CoroutineContext
 
 /**
  * @author elena
@@ -23,24 +21,28 @@ class UsersPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        updateUsers()
+        launch { updateUsers() }
     }
 
     fun onUserCreated(name: String) {
         launch {
             saveUserUseCase.execute(name, Unit)
-            withContext(Dispatchers.Main) { updateUsers() }
+            updateUsers()
         }
     }
 
     fun onUserDeleted(user: UserEntity) {
-        deleteUserUseCase.execute(user)
-        updateUsers()
+        launch {
+            deleteUserUseCase.execute(user)
+            updateUsers()
+        }
     }
 
-    private fun updateUsers() {
+    private suspend fun updateUsers() {
         val users = getAllUsersUseCase.execute(Unit, emptyList())
-        viewState.updateUserList(users)
-        router.sendResult(PARAM_IS_STEP_READY, users.size > 1)
+        withContext(Dispatchers.Main) {
+            viewState.updateUserList(users)
+            router.sendResult(PARAM_IS_STEP_READY, users.size > 1)
+        }
     }
 }
