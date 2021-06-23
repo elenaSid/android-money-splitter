@@ -117,6 +117,7 @@ class SpendingEditActivity : MvpAppCompatActivity(), SpendingEditMvpView {
     }
 
     override fun saveFinish() {
+        KeyboardManager.hide(this, binding.root.windowToken)
         finish()
     }
 
