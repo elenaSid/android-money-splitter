@@ -64,5 +64,6 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
 
     override fun showEmptyState() {
         binding.ivEmpty.alpha = 1f
+        adapter.update(emptyList())
     }
 }
