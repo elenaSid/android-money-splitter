@@ -6,7 +6,7 @@
     <string name="bottom_menu_done">Готово</string>
 
     <string name="wizard_step_of">%1$d из %2$d</string>
-    <string name="wizard_clear_data">Хотите вернуться в начало и удалить все текущие данные?</string>
+    <string name="wizard_clear_data">Вернуться в начало и удалить все текущие данные?</string>
 
     <!-- Wizard Users start-->
     <string name="users_name">Имя</string>
@@ -16,6 +16,7 @@
 
     <!-- Wizard Families start-->
     <string name="families_add_new">Добавь группы или семьи:</string>
+    <string name="families_may_omit">Этот шаг может быть пропущен</string>
     <!-- Wizard Families end-->
 
     <!-- Wizard Spending start-->

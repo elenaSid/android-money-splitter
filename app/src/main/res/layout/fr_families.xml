@@ -21,10 +21,26 @@
                 android:layout_marginTop="46dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:paddingBottom="32dp"
                 android:text="@string/families_add_new"
                 android:textAppearance="@style/MoneySplitter.Text_Medium_20"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="4dp"
+                android:paddingBottom="32dp"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black_60"
+                android:text="@string/families_may_omit"
+                android:textAppearance="@style/MoneySplitter.Text_Normal_12"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:drawableStartCompat="@drawable/ic_info"
+                app:drawableTint="@color/black_60" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFamilies"
@@ -33,7 +49,7 @@
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
 
             <ImageView
                 android:id="@+id/ivEmpty"
