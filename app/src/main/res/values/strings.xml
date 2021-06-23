@@ -16,6 +16,7 @@
 
     <!-- Wizard Families start-->
     <string name="families_add_new">Create groups or families:</string>
+    <string name="families_may_omit">You may omit this step</string>
     <!-- Wizard Families end-->
 
     <!-- Wizard Spending start-->
