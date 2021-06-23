@@ -1,10 +1,12 @@
 package com.elena.moneysplitter.wizard.di
 
+import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.item.ItemRepository
 import com.elena.domain.user.UserRepository
 import com.elena.domain.user.interaction.RemoveAllDataUseCase
 import com.elena.moneysplitter.R
+import com.elena.moneysplitter.extras.UIPreferencesManager
 import com.elena.moneysplitter.navigation.FragmentNavigator
 import com.elena.moneysplitter.navigation.NavigationLifecycleObserver
 import com.elena.moneysplitter.wizard.mvp.WizardPresenter
@@ -42,8 +44,15 @@ class WizardModule {
 
     @Provides
     @WizardScope
+    fun provideUiPreferencesManager(
+            keyValueStorage: KeyValueStorage
+    ) = UIPreferencesManager(keyValueStorage)
+
+    @Provides
+    @WizardScope
     fun provideWizardPresenter(
             removeAllDataUseCase: RemoveAllDataUseCase,
+            uiPreferencesManager: UIPreferencesManager,
             router: Router
-    ) = WizardPresenter(removeAllDataUseCase, router)
+    ) = WizardPresenter(removeAllDataUseCase, uiPreferencesManager, router)
 }

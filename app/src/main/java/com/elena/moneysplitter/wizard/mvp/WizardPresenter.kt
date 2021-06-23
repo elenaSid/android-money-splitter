@@ -2,6 +2,7 @@ package com.elena.moneysplitter.wizard.mvp
 
 import com.elena.domain.user.interaction.RemoveAllDataUseCase
 import com.elena.moneysplitter.extras.CoroutineMvpPresenter
+import com.elena.moneysplitter.extras.UIPreferencesManager
 import com.elena.moneysplitter.navigation.WizardNavigationScreen
 import com.elena.moneysplitter.wizard.WizardStep
 import com.elena.moneysplitter.wizard.canGoBack
@@ -21,6 +22,7 @@ const val PARAM_IS_STEP_READY = "is_step_ready"
  */
 class WizardPresenter(
         private val removeAllDataUseCase: RemoveAllDataUseCase,
+        private val uiPreferencesManager: UIPreferencesManager,
         private val router: Router
 ) : CoroutineMvpPresenter<WizardMvpView>() {
 
@@ -33,7 +35,10 @@ class WizardPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-
+        val savedStepIndex = uiPreferencesManager.getWizardProgress()
+        if (savedStepIndex >= 0) {
+            currentStep = WizardStep.values()[savedStepIndex]
+        }
         setStep(currentStep)
     }
 
@@ -65,6 +70,7 @@ class WizardPresenter(
     fun onClearDataRequested() {
         launch {
             removeAllDataUseCase.execute(Unit)
+            uiPreferencesManager.clearWizardProgress()
             withContext(Dispatchers.Main) { setStep(WizardStep.USERS) }
         }
     }
@@ -91,6 +97,7 @@ class WizardPresenter(
         viewState.setFABVisibility(wizardStep.hasFAB)
         router.navigateTo(getStepFragmentScreen(wizardStep))
         setStepReadyResultListener()
+        uiPreferencesManager.setWizardProgress(currentStep.value)
         viewState.updateStepCount(wizardStep.value + 1, WizardStep.values().size)
     }
 

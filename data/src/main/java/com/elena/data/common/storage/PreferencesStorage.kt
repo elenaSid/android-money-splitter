@@ -1,25 +1,17 @@
-package com.elena.data
+package com.elena.data.common.storage
 
 import android.content.Context
-import android.content.SharedPreferences
 import com.elena.domain.common.KeyValueStorage
+
+private const val APP_PREFERENCES: String = "app_preferences"
 
 /**
  * @author elena
- *         Date: 11.06.2018
- *         Time: 20:30
  */
-class PreferencesStorage constructor(appContext: Context) : KeyValueStorage {
+class PreferencesStorage(appContext: Context) : KeyValueStorage {
 
-    private var sharedPreferences: SharedPreferences
-
-    companion object {
-        private var APP_PREFERENCES: String = "app_preferences"
-    }
-
-    init {
-        sharedPreferences = appContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-    }
+    private var sharedPreferences =
+            appContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
     override fun has(key: String): Boolean {
         return sharedPreferences.contains(key)

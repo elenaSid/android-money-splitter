@@ -1,6 +1,7 @@
 package com.elena.moneysplitter.di
 
 import android.app.Application
+import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.item.ItemRepository
 import com.elena.domain.user.UserRepository
@@ -24,6 +25,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 interface AppComponent {
 
     fun appContext(): Application
+    fun keyValueStorage(): KeyValueStorage
 
     fun familyRepository(): FamilyRepository
     fun userRepository(): UserRepository

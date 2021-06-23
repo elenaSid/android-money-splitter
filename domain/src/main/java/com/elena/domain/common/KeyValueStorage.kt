@@ -2,40 +2,26 @@ package com.elena.domain.common
 
 /**
  * @author elena
- *         Date: 11.06.2018
- *         Time: 20:28
  */
 interface KeyValueStorage {
 
     /**
-     * Проверяет наличие ключа в хранилище
-     *
-     * @param key ключ
-     * @return истина, если ключ найден
+     * Проверяет наличие [key] в хранилище
      */
     fun has(key: String): Boolean
 
     /**
-     * Удаляет ключ из хранилища
-     *
-     * @param key ключ
+     * Удаляет [key] из хранилища
      */
     fun remove(key: String)
 
     /**
-     * Возвращает строковое значение из хранилища
-     *
-     * @param key ключ
-     * @param defaultValue значение по-умолчанию
-     * @return значение или значение по-умолчанию
+     * Возвращает строковое значение по [key] из хранилища, если онон не найдено - то [defaultValue]
      */
     fun getValue(key: String, defaultValue: String?): String?
 
     /**
-     * Устанавливает строковое значение в хранилище
-     *
-     * @param key ключ
-     * @param value значение
+     * Устанавливает строковое [value] в хранилище под указанным [key]
      */
     fun setValue(key: String, value: String?)
 

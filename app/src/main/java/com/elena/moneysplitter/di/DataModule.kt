@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.elena.domain.common.KeyValueStorage
 import com.elena.domain.family.FamilyRepository
 import com.elena.domain.user.UserRepository
-import com.elena.data.PreferencesStorage
+import com.elena.data.common.storage.PreferencesStorage
 import com.elena.data.db.RoomDb
 import com.elena.data.family.FamilyDbMapper
 import com.elena.data.family.FamilyRepositoryImpl
