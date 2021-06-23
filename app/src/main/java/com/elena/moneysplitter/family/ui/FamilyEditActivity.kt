@@ -12,10 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.elena.domain.user.UserEntity
 import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.FamilyEditActivityBinding
-import com.elena.moneysplitter.extras.SpaceDecoration
-import com.elena.moneysplitter.extras.TaggedLayoutManager
-import com.elena.moneysplitter.extras.toPx
-import com.elena.moneysplitter.extras.trimmedContent
+import com.elena.moneysplitter.extras.*
 import com.elena.moneysplitter.family.mvp.FamilyEditMvpView
 import com.elena.moneysplitter.family.mvp.FamilyEditPresenter
 import com.elena.moneysplitter.wizard.steps.families.ui.FamilyMembersAdapter
@@ -113,6 +110,7 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
     }
 
     override fun saveFinish() {
+        KeyboardManager.hide(this, binding.root.windowToken)
         finish()
     }
 
