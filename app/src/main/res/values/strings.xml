@@ -65,4 +65,11 @@
     <string name="spending_edit_delete">@string/family_delete</string>
     <!-- Spending Add Screen end-->
 
+    <!-- Intro Screen start-->
+    <string name="intro_title">Intro</string>
+    <string name="intro_get_started">Get started</string>
+    <string name="intro_add_spending">Add your spending</string>
+    <string name="intro_add_group_spending">Group spending by families or groups</string>
+    <string name="intro_add_get_optimized_debts_list">Get optimized list of debts</string>
+    <!-- Intro Screen end-->
 </resources>

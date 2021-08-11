@@ -35,6 +35,11 @@ class WizardPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        if (!uiPreferencesManager.isIntroShown()) {
+            router.navigateTo(WizardNavigationScreen.intro(), true)
+            return
+        }
+
         val savedStepIndex = uiPreferencesManager.getWizardProgress()
         if (savedStepIndex >= 0) {
             currentStep = WizardStep.values()[savedStepIndex]
