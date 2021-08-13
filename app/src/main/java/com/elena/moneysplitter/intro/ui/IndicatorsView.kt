@@ -38,7 +38,7 @@ class IndicatorsView @JvmOverloads constructor(
         updateIndicators()
     }
 
-    fun selectCurrentPosition(position: Int) {
+    fun setCurrentPosition(position: Int) {
         val prevPosition = selectedPosition
         if (position in 0..indicatorCount) {
             selectedPosition = position

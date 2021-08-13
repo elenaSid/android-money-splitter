@@ -3,6 +3,9 @@ package com.elena.moneysplitter.di
 import com.elena.moneysplitter.family.di.FamilyEditModule
 import com.elena.moneysplitter.family.di.FamilyEditScope
 import com.elena.moneysplitter.family.ui.FamilyEditActivity
+import com.elena.moneysplitter.intro.di.IntroModule
+import com.elena.moneysplitter.intro.di.IntroScope
+import com.elena.moneysplitter.intro.ui.IntroActivity
 import com.elena.moneysplitter.spending.di.SpendingEditModule
 import com.elena.moneysplitter.spending.di.SpendingEditScope
 import com.elena.moneysplitter.spending.ui.SpendingEditActivity
@@ -66,4 +69,8 @@ abstract class BuilderModule {
     @DebtsScope
     @ContributesAndroidInjector(modules = [DebtsModule::class])
     abstract fun bindDebtsFragment(): DebtsFragment
+
+    @IntroScope
+    @ContributesAndroidInjector(modules = [IntroModule::class])
+    abstract fun bindIntroActivity(): IntroActivity
 }

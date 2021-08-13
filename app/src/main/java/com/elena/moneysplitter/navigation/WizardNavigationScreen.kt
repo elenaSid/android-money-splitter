@@ -9,6 +9,7 @@ import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.summary.ui.SummaryFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
+import com.elena.moneysplitter.wizard.ui.WizardActivity
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -68,4 +69,9 @@ object WizardNavigationScreen {
      * Формирует экземпляр экрана интро
      */
     fun intro() = ActivityScreen { Intent(it, IntroActivity::class.java) }
+
+    /**
+     * Формирует экземпляр экрана визарда
+     */
+    fun wizard() = ActivityScreen { Intent(it, WizardActivity::class.java) }
 }

@@ -9,15 +9,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
  */
 class IntroAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
-    private val fragments = mutableListOf<Fragment>()
+    private val fragments = listOf<Fragment>(
+            IntroFragment.getInstance(IntroType.BILL),
+            IntroFragment.getInstance(IntroType.DEBTS),
+            IntroFragment.getInstance(IntroType.SPENDING)
+    )
 
     override fun getItemCount() = fragments.size
 
     override fun createFragment(position: Int) = fragments[position]
-
-    fun setFragmentList(list: List<Fragment>) {
-        fragments.clear()
-        fragments.addAll(list)
-        notifyDataSetChanged()
-    }
 }

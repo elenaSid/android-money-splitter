@@ -40,6 +40,11 @@ class IntroFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.ivIntro.animateDrawable()
+    }
+
     /**
      * Возвращает векторную анимацию
      */
