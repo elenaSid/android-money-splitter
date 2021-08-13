@@ -62,7 +62,7 @@ class SpendingFragment : MvpAppCompatFragment(), SpendingMvpView {
     }
 
     override fun showEmptyState() {
-        binding.ivEmpty.alpha = 1f
+        binding.ivEmpty.alpha = 0.6f
         adapter.update(emptyList())
     }
 }

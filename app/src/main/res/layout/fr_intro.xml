@@ -33,8 +33,9 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lobster"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
+                android:layout_marginTop="24dp"
                 android:textAppearance="@style/MoneySplitter.Text_Normal_32"
                 tools:text="@string/intro_add_spending" />
         </LinearLayout>

@@ -8,7 +8,6 @@ import com.elena.moneysplitter.databinding.IntroActivityBinding
 import com.elena.moneysplitter.intro.mvp.IntroMvpView
 import com.elena.moneysplitter.intro.mvp.IntroPresenter
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.ac_intro.view.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -40,7 +39,7 @@ class IntroActivity : MvpAppCompatActivity(), IntroMvpView {
                 binding.indicators.setCurrentPosition(position)
             }
         })
-        binding.btnGetStarted.btnGetStarted.setOnClickListener { presenter.onGetStartedClicked() }
+        binding.btnGetStarted.setOnClickListener { presenter.onGetStartedClicked() }
     }
 
     override fun changeIntroSlide() {

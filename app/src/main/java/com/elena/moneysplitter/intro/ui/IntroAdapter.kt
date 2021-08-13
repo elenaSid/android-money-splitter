@@ -11,8 +11,8 @@ class IntroAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) 
 
     private val fragments = listOf<Fragment>(
             IntroFragment.getInstance(IntroType.BILL),
-            IntroFragment.getInstance(IntroType.DEBTS),
-            IntroFragment.getInstance(IntroType.SPENDING)
+            IntroFragment.getInstance(IntroType.SPENDING),
+            IntroFragment.getInstance(IntroType.DEBTS)
     )
 
     override fun getItemCount() = fragments.size

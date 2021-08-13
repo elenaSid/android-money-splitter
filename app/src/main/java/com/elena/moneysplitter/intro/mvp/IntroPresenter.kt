@@ -36,6 +36,6 @@ class IntroPresenter(
 
     fun onGetStartedClicked() {
         uiPreferencesManager.setIntroShown()
-        router.navigateTo(WizardNavigationScreen.wizard(), true)
+        router.newRootScreen(WizardNavigationScreen.wizard())
     }
 }

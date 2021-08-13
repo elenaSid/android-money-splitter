@@ -36,7 +36,7 @@ class WizardPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         if (!uiPreferencesManager.isIntroShown()) {
-            router.navigateTo(WizardNavigationScreen.intro(), true)
+            router.newRootScreen(WizardNavigationScreen.intro())
             return
         }
 
