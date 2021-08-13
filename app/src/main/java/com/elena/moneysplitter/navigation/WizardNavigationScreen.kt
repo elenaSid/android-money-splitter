@@ -2,12 +2,14 @@ package com.elena.moneysplitter.navigation
 
 import android.content.Intent
 import com.elena.moneysplitter.family.ui.FamilyEditActivity
+import com.elena.moneysplitter.intro.ui.IntroActivity
 import com.elena.moneysplitter.spending.ui.SpendingEditActivity
 import com.elena.moneysplitter.wizard.steps.debts.ui.DebtsFragment
 import com.elena.moneysplitter.wizard.steps.families.ui.FamiliesFragment
 import com.elena.moneysplitter.wizard.steps.spending.ui.SpendingFragment
 import com.elena.moneysplitter.wizard.steps.summary.ui.SummaryFragment
 import com.elena.moneysplitter.wizard.steps.users.ui.UsersFragment
+import com.elena.moneysplitter.wizard.ui.WizardActivity
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -62,4 +64,14 @@ object WizardNavigationScreen {
      * Формирует экземпляр шага визарда - долги
      */
     fun debtsStep() = FragmentScreen { DebtsFragment() }
+
+    /**
+     * Формирует экземпляр экрана интро
+     */
+    fun intro() = ActivityScreen { Intent(it, IntroActivity::class.java) }
+
+    /**
+     * Формирует экземпляр экрана визарда
+     */
+    fun wizard() = ActivityScreen { Intent(it, WizardActivity::class.java) }
 }
