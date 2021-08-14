@@ -5,6 +5,9 @@ import com.elena.domain.item.ItemRepository
 import com.elena.domain.summary.SummaryForUser
 import com.elena.domain.user.UserRepository
 
+/**
+ * @author elena
+ */
 class GetSummaryForAllUsersUseCase(
         private val userRepository: UserRepository,
         private val itemRepository: ItemRepository

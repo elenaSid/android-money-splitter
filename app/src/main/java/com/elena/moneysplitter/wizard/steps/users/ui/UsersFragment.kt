@@ -55,7 +55,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersMvpView {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fr_wizard_users, container, false)
         return binding.root
     }

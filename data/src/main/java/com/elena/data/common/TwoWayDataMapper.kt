@@ -2,8 +2,6 @@ package com.elena.data.common
 
 /**
  * @author elena
- *         Date: 12.06.2018
- *         Time: 14:53
  */
 interface TwoWayDataMapper<FROM, TO> : DataMapper<FROM, TO> {
     /**
