@@ -3,8 +3,6 @@ package com.elena.moneysplitter.intro.mvp
 import android.os.Handler
 import android.os.Looper
 import com.elena.moneysplitter.extras.UIPreferencesManager
-import com.elena.moneysplitter.navigation.WizardNavigationScreen
-import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 import java.util.*
 
@@ -12,7 +10,6 @@ import java.util.*
  * @author elena
  */
 class IntroPresenter(
-        private val router: Router,
         private val uiPreferencesManager: UIPreferencesManager
 ) : MvpPresenter<IntroMvpView>() {
 
@@ -36,6 +33,6 @@ class IntroPresenter(
 
     fun onGetStartedClicked() {
         uiPreferencesManager.setIntroShown()
-        router.newRootScreen(WizardNavigationScreen.wizard())
+        viewState.launchWizard()
     }
 }

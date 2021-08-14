@@ -38,7 +38,7 @@
                 android:contentDescription="@string/summary_share"
                 android:padding="8dp"
                 android:src="@drawable/ic_share"
-                android:tint="@color/colorAccent"
+                android:tint="@color/accent"
                 app:layout_constraintEnd_toStartOf="@id/tvTitle"
                 app:layout_constraintTop_toTopOf="parent" />
 

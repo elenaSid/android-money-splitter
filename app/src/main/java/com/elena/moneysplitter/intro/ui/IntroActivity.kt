@@ -1,5 +1,6 @@
 package com.elena.moneysplitter.intro.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager2.widget.ViewPager2
@@ -7,6 +8,7 @@ import com.elena.moneysplitter.R
 import com.elena.moneysplitter.databinding.IntroActivityBinding
 import com.elena.moneysplitter.intro.mvp.IntroMvpView
 import com.elena.moneysplitter.intro.mvp.IntroPresenter
+import com.elena.moneysplitter.wizard.ui.WizardActivity
 import dagger.android.AndroidInjection
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
@@ -44,6 +46,12 @@ class IntroActivity : MvpAppCompatActivity(), IntroMvpView {
 
     override fun changeIntroSlide() {
         val currentItem = binding.vpIntro.currentItem
-        binding.vpIntro.currentItem = if (currentItem == adapter.itemCount - 1) 0 else currentItem + 1
+        binding.vpIntro.currentItem =
+            if (currentItem == adapter.itemCount - 1) 0 else currentItem + 1
+    }
+
+    override fun launchWizard() {
+        finish()
+        startActivity(Intent(this, WizardActivity::class.java))
     }
 }

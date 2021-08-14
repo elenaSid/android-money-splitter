@@ -47,7 +47,7 @@ class SpendingUserAdapter(
             userChip.text = holder.itemView.context.getString(R.string.spending_everyone)
             userChip.setOnClickListener { listener?.onUserClicked(users) }
             userChip.setChipBackgroundColorResource(
-                    if (isEveryoneSelected) R.color.colorAccent else R.color.alto_bg
+                    if (isEveryoneSelected) R.color.accent else R.color.divider_bg
             )
             userChip.setTextColor(if (isEveryoneSelected) Color.WHITE else Color.BLACK)
             return
@@ -58,9 +58,9 @@ class SpendingUserAdapter(
         userChip.setOnClickListener { listener?.onUserClicked(listOf(user)) }
         userChip.setChipBackgroundColorResource(
                 when {
-                    isEveryoneSelected -> R.color.picton_blue_60
-                    isSelected -> R.color.colorAccent
-                    else -> R.color.alto_bg
+                    isEveryoneSelected -> R.color.accent_60
+                    isSelected -> R.color.accent
+                    else -> R.color.divider_bg
                 }
         )
         userChip.setTextColor(if (isSelected && !isEveryoneSelected) Color.WHITE else Color.BLACK)

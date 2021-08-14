@@ -61,7 +61,7 @@ class FamilyEditActivity : MvpAppCompatActivity(), FamilyEditMvpView {
             menu?.let {
                 val item = menu.add(Menu.NONE, MENU_DELETE_ID, Menu.NONE, R.string.family_delete)
                 item.setIcon(R.drawable.ic_delete)
-                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             }
         }
         return super.onCreateOptionsMenu(menu)

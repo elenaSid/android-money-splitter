@@ -33,14 +33,14 @@
                 android:layout_marginTop="4dp"
                 android:paddingBottom="32dp"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black_60"
+                android:textColor="@color/text_60"
                 android:text="@string/families_may_omit"
                 android:textAppearance="@style/MoneySplitter.Text_Normal_12"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:drawableStartCompat="@drawable/ic_info"
-                app:drawableTint="@color/black_60" />
+                app:drawableTint="@color/text_60" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFamilies"
