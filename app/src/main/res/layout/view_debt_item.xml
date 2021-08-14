@@ -58,7 +58,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/alto_bg"
+        android:background="@color/divider_bg"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"

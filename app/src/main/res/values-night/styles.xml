@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MoneySplitter.Theme" parent="MoneySplitter.Theme_Base">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="MoneySplitter.Theme_Edit" parent="MoneySplitter.Theme_Edit_Base">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

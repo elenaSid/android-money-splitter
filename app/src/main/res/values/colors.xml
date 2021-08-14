@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="alto_bg">#d8d8d8</color>
 
-    <color name="black">#000000</color>
-    <color name="black_20">#33000000</color>
-    <color name="black_60">#99000000</color>
-    <color name="black_70">#B3000000</color>
-    <color name="black_87">#DE000000</color>
-
-    <color name="colorAccent">@color/picton_blue</color>
+    <color name="accent">#36A4E9</color>
+    <color name="accent_60">#9936A4E9</color>
+    <color name="divider_bg">#d8d8d8</color>
+    <color name="highlight">#33000000</color>
+    <color name="icons_tint">#DE000000</color>
+    <color name="main_bg">#ffffff</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_70">#B3000000</color>
+    <color name="text_60">#99000000</color>
 
     <color name="glacier">#79AAC8</color>
-
     <color name="monza">#B00020</color>
-
-    <color name="picton_blue">#36A4E9</color>
-    <color name="picton_blue_60">#9936A4E9</color>
-    <color name="picton_blue_40">#6636A4E9</color>
-
     <color name="red_orange">#33FF3B30</color>
-
     <color name="turquoise_blue">#3361EDA9</color>
-
     <color name="white">#ffffff</color>
 </resources>

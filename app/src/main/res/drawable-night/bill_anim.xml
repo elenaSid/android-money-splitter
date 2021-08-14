@@ -19,7 +19,7 @@
                     android:name="path_2"
                     android:pathData="M 155.555 125.26 L 155.552 109.067 L 167.432 102.596 L 155.555 125.26 L 76.353 141.416 L 52.568 24.818 L 147.611 5.43 L 167.432 102.596"
                     android:fillColor="#f7f5ef"
-                    android:strokeColor="#191919"
+                    android:strokeColor="#9E9D9C"
                     android:strokeWidth="1.5"
                     android:fillType="evenOdd"/>
                 <path

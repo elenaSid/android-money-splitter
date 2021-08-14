@@ -63,7 +63,7 @@
                 android:paddingTop="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/black_70"
+                android:textColor="@color/text_70"
                 android:visibility="gone"
                 android:text="@string/debts_empty"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

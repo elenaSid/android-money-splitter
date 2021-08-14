@@ -38,7 +38,7 @@ class FamilyMembersAdapter(
         familyMemberChip.isClickable = isEditable
         familyMemberChip.isFocusable = isEditable
         familyMemberChip.setChipBackgroundColorResource(
-                if (isSelected) R.color.colorAccent else R.color.alto_bg
+                if (isSelected) R.color.accent else R.color.divider_bg
         )
         familyMemberChip.setTextColor(if (isSelected) Color.WHITE else Color.BLACK)
     }
