@@ -43,7 +43,7 @@ class FamiliesFragment : MvpAppCompatFragment(), FamiliesMvpView {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fr_families, container, false)
         return binding.root
     }

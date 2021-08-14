@@ -1,10 +1,15 @@
 package com.elena.domain.summary.interaction
 
+import kotlin.math.abs
+
+/**
+ * @author elena
+ */
 object TransactionOptimizationService {
     private const val MAX_ERROR = 0.000001
 
     fun optimizeTransactions(differences: List<Difference>): Set<OptimizedTransaction> {
-        val nonEmptyDiffs = differences.filter { Math.abs(it.difference) > MAX_ERROR }
+        val nonEmptyDiffs = differences.filter { abs(it.difference) > MAX_ERROR }
         if (nonEmptyDiffs.isEmpty()) return emptySet()
 
         val result = HashSet<OptimizedTransaction>()
@@ -20,7 +25,7 @@ object TransactionOptimizationService {
                 sortedDifferences.remove(maxDebtor)
 
                 val newCreditorDifference = maxCreditor.difference - sum
-                if (Math.abs(newCreditorDifference) > MAX_ERROR) {
+                if (abs(newCreditorDifference) > MAX_ERROR) {
                     maxCreditor.difference = newCreditorDifference
                 } else {
                     sortedDifferences.remove(maxCreditor)
@@ -30,7 +35,7 @@ object TransactionOptimizationService {
                 sortedDifferences.remove(maxCreditor)
 
                 val newDebtorDifference = maxDebtor.difference + sum
-                if (Math.abs(newDebtorDifference) > MAX_ERROR) {
+                if (abs(newDebtorDifference) > MAX_ERROR) {
                     maxDebtor.difference = newDebtorDifference
                 } else {
                     sortedDifferences.remove(maxDebtor)

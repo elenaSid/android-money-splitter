@@ -1,5 +1,8 @@
 package com.elena.domain.item
 
+/**
+ * @author elena
+ */
 data class ItemEntity(
         val id: Int = 0,
         val name: String,

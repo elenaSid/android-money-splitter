@@ -14,7 +14,7 @@ abstract class CoroutineUseCase<P, R> {
         try {
             return runUseCase(param)
         } catch (e: Exception) {
-            throw UseCaseException.build(e)
+            throw UseCaseException.build()
         }
     }
 

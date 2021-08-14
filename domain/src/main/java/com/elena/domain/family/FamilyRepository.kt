@@ -1,5 +1,8 @@
 package com.elena.domain.family
 
+/**
+ * @author elena
+ */
 interface FamilyRepository {
     suspend fun getAll(): List<FamilyEntity>
 

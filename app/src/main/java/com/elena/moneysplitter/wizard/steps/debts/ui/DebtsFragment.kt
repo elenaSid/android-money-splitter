@@ -43,7 +43,7 @@ class DebtsFragment: MvpAppCompatFragment(), DebtsMvpView {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fr_debts, container, false)
         return binding.root
     }

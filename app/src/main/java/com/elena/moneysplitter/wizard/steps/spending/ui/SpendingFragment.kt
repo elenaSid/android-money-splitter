@@ -42,7 +42,7 @@ class SpendingFragment : MvpAppCompatFragment(), SpendingMvpView {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fr_spending, container, false)
         return binding.root
     }

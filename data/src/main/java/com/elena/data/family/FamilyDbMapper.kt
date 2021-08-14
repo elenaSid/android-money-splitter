@@ -5,8 +5,6 @@ import com.elena.data.common.TwoWayDataMapper
 
 /**
  * @author elena
- *         Date: 12/01/2019
- *         Time: 19:40
  */
 class FamilyDbMapper : TwoWayDataMapper<FamilyDbEntity, FamilyEntity> {
 

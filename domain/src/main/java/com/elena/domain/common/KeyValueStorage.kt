@@ -25,33 +25,15 @@ interface KeyValueStorage {
      */
     fun setValue(key: String, value: String?)
 
-    /**
-     * @see .getValue
-     */
     fun getValue(key: String, defaultValue: Int): Int
 
-    /**
-     * @see .setValue
-     */
     fun setValue(key: String, value: Int)
 
-    /**
-     * @see .getValue
-     */
     fun getValue(key: String, defaultValue: Boolean): Boolean
 
-    /**
-     * @see .setValue
-     */
     fun setValue(key: String, value: Boolean)
 
-    /**
-     * @see .getValue
-     */
     fun getValue(key: String, defaultValue: Long): Long
 
-    /**
-     * @see .setValue
-     */
     fun setValue(key: String, value: Long)
 }

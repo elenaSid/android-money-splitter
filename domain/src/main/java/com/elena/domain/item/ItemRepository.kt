@@ -1,5 +1,8 @@
 package com.elena.domain.item
 
+/**
+ * @author elena
+ */
 interface ItemRepository {
     suspend fun getAll(): List<ItemEntity>
 
