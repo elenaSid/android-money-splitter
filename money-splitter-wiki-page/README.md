@@ -18,7 +18,6 @@ Todo list:
 
 Let's add some pictures:
 
-<figure><img src=".gitbook/assets/GitBook.png" alt="" width="102"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/GitBook.png" alt="" width="102"><figcaption></figcaption></figure>
 
-Vice Versa
-Changing from GitHub...
+Vice Versa Changing from GitHub...
