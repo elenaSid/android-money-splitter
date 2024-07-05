@@ -12,6 +12,10 @@ List of important things:
 
 Todo list:
 
-* [ ] Check 1
-* [ ] Check 2
+* [x] Check 1
+* [x] Check 2
 * [ ] Check 3
+
+Let's add some pictures:
+
+<figure><img src=".gitbook/assets/GitBook.png" alt="" width="102"><figcaption></figcaption></figure>
