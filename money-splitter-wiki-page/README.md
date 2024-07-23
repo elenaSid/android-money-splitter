@@ -22,4 +22,6 @@ Let's add some pictures:
 
 Vice Versa Changing from GitHub...
 
+Weird sync. Where is my new file?
+
 [Read About](about.md)
