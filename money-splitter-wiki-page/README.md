@@ -22,8 +22,4 @@ Let's add some pictures:
 
 Vice Versa Changing from GitHub...
 
-Weird sync. Where is my new file?
-
-[Read About](about.md)
-[Obsidian](test_obidian_export_file.md)
-[VS Code](vs_code_file.md)
+[Read About](about.md) [Obsidian](test\_obidian\_export\_file.md) [VS Code](vs\_code\_file.md)
