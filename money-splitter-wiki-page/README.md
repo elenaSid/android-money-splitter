@@ -22,4 +22,4 @@ Let's add some pictures:
 
 Vice Versa Changing from GitHub...
 
-[Read About](about.md) [Obsidian](test_obidian_export_file.md) [VS Code](vs_code_file.md)
+[Read About](about.md) [Obsidian](page-with-table.md) [VS Code](vs_code_file.md)
